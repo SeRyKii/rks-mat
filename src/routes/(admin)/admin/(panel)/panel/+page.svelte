@@ -2,7 +2,6 @@
 	import type { PageData } from './$types';
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	export let data: PageData;
-	console.log(data);
 </script>
 
 <div class="w-full flex justify-center items-center h-full">
