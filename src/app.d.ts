@@ -14,3 +14,5 @@ declare global {
 		// interface Platform {}
 	}
 }
+
+declare module 'fetch-meta-tags';

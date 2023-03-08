@@ -8,7 +8,6 @@
 	export let data: PageData;
 
 	let editor: any = {};
-	let tools = {};
 
 	function onChange(event: CustomEvent) {
 		console.log('test');
@@ -36,7 +35,6 @@
 	<h1>{data.post.title}</h1>
 	<Editor
 		data={data.post.content}
-		bind:tools
 		bind:editor
 		on:error={(event) => {
 			toastStore.trigger({

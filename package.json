@@ -15,6 +15,10 @@
 		"typegen:watch": "simple-file-watch --delay=1000 --extension='db' --path ./pb_data --command='pocketbase-typegen --db ./pb_data/data.db --out ./src/lib/pb_types.ts'"
 	},
 	"devDependencies": {
+		"@editorjs/image": "^2.8.1",
+		"@editorjs/link": "^2.5.0",
+		"@editorjs/quote": "^2.5.0",
+		"@editorjs/raw": "^2.4.0",
 		"@skeletonlabs/skeleton": "^0.132.5",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.5.0",
@@ -24,6 +28,9 @@
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"autoprefixer": "^10.4.13",
+		"editorjs-drag-drop": "^1.1.13",
+		"editorjs-hyperlink": "^1.0.6",
+		"editorjs-undo": "^2.0.19",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -42,7 +49,14 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@editorjs/attaches": "^1.3.0",
 		"@editorjs/editorjs": "^2.26.5",
+		"@editorjs/list": "^1.8.0",
+		"@editorjs/nested-list": "^1.3.0",
+		"@editorjs/table": "^2.2.1",
+		"editorjs-header-with-alignment": "^1.0.1",
+		"editorjs-paragraph-with-alignment": "^3.0.0",
+		"fetch-meta-tags": "^1.0.12",
 		"pocketbase": "^0.12.0",
 		"svelte-markdown": "^0.2.3"
 	}

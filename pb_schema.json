@@ -1,0 +1,329 @@
+[
+  {
+    "id": "_pb_users_auth_",
+    "name": "users",
+    "type": "auth",
+    "system": false,
+    "schema": [
+      {
+        "id": "users_name",
+        "name": "name",
+        "type": "text",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "id": "users_avatar",
+        "name": "avatar",
+        "type": "file",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "maxSize": 5242880,
+          "mimeTypes": [
+            "image/jpeg",
+            "image/png",
+            "image/svg+xml",
+            "image/gif",
+            "image/webp"
+          ],
+          "thumbs": null
+        }
+      }
+    ],
+    "listRule": "id = @request.auth.id",
+    "viewRule": "id = @request.auth.id",
+    "createRule": null,
+    "updateRule": "id = @request.auth.id",
+    "deleteRule": "id = @request.auth.id",
+    "options": {
+      "allowEmailAuth": true,
+      "allowOAuth2Auth": true,
+      "allowUsernameAuth": true,
+      "exceptEmailDomains": null,
+      "manageRule": null,
+      "minPasswordLength": 8,
+      "onlyEmailDomains": null,
+      "requireEmail": false
+    }
+  },
+  {
+    "id": "csz11m7h23fo930",
+    "name": "posts",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "jhomfgr2",
+        "name": "title",
+        "type": "text",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "id": "w2mbarip",
+        "name": "type",
+        "type": "number",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "min": 0,
+          "max": 2
+        }
+      },
+      {
+        "id": "wnhxdped",
+        "name": "content",
+        "type": "json",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {}
+      }
+    ],
+    "listRule": "type = 0 || @request.auth.id != ''",
+    "viewRule": "type = 0 || @request.auth.id != ''",
+    "createRule": "@request.auth.id != ''",
+    "updateRule": "@request.auth.id != ''",
+    "deleteRule": "@request.auth.id != ''",
+    "options": {}
+  },
+  {
+    "id": "e44vlr5rssgfc1b",
+    "name": "analytics",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "ehzshubt",
+        "name": "user_agent",
+        "type": "text",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "id": "owcqdjhk",
+        "name": "ip",
+        "type": "text",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      }
+    ],
+    "listRule": "@request.auth.id != ''",
+    "viewRule": "@request.auth.id != ''",
+    "createRule": "",
+    "updateRule": "@request.auth.id != ''",
+    "deleteRule": "@request.auth.id != ''",
+    "options": {}
+  },
+  {
+    "id": "mlk50sy5z1jurye",
+    "name": "analyticsCount",
+    "type": "view",
+    "system": false,
+    "schema": [
+      {
+        "id": "x5fx3sva",
+        "name": "nth",
+        "type": "number",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null
+        }
+      }
+    ],
+    "listRule": "@request.auth.id != ''",
+    "viewRule": "@request.auth.id != ''",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "options": {
+      "query": "SELECT (ROW_NUMBER() OVER()) as id, count(analytics.ip) as nth FROM analytics"
+    }
+  },
+  {
+    "id": "yosyjtsgpit9bju",
+    "name": "analyticsUnique",
+    "type": "view",
+    "system": false,
+    "schema": [],
+    "listRule": "@request.auth.id != ''",
+    "viewRule": "@request.auth.id != ''",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "options": {
+      "query": "SELECT distinct(analytics.ip) as id from analytics"
+    }
+  },
+  {
+    "id": "e46ceci22x0m1z9",
+    "name": "analyticsUniqueCount",
+    "type": "view",
+    "system": false,
+    "schema": [
+      {
+        "id": "huchs5uw",
+        "name": "nth",
+        "type": "number",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null
+        }
+      }
+    ],
+    "listRule": "@request.auth.id != ''",
+    "viewRule": "@request.auth.id != ''",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "options": {
+      "query": "SELECT (ROW_NUMBER() OVER()) as id, count(analyticsUnique.id) as nth FROM analyticsUnique"
+    }
+  },
+  {
+    "id": "b721isxujp1ne0a",
+    "name": "postsCount",
+    "type": "view",
+    "system": false,
+    "schema": [
+      {
+        "id": "bw2awivb",
+        "name": "nth",
+        "type": "number",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null
+        }
+      }
+    ],
+    "listRule": "",
+    "viewRule": "",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "options": {
+      "query": "SELECT (ROW_NUMBER() OVER()) as id, count(posts.id) as nth FROM posts WHERE posts.type = 0"
+    }
+  },
+  {
+    "id": "j6snjm6tudfpoac",
+    "name": "postsDraft",
+    "type": "view",
+    "system": false,
+    "schema": [
+      {
+        "id": "ekuuptj1",
+        "name": "nth",
+        "type": "number",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null
+        }
+      }
+    ],
+    "listRule": "",
+    "viewRule": "",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "options": {
+      "query": "SELECT (ROW_NUMBER() OVER()) as id, count(posts.id) as nth FROM posts WHERE posts.type = 1"
+    }
+  },
+  {
+    "id": "aeicmgkzqjsprxc",
+    "name": "postsDeleted",
+    "type": "view",
+    "system": false,
+    "schema": [
+      {
+        "id": "honmye2d",
+        "name": "nth",
+        "type": "number",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null
+        }
+      }
+    ],
+    "listRule": "",
+    "viewRule": "",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "options": {
+      "query": "SELECT (ROW_NUMBER() OVER()) as id, count(posts.id) as nth FROM posts WHERE posts.type = 3"
+    }
+  },
+  {
+    "id": "7nvgtu4ynkieajp",
+    "name": "files",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "a943vm1c",
+        "name": "file",
+        "type": "file",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "maxSize": 5242880,
+          "mimeTypes": [],
+          "thumbs": []
+        }
+      }
+    ],
+    "listRule": null,
+    "viewRule": "",
+    "createRule": "@request.auth.id != ''",
+    "updateRule": "@request.auth.id != ''",
+    "deleteRule": null,
+    "options": {}
+  }
+]
