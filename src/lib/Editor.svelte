@@ -11,7 +11,10 @@
 	import AttachesTool from '@editorjs/attaches';
 	import RawTool from '@editorjs/raw';
 	import Table from '@editorjs/table';
-	import Carousel from 'Carousel';
+	import Hyperlink from 'editorjs-hyperlink';
+	import DragDrop from 'editorjs-drag-drop';
+	import ColorPlugin from 'editorjs-text-color-plugin';
+	import EditorJSStyle from 'editorjs-style';
 	import Undo from 'editorjs-undo';
 
 	import '$lib/editor.css';
@@ -65,7 +68,42 @@
 						}
 					},
 					raw: RawTool,
-					table: Table
+					table: Table,
+					hyperlink: {
+						class: Hyperlink,
+						config: {
+							shortcut: 'CMD+L',
+							target: '_blank',
+							rel: 'nofollow',
+							availableTargets: ['_blank', '_self'],
+							availableRels: ['author', 'noreferrer'],
+							validate: false
+						}
+					},
+					// style: {
+					// 	class: EditorJSStyle
+					// },
+					Color: {
+						class: ColorPlugin, // if load from CDN, please try: window.ColorPlugin
+						config: {
+							colorCollections: [
+								'#EC7878',
+								'#9C27B0',
+								'#673AB7',
+								'#3F51B5',
+								'#0070FF',
+								'#03A9F4',
+								'#00BCD4',
+								'#4CAF50',
+								'#8BC34A',
+								'#CDDC39',
+								'#FFF'
+							],
+							defaultColor: '#FF1300',
+							type: 'text',
+							customPicker: true // add a button to allow selecting any colour
+						}
+					}
 				},
 				data: data,
 				onReady: () => {
