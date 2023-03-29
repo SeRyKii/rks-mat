@@ -4,9 +4,18 @@ import { Collections } from '../../lib/pb_types';
 import type { PostsResponse } from '../../lib/pb_types';
 
 export const load = (async ({ locals }) => {
+	const posts = await locals.pb
+		.collection(Collections.Posts)
+		.getList<PostsResponse>(1, 4, { expand: 'users' });
+	const userAvatars = new Map();
+	for (const post of posts.items) {
+		// change type of post.expand to any
+		const expand = post.expand as any;
+		userAvatars.set(expand.users.id, locals.pb.getFileUrl(expand.users, expand.users.avatar));
+	}
 	return {
-		posts: structuredClone(
-			await locals.pb.collection(Collections.Posts).getList<PostsResponse>(1, 50)
-		).items
+		user: locals.user,
+		posts: structuredClone(posts),
+		userAvatars: structuredClone(userAvatars)
 	};
 }) satisfies PageServerLoad;

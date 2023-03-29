@@ -16,6 +16,7 @@
 	import ColorPlugin from 'editorjs-text-color-plugin';
 	import EditorJSStyle from 'editorjs-style';
 	import Undo from 'editorjs-undo';
+	import FontSize from 'editorjs-inline-font-size-tool';
 
 	import '$lib/editor.css';
 	// event dispatcher
@@ -33,6 +34,7 @@
 				 */
 				holder: 'editorjs',
 				tools: {
+					fontSize: FontSize,
 					quote: Quote,
 					header: Header,
 					paragraph: {
@@ -107,7 +109,7 @@
 				},
 				data: data,
 				onReady: () => {
-					new Undo({ editor });
+					new DragDrop(editor);
 					dispatch('ready');
 				},
 				onChange: (api, event) => {
@@ -120,4 +122,4 @@
 	});
 </script>
 
-<div id="editorjs" />
+<div class="w-full bg-surface-600 p-5" id="editorjs" />

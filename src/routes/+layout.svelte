@@ -3,12 +3,12 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
 	import { Toast } from '@skeletonlabs/skeleton';
-	import { autoModeWatcher } from '@skeletonlabs/skeleton';
+	// import { autoModeWatcher } from '@skeletonlabs/skeleton';
 </script>
 
-<svelte:head
+<!-- <svelte:head
 	>{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}</svelte:head
->
+> -->
 
 <Toast />
 

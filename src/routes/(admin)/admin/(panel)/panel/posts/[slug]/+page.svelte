@@ -31,20 +31,25 @@
 	}
 </script>
 
-<div>
-	<h1>{data.post.title}</h1>
-	<Editor
-		data={data.post.content}
-		bind:editor
-		on:error={(event) => {
-			toastStore.trigger({
-				message: `Błąd: ${event.detail}`
-			});
-		}}
-		on:change={onChange}
-	/>
-	<div>
-		<button>Zapisz!</button>
-		<button>Opublikuj!</button>
+<div class="w-full flex justify-center">
+	<div class="w-fit bg-surface-700 p-12 flex flex-col gap-5 items-center">
+		<label class="label">
+			<span>Tytuł:</span>
+			<input type="text" class="input" bind:value={data.post.title} />
+		</label>
+		<!-- divider -->
+		<div class="w-full h-px bg-white/25" />
+		<Editor
+			data={data.post.content}
+			bind:editor
+			on:error={(event) => {
+				toastStore.trigger({
+					message: `Błąd: ${event.detail}`
+				});
+			}}
+			on:change={onChange}
+		/>
+
+		<button class="btn variant-ghost-primary rounded-none w-full">Zapisz!</button>
 	</div>
 </div>
