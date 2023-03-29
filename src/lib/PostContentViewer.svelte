@@ -23,7 +23,7 @@
 	}
 
 	function paragraph(block: any) {
-		return `<p style="text-align: ${block.data.alignment};">${block.data.text}</p>`;
+		return `<p style="text-align: ${block.data.alignment}; margin: 0;">${block.data.text}</p>`;
 	}
 
 	function header(block: any) {
@@ -54,7 +54,7 @@
 	const edjsParser = edjsHTML({ linkTool, attaches, raw, table, paragraph, header });
 </script>
 
-<div class="prose prose-xl prose-invert bg-inherit flex flex-col gap-y-5">
+<div id="html" class="prose prose-xl prose-invert bg-inherit flex flex-col">
 	{#if blocks != null}
 		{@html edjsParser.parse(blocks).join('')}
 	{/if}

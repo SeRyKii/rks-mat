@@ -25,6 +25,7 @@
 
 		const bg = document.getElementById('bg');
 		const pos = document.documentElement.style;
+		pos.setProperty('--pos', `-${window.scrollY * 2}px`);
 		const scroll = () => {
 			pos.setProperty('--pos', `-${window.scrollY / 3}px`);
 		};
@@ -32,48 +33,42 @@
 	});
 </script>
 
-<div class="relative w-full h-[75vh] flex items-center dark:bg-surface-800">
+<div class="relative w-full min-h-[75vh] flex items-center dark:bg-surface-800">
 	<div
 		id="bg"
 		class="absolute w-screen h-[75vh] dark:brightness-75"
 		style="background-image: url('bg.jpg'); clip-path: ellipse(50% 100% at 100% 10%); background-repeat: no-repeat; background-attachment: fixed; background-position: 50% calc(50% + var(--pos));"
 	/>
-	<div class="flex flex-col ml-6 sm:ml-32  z-10 items-center gap-5">
+	<div class="flex flex-col ml-6 lg:ml-16  z-10 items-center gap-5">
 		<span class="sm:text-6xl text-4xl">
 			<b>Szachy - gimnastyka dla umysłu</b><br />Dołącz do Klubu Szachowego RKS "Mat"!
 		</span>
 		<a href="/kontakt" class="btn variant-filled-primary rounded-md px-5 py-4">Dołącz do klubu!</a>
 	</div>
 </div>
-<div class="w-screen h-[75vh] px-12 text-center space-y-8">
-	<div class="mt-36">
+<div class="w-screen min-h-[75vh] sm:px-12 text-center space-y-8">
+	<div class="mt-36 w-full">
 		<span class="text-6xl font-bold text-center">Aktualności</span>
 	</div>
-	<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-		{#each data.posts.items as post}
-			<a class="card variant-filled-primary overflow-hidden" href={`/post/${post.id}`}>
-				{#if post.content?.blocks?.filter((v) => v.type == 'image')[0].data.file.url != undefined}
-					<header class="text-4xl card-header text-left aspect-[21/9] relative">
+	<div class="grid grid-cols-1 justify-items-center gap-5">
+		{#each data.posts.items as post, i}
+			<a class="card variant-filled-primary overflow-hidden h-fit w-3/4" href={`/post/${post.id}`}>
+				<header class="text-5xl card-header pb-4 text-left aspect-[21/9] relative w-full">
+					{#if post.content?.blocks?.filter((v) => v.type == 'image')[0].data.file.url != undefined}
 						<img
 							class="w-full aspect-[21/9] absolute top-0 left-0 brightness-75"
 							src={post.content?.blocks?.filter((v) => v.type == 'image')[0].data.file.url +
 								'?thumb=1080x520'}
 							alt=""
 						/>
-						<div class="relative z-10">
-							{post.title}
-						</div>
-					</header>
-				{:else}
-					<header class="text-4xl card-header text-left relative pb-4">
-						<div class="relative z-10">
-							{post.title}
-						</div>
-					</header>
-					<hr class="opacity-50" />
-				{/if}
+					{/if}
+					<span class="relative z-10 flex items-center h-full">
+						{post.title}
+					</span>
+				</header>
+				<hr class="opacity-50" />
 				<div
-					class="overflow-hidden relative after:absolute after:w-full after:h-12 after:from-transparent after:to-white after:bg-gradient-to-b after:-bottom-5 after:left-0 "
+					class="overflow-hidden relative after:absolute after:w-full after:h-64 after:from-transparent after:to-white after:bg-gradient-to-b after:-bottom-48 after:left-0 "
 				>
 					<div class="bg-inherit max-h-56 overflow-hidden ">
 						<PostContentViewer blocks={post.content} />
