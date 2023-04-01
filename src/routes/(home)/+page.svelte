@@ -1,6 +1,7 @@
 <script>
 	// @ts-nocheck
 
+	import PostCard from './PostCard.svelte';
 	import PostContentViewer from '$lib/PostContentViewer.svelte';
 	import { Avatar } from '@skeletonlabs/skeleton';
 	import { stringify } from 'postcss';
@@ -16,6 +17,26 @@
 	}
 	// import type { PageData } from './$types';
 	export let data;
+	let showMoreButton = false;
+	function mouseenter() {
+		showMoreButton = true;
+		const btn = document.getElementById('btn-show-more');
+		btn.style.opacity = '1';
+		btn.style.bottom = '5rem';
+		btn.style.scale = '1';
+
+		// transform scale(0) to scale(1)
+
+		btn.style.transform = 'scale(1)';
+	}
+	function mouseleave() {
+		showMoreButton = false;
+		const btn = document.getElementById('btn-show-more');
+		btn.style.opacity = '0';
+		btn.style.bottom = '0';
+		// transform scale(1) to scale(0)
+		btn.style.transform = 'scale(0)';
+	}
 
 	// get first item with type "image" in .content
 
@@ -33,7 +54,7 @@
 	});
 </script>
 
-<div class="relative w-full min-h-[75vh] flex items-center dark:bg-surface-800">
+<div class="relative w-full min-h-[75vh] flex items-center dark:bg-surface-900">
 	<div
 		id="bg"
 		class="absolute w-screen h-[75vh] dark:brightness-75"
@@ -46,55 +67,42 @@
 		<a href="/kontakt" class="btn variant-filled-primary rounded-md px-5 py-4">Dołącz do klubu!</a>
 	</div>
 </div>
-<div class="w-screen min-h-[75vh] sm:px-12 text-center space-y-8">
+<div class="w-screen min-h-[75vh] text-center space-y-8">
 	<div class="mt-36 w-full">
 		<span class="text-6xl font-bold text-center">Aktualności</span>
 	</div>
-	<div class="grid grid-cols-1 justify-items-center gap-5">
-		{#each data.posts.items as post, i}
-			<a class="card variant-filled-primary overflow-hidden h-fit w-3/4" href={`/post/${post.id}`}>
-				<header class="text-5xl card-header pb-4 text-left aspect-[21/9] relative w-full">
-					{#if post.content?.blocks?.filter((v) => v.type == 'image')[0].data.file.url != undefined}
-						<img
-							class="w-full aspect-[21/9] absolute top-0 left-0 brightness-75"
-							src={post.content?.blocks?.filter((v) => v.type == 'image')[0].data.file.url +
-								'?thumb=1080x520'}
-							alt=""
-						/>
+	<div
+		class="relative after:absolute after:w-full after:h-96 after:z-10 after:from-transparent dark:after:to-surface-900 after:to-surface-50 after:bg-gradient-to-b after:bottom-0 after:left-0 after:pointer-events-none"
+	>
+		<div
+			class="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-5 overflow-hidden h-[60vh] "
+			on:mouseenter={mouseenter}
+			on:mouseover={mouseenter}
+			on:focus={mouseenter}
+			on:mouseleave={mouseleave}
+			on:blur={mouseleave}
+			on:mouseout={mouseleave}
+		>
+			<a
+				href="/posts"
+				id="btn-show-more"
+				class={`btn variant-ghost-secondary rounded-md absolute z-20 transition-all duration-300 ease-in-out md:opacity-0 scale-100 bottom-20 md:bottom-0`}
+				>Pokaż więcej</a
+			>
+			<div class="flex flex-col w-full items-center lg:items-end gap-5">
+				{#each data.posts.items as post, i}
+					{#if i % 2 == 0}
+						<PostCard {post} avatars={data.userAvatars} />
 					{/if}
-					<span class="relative z-10 flex items-center h-full">
-						{post.title}
-					</span>
-				</header>
-				<hr class="opacity-50" />
-				<div
-					class="overflow-hidden relative after:absolute after:w-full after:h-64 after:from-transparent after:to-white after:bg-gradient-to-b after:-bottom-48 after:left-0 "
-				>
-					<div class="bg-inherit max-h-56 overflow-hidden ">
-						<PostContentViewer blocks={post.content} />
-					</div>
-				</div>
-				<hr class="opacity-50 bg-white" />
-				<footer
-					class="p-4 flex justify-start items-center space-x-4 dark:bg-surface-800 bg-surface-100 text-black dark:text-white"
-				>
-					<Avatar
-						src={data.userAvatars.get(post.expand.users.id)}
-						initials={getInitials(post.expand.users.username)}
-						background="bg-transparent"
-						border="border dark:border-white border-black"
-						width="w-14"
-					/>
-					<div class="flex-auto flex justify-between items-center">
-						<span>{post.expand.users.username}</span>
-						<span
-							>{`${new Date(post.created).getDate()}/${new Date(
-								post.created
-							).getMonth()}/${new Date(post.created).getFullYear()}`}</span
-						>
-					</div>
-				</footer>
-			</a>
-		{/each}
+				{/each}
+			</div>
+			<div class="flex flex-col w-full items-center lg:items-start gap-5">
+				{#each data.posts.items as post, i}
+					{#if i % 2 != 0}
+						<PostCard {post} avatars={data.userAvatars} />
+					{/if}
+				{/each}
+			</div>
+		</div>
 	</div>
 </div>

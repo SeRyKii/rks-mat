@@ -6,7 +6,7 @@ import type { PostsResponse } from '../../lib/pb_types';
 export const load = (async ({ locals }) => {
 	const posts = await locals.pb
 		.collection(Collections.Posts)
-		.getList<PostsResponse>(1, 2, { expand: 'users', filter: 'type = 0' });
+		.getList<PostsResponse>(1, 4, { expand: 'users', filter: 'type = 0' });
 	const userAvatars = new Map();
 	for (const post of posts.items) {
 		// change type of post.expand to any

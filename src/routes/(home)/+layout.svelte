@@ -29,5 +29,5 @@
 	</AppBar>
 </div>
 <slot />
-<div class="dark:bg-surface-800 w-full h-36">Footer</div>
+<div class="dark:bg-surface-900 w-full h-36">Footer</div>
 <!-- ---- / ---- -->
