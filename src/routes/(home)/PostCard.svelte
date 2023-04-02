@@ -20,7 +20,7 @@
 
 <a class="card variant-filled-primary overflow-hidden h-fit w-3/4" href={`/post/${post.id}`}>
 	<header class="text-5xl card-header pb-4 text-left aspect-[21/9] relative w-full">
-		{#if post.content?.blocks?.filter((v) => v.type == 'image')[0].data.file.url != undefined}
+		{#if post.content?.blocks?.filter((v) => v.type == 'image')[0]?.data.file.url != undefined}
 			<img
 				class="w-full aspect-[21/9] absolute top-0 left-0 brightness-75"
 				src={post.content?.blocks?.filter((v) => v.type == 'image')[0].data.file.url +
