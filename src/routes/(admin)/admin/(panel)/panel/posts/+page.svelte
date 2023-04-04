@@ -45,7 +45,7 @@
 		}
 	}
 
-	let paginatedPosts = [...data.posts.items];
+	let paginatedPosts = [...data.posts.items] ;
 </script>
 
 <div class="w-full flex items-center justify-center mt-10">

@@ -3,6 +3,7 @@
 */
 
 export enum Collections {
+	Achievements = "achievements",
 	Analytics = "analytics",
 	AnalyticsCount = "analyticsCount",
 	AnalyticsUnique = "analyticsUnique",
@@ -38,6 +39,13 @@ export type AuthSystemFields<T = never> = {
 } & BaseSystemFields<T>
 
 // Record types for each collection
+
+export type AchievementsRecord = {
+	place?: string
+	description?: string
+	type?: number
+	post?: RecordIdString
+}
 
 export type AnalyticsRecord = {
 	user_agent?: string
@@ -85,6 +93,7 @@ export type UsersRecord = {
 }
 
 // Response types include system fields and match responses from the PocketBase API
+export type AchievementsResponse<Texpand = unknown> = AchievementsRecord & BaseSystemFields<Texpand>
 export type AnalyticsResponse = AnalyticsRecord & BaseSystemFields
 export type AnalyticsCountResponse = AnalyticsCountRecord & BaseSystemFields
 export type AnalyticsUniqueResponse = AnalyticsUniqueRecord & BaseSystemFields
@@ -99,6 +108,7 @@ export type UsersResponse = UsersRecord & AuthSystemFields
 // Types containing all Records and Responses, useful for creating typing helper functions
 
 export type CollectionRecords = {
+	achievements: AchievementsRecord
 	analytics: AnalyticsRecord
 	analyticsCount: AnalyticsCountRecord
 	analyticsUnique: AnalyticsUniqueRecord
@@ -112,6 +122,7 @@ export type CollectionRecords = {
 }
 
 export type CollectionResponses = {
+	achievements: AchievementsResponse
 	analytics: AnalyticsResponse
 	analyticsCount: AnalyticsCountResponse
 	analyticsUnique: AnalyticsUniqueResponse
