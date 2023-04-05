@@ -45,7 +45,7 @@
 		}
 	}
 
-	let paginatedPosts = [...data.posts.items] ;
+	let paginatedPosts = [...data.posts.items];
 </script>
 
 <div class="w-full flex items-center justify-center mt-10">
@@ -73,6 +73,13 @@
 						</a>
 					</li>
 				{/each}
+				<div class="w-full bg-white/25 h-[1px] rounded-lg !my-4" />
+				<li class="list-item overflow-hidden relative">
+					<a href={`/admin/panel/posts/new`}>
+						<span class="badge bg-primary-500">+</span>
+						<span class="flex-auto">Dodaj nowy post</span>
+					</a>
+				</li>
 			</ul>
 		</nav>
 		<!-- divider -->

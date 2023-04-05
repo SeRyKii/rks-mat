@@ -3,6 +3,7 @@
 */
 
 export enum Collections {
+	AchievementTypes = "achievementTypes",
 	Achievements = "achievements",
 	Analytics = "analytics",
 	AnalyticsCount = "analyticsCount",
@@ -40,11 +41,16 @@ export type AuthSystemFields<T = never> = {
 
 // Record types for each collection
 
+export type AchievementTypesRecord = {
+	color?: string
+	emoji?: string
+	title?: string
+}
+
 export type AchievementsRecord = {
-	place?: string
 	description?: string
-	type?: number
 	post?: RecordIdString
+	type?: RecordIdString
 }
 
 export type AnalyticsRecord = {
@@ -93,6 +99,7 @@ export type UsersRecord = {
 }
 
 // Response types include system fields and match responses from the PocketBase API
+export type AchievementTypesResponse = AchievementTypesRecord & BaseSystemFields
 export type AchievementsResponse<Texpand = unknown> = AchievementsRecord & BaseSystemFields<Texpand>
 export type AnalyticsResponse = AnalyticsRecord & BaseSystemFields
 export type AnalyticsCountResponse = AnalyticsCountRecord & BaseSystemFields
@@ -108,6 +115,7 @@ export type UsersResponse = UsersRecord & AuthSystemFields
 // Types containing all Records and Responses, useful for creating typing helper functions
 
 export type CollectionRecords = {
+	achievementTypes: AchievementTypesRecord
 	achievements: AchievementsRecord
 	analytics: AnalyticsRecord
 	analyticsCount: AnalyticsCountRecord
@@ -122,6 +130,7 @@ export type CollectionRecords = {
 }
 
 export type CollectionResponses = {
+	achievementTypes: AchievementTypesResponse
 	achievements: AchievementsResponse
 	analytics: AnalyticsResponse
 	analyticsCount: AnalyticsCountResponse

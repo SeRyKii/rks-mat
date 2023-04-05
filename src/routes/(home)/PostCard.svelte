@@ -24,8 +24,9 @@
 			<img
 				class="w-full aspect-[21/9] absolute top-0 left-0 brightness-75"
 				src={post.content?.blocks?.filter((v) => v.type == 'image')[0].data.file.url +
-					'?thumb=1080x520'}
+					'?thumb=560x240'}
 				alt=""
+				loading="lazy"
 			/>
 		{/if}
 		<span class="relative z-10 flex items-center h-full">
@@ -45,7 +46,7 @@
 		class="p-4 flex justify-start items-center space-x-4 dark:bg-surface-800 bg-surface-100 text-black dark:text-white"
 	>
 		<Avatar
-			src={avatars.get(post.expand.users.id)}
+			src={avatars.get(post.expand.users.id) + '?thumb=260x260'}
 			initials={getInitials(post.expand.users.username)}
 			background="bg-transparent"
 			border="border dark:border-white border-black"

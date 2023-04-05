@@ -51,7 +51,12 @@
 		</tbody>
 	</table>`;
 	}
-	const edjsParser = edjsHTML({ linkTool, attaches, raw, table, paragraph, header });
+	function image(block: any) {
+		return `<img loading="lazy" src="${
+			block.data.file.url
+		}?thumb=1020x480" width="1020" height="480" alt="${block.data.caption || 'image'}" />`;
+	}
+	const edjsParser = edjsHTML({ linkTool, attaches, raw, table, paragraph, header, image });
 </script>
 
 <div id="html" class="prose prose-xl prose-invert bg-inherit flex flex-col">

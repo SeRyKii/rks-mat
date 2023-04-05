@@ -33,7 +33,7 @@
 	<div
 		id="bg"
 		class="absolute w-screen h-[75vh] dark:brightness-75"
-		style="background-image: url('bg.jpg'); clip-path: ellipse(50% 100% at 100% 10%); background-repeat: no-repeat; background-attachment: fixed; background-position: 50% calc(50% + var(--pos));"
+		style="background-image: url('bg.webp'); clip-path: ellipse(50% 100% at 100% 10%); background-repeat: no-repeat; background-attachment: fixed; background-position: 50% calc(50% + var(--pos));"
 	/>
 	<div class="flex flex-col ml-6 lg:ml-16  z-10 items-center gap-5">
 		<span class="sm:text-6xl text-4xl">
