@@ -10,7 +10,6 @@
 	let editor: any = {};
 
 	function onChange(event: CustomEvent) {
-		console.log('test');
 		editor.save().then((outputData: any) => {
 			fetch('/admin/panel/posts/save', {
 				method: 'POST',
@@ -32,7 +31,7 @@
 </script>
 
 <div class="w-full flex justify-center">
-	<div class="w-fit bg-surface-700 p-12 flex flex-col gap-5 items-center">
+	<div class="w-fit bg-surface-100 dark:bg-surface-700 p-12 flex flex-col gap-5 items-center">
 		<label class="label">
 			<span>Tytuł:</span>
 			<input type="text" class="input" bind:value={data.post.title} />

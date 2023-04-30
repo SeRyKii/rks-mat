@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import { Collections } from '../../lib/pb_types';
-import type { PostsResponse } from '../../lib/pb_types';
+import { Collections, type TournamentsResponse } from '../../lib/pb_types';
+import type { AchievementsResponse, PostsResponse } from '../../lib/pb_types';
 
 export const load = (async ({ locals }) => {
 	const posts = await locals.pb
@@ -12,12 +12,21 @@ export const load = (async ({ locals }) => {
 		// change type of post.expand to any
 		const expand = post.expand as any;
 		if (!expand.users) continue;
-		console.log(expand);
 		userAvatars.set(expand.users.id, locals.pb.getFileUrl(expand.users, expand.users.avatar));
 	}
+	const achievements = await locals.pb
+		.collection(Collections.Achievements)
+		.getList<AchievementsResponse>(1, 4, { sort: '-created' });
+
+	const tournaments = await locals.pb
+		.collection(Collections.Tournaments)
+		.getList<TournamentsResponse>(1, 4, { sort: '-startDate' });
+
 	return {
 		user: locals.user,
 		posts: structuredClone(posts),
-		userAvatars: structuredClone(userAvatars)
+		userAvatars: structuredClone(userAvatars),
+		achievements: structuredClone(achievements),
+		tournaments: structuredClone(tournaments)
 	};
 }) satisfies PageServerLoad;

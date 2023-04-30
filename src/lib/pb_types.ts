@@ -3,7 +3,6 @@
 */
 
 export enum Collections {
-	AchievementTypes = "achievementTypes",
 	Achievements = "achievements",
 	Analytics = "analytics",
 	AnalyticsCount = "analyticsCount",
@@ -14,6 +13,7 @@ export enum Collections {
 	PostsCount = "postsCount",
 	PostsDeleted = "postsDeleted",
 	PostsDraft = "postsDraft",
+	Tournaments = "tournaments",
 	Users = "users",
 }
 
@@ -41,16 +41,11 @@ export type AuthSystemFields<T = never> = {
 
 // Record types for each collection
 
-export type AchievementTypesRecord = {
-	color?: string
-	emoji?: string
-	title?: string
-}
-
 export type AchievementsRecord = {
 	description?: string
 	post?: RecordIdString
-	type?: RecordIdString
+	color?: string
+	emoji?: string
 }
 
 export type AnalyticsRecord = {
@@ -93,13 +88,20 @@ export type PostsDraftRecord = {
 	nth?: number
 }
 
+export type TournamentsRecord = {
+	name?: string
+	startDate?: IsoDateString
+	link?: string
+	color?: string
+	endDate?: IsoDateString
+}
+
 export type UsersRecord = {
 	name?: string
 	avatar?: string
 }
 
 // Response types include system fields and match responses from the PocketBase API
-export type AchievementTypesResponse = AchievementTypesRecord & BaseSystemFields
 export type AchievementsResponse<Texpand = unknown> = AchievementsRecord & BaseSystemFields<Texpand>
 export type AnalyticsResponse = AnalyticsRecord & BaseSystemFields
 export type AnalyticsCountResponse = AnalyticsCountRecord & BaseSystemFields
@@ -110,12 +112,12 @@ export type PostsResponse<Tcontent = unknown, Texpand = unknown> = PostsRecord<T
 export type PostsCountResponse = PostsCountRecord & BaseSystemFields
 export type PostsDeletedResponse = PostsDeletedRecord & BaseSystemFields
 export type PostsDraftResponse = PostsDraftRecord & BaseSystemFields
+export type TournamentsResponse = TournamentsRecord & BaseSystemFields
 export type UsersResponse = UsersRecord & AuthSystemFields
 
 // Types containing all Records and Responses, useful for creating typing helper functions
 
 export type CollectionRecords = {
-	achievementTypes: AchievementTypesRecord
 	achievements: AchievementsRecord
 	analytics: AnalyticsRecord
 	analyticsCount: AnalyticsCountRecord
@@ -126,11 +128,11 @@ export type CollectionRecords = {
 	postsCount: PostsCountRecord
 	postsDeleted: PostsDeletedRecord
 	postsDraft: PostsDraftRecord
+	tournaments: TournamentsRecord
 	users: UsersRecord
 }
 
 export type CollectionResponses = {
-	achievementTypes: AchievementTypesResponse
 	achievements: AchievementsResponse
 	analytics: AnalyticsResponse
 	analyticsCount: AnalyticsCountResponse
@@ -141,5 +143,6 @@ export type CollectionResponses = {
 	postsCount: PostsCountResponse
 	postsDeleted: PostsDeletedResponse
 	postsDraft: PostsDraftResponse
+	tournaments: TournamentsResponse
 	users: UsersResponse
 }

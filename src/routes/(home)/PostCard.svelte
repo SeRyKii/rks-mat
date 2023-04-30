@@ -3,8 +3,17 @@
 
 	import PostContentViewer from '$lib/PostContentViewer.svelte';
 	import { Avatar } from '@skeletonlabs/skeleton';
+	import dayjs from 'dayjs';
+	// import polish locale
+	import 'dayjs/locale/pl';
+	// relatice time
+	import relativeTime from 'dayjs/plugin/relativeTime';
 	import { onMount } from 'svelte';
 
+	// initialize locale
+	dayjs.locale('pl');
+	// initialize plugin
+	dayjs.extend(relativeTime);
 	function getInitials(name) {
 		const names = name.split(' ');
 		let initials = names[0].substring(0, 1).toUpperCase();
@@ -29,15 +38,15 @@
 				loading="lazy"
 			/>
 		{/if}
-		<span class="relative z-10 flex items-center h-full">
+		<span class="relative z-10 flex items-center h-full text-dark-token">
 			{post.title}
 		</span>
 	</header>
 	<hr class="opacity-50" />
 	<div
-		class="overflow-hidden relative after:absolute after:w-full after:h-64 after:from-transparent after:to-white after:bg-gradient-to-b after:-bottom-48 after:left-0 "
+		class="overflow-hidden relative after:absolute after:w-full after:h-64 after:from-transparent after:to-white after:bg-gradient-to-b after:-bottom-48 after:left-0"
 	>
-		<div class="bg-inherit max-h-56 overflow-hidden ">
+		<div class="bg-inherit max-h-56 overflow-hidden">
 			<PostContentViewer blocks={post.content} />
 		</div>
 	</div>
@@ -54,11 +63,7 @@
 		/>
 		<div class="flex-auto flex justify-between items-center">
 			<span>{post.expand.users.username}</span>
-			<span
-				>{`${new Date(post.created).getDate()}/${new Date(post.created).getMonth()}/${new Date(
-					post.created
-				).getFullYear()}`}</span
-			>
+			<span>{dayjs(post.created).fromNow(false)}</span>
 		</div>
 	</footer>
 </a>

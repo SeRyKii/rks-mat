@@ -1,14 +1,16 @@
-import { Collections, type PostsResponse } from '$lib/pb_types';
+import { Collections, type AchievementsRecord } from '$lib/pb_types';
 import type { RequestHandler } from './$types';
-import type { AchievementsResponse } from '../../../../../../../lib/pb_types';
+import type { PostsRecord } from '../../../../../../../lib/pb_types';
 
 export const POST = (async (event) => {
 	const body = await event.request.json();
 	const achievements = await event.locals.pb
 		.collection(Collections.Achievements)
-		.getList<AchievementsResponse>(body.page, 5, {
-			filter: body.filter,
-			sort: '-created'
+		.update<AchievementsRecord>(body.id, {
+			description: body.description,
+			post: body.post,
+			color: body.color,
+			emoji: body.emoji
 		});
 
 	const reponse = new Response(JSON.stringify(achievements), {

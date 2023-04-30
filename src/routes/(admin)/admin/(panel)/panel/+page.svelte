@@ -6,11 +6,11 @@
 
 <div class="w-full flex justify-center items-center h-full">
 	<div
-		class="grid grid-rows-4 grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 w-2/3 h-full items-center justify-items-center gap-6 mt-12"
+		class="grid grid-rows-4 grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 w-2/3 h-full items-center justify-items-center gap-6"
 	>
 		<div class="card card-hover w-fit p-5 space-y-5 h-fit flex flex-col items-center">
 			<h1 class="text-4xl">Odwiedziny:</h1>
-			<div class="w-[220px] h-[220px]">
+			<div class="p-6">
 				<ProgressRadial value={data.analyticsCount.nth} meter="stroke-primary-600">
 					{data.analyticsCount.nth}
 				</ProgressRadial>
@@ -18,7 +18,7 @@
 		</div>
 		<div class="card card-hover w-fit p-5 space-y-5 h-fit flex flex-col items-center">
 			<h1 class="text-4xl">Odwiedzający:</h1>
-			<div class="w-[220px] h-[220px]">
+			<div class="p-6">
 				<ProgressRadial value={data.analyticsUniqueCount.nth} meter="stroke-primary-600">
 					{data.analyticsUniqueCount.nth}
 				</ProgressRadial>

@@ -1,23 +1,6 @@
 <script>
 	// @ts-nocheck
 
-	import EditorJS from '@editorjs/editorjs';
-	import List from '@editorjs/list';
-	import ImageTool from '@editorjs/image';
-	import Quote from '@editorjs/quote';
-	import Header from 'editorjs-header-with-alignment';
-	import Paragraph from 'editorjs-paragraph-with-alignment';
-	import LinkTool from '@editorjs/link';
-	import AttachesTool from '@editorjs/attaches';
-	import RawTool from '@editorjs/raw';
-	import Table from '@editorjs/table';
-	import Hyperlink from 'editorjs-hyperlink';
-	import DragDrop from 'editorjs-drag-drop';
-	import ColorPlugin from 'editorjs-text-color-plugin';
-	import EditorJSStyle from 'editorjs-style';
-	import Undo from 'editorjs-undo';
-	import FontSize from 'editorjs-inline-font-size-tool';
-
 	import '$lib/editor.css';
 	// event dispatcher
 	import { createEventDispatcher, onMount } from 'svelte';
@@ -26,7 +9,25 @@
 	export let editor = null;
 	export let data;
 
-	onMount(() => {
+	onMount(async () => {
+		// importing like modules didnt work
+		const EditorJS = (await import('@editorjs/editorjs')).default;
+		const List = (await import('@editorjs/list')).default;
+		const ImageTool = (await import('@editorjs/image')).default;
+		const Quote = (await import('@editorjs/quote')).default;
+		const Header = (await import('editorjs-header-with-alignment')).default;
+		const Paragraph = (await import('editorjs-paragraph-with-alignment')).default;
+		const LinkTool = (await import('@editorjs/link')).default;
+		const AttachesTool = (await import('@editorjs/attaches')).default;
+		const RawTool = (await import('@editorjs/raw')).default;
+		const Table = (await import('@editorjs/table')).default;
+		const Hyperlink = (await import('editorjs-hyperlink')).default;
+		const DragDrop = (await import('editorjs-drag-drop')).default;
+		const ColorPlugin = (await import('editorjs-text-color-plugin')).default;
+		const EditorJSStyle = (await import('editorjs-style')).default;
+		const Undo = (await import('editorjs-undo')).default;
+		const FontSize = (await import('editorjs-inline-font-size-tool')).default;
+
 		try {
 			editor = new EditorJS({
 				/**
@@ -122,4 +123,4 @@
 	});
 </script>
 
-<div class="w-full bg-surface-600 p-5" id="editorjs" />
+<div class="w-full bg-surface-200 dark:bg-surface-600 p-5" id="editorjs" />

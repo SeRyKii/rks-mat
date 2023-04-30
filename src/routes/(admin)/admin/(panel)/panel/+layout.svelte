@@ -18,7 +18,9 @@
 <AppShell>
 	<svelte:fragment slot="header"
 		><AppBar>
-			<svelte:fragment slot="lead">Logo</svelte:fragment>
+			<svelte:fragment slot="lead"
+				><img class="w-16 h-16" src="/logo-medium.webp" alt="logo" /></svelte:fragment
+			>
 			<h1 class="text-center">RKS Mat Admin Panel</h1>
 			<svelte:fragment slot="trail">
 				<Avatar src={data.user.avatarUrl} initials={getInitials(data.user.username)} />
@@ -29,10 +31,11 @@
 		<AppRail>
 			<AppRailTile tag="a" href="/admin/panel">Home</AppRailTile>
 			<AppRailTile tag="a" href="/admin/panel/posts">Posts</AppRailTile>
+			<AppRailTile tag="a" href="/admin/panel/achievements">Osiągniecia</AppRailTile>
 		</AppRail>
 	</svelte:fragment>
 
 	<!-- Router Slot -->
-	<slot />
+	<div class="mt-10"><slot /></div>
 	<!-- ---- / ---- -->
 </AppShell>

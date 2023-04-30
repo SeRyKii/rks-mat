@@ -32,7 +32,7 @@
 		class="relative after:absolute after:w-full after:h-96 after:z-10 after:from-transparent dark:after:to-surface-900 after:to-surface-50 after:bg-gradient-to-b after:bottom-0 after:left-0 after:pointer-events-none"
 	>
 		<div
-			class="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-5 overflow-hidden h-[60vh] "
+			class="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-5 overflow-hidden h-[60vh]"
 			on:mouseenter={mouseenter}
 			on:mouseover={mouseenter}
 			on:focus={mouseenter}
@@ -43,7 +43,7 @@
 			<a
 				href="/posts"
 				id="btn-show-more"
-				class={`btn variant-ghost-secondary rounded-md absolute z-20 transition-all duration-300 ease-in-out md:opacity-0 scale-100 bottom-20 md:bottom-0`}
+				class={`btn variant-ghost-secondary absolute z-20 transition-all duration-300 ease-in-out md:opacity-0 scale-100 bottom-20 md:bottom-0`}
 				>Pokaż więcej</a
 			>
 			<div class="flex flex-col w-full items-center lg:items-end gap-5">
