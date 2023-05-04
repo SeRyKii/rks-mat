@@ -23,6 +23,7 @@
 			if (response.ok) {
 				toastStore.trigger({
 					message: 'Zapisano',
+					background: 'bg-success-500',
 					autohide: true,
 					timeout: 2000
 				} as ToastSettings);
@@ -32,6 +33,7 @@
 			} else {
 				toastStore.trigger({
 					message: 'Wystąpił błąd',
+					background: 'bg-error-500',
 					autohide: true,
 					timeout: 2000
 				} as ToastSettings);

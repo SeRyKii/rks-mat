@@ -6,7 +6,7 @@ export const POST = (async (event) => {
 	const body = await event.request.json();
 	const posts = await event.locals.pb
 		.collection(Collections.Posts)
-		.update<PostsRecord>(body.id, { content: body.content });
+		.update<PostsRecord>(body.id, { content: body.content, title: body.title, type: body.type });
 
 	const reponse = new Response(JSON.stringify(posts), {
 		status: 200

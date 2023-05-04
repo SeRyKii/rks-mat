@@ -41,13 +41,13 @@
 		class="bg-surface-100 dark:bg-surface-800 items-center gap-5 flex flex-col w-fit p-5 rounded-md"
 	>
 		<h1>Typy osiągnieć</h1>
-		<div class="p-5 bg-surface-100 dark:bg-surface-800 rounded-md">
+		<div class="p-5 bg-surface-100 dark:bg-surface-800 rounded-md w-full">
 			<nav class="list-nav">
 				<!-- (optionally you can provde a label here) -->
 				<ul>
 					{#each paginatedAchievements as achievement}
 						<li
-							class="list-item overflow-hidden relative after:bg-[var(--bg)] after:absolute after:h-full after:w-2 after:left-0 after:z-10 after:top-0 rounded-xl"
+							class="w-full list-item overflow-hidden relative after:bg-[var(--bg)] after:absolute after:h-full after:w-2 after:left-0 after:z-10 after:top-0 rounded-xl"
 							style={`--bg: ${achievement.color}`}
 						>
 							<a href={`/admin/panel/achievements/${achievement.id}`}>

@@ -64,13 +64,19 @@
 	<div
 		id="bg"
 		class="absolute w-screen h-[75vh] dark:brightness-75"
-		style="background-image: url('bg.webp'); clip-path: ellipse(50% 100% at 100% 10%); background-repeat: no-repeat; background-attachment: fixed; background-position: 50% calc(50% + var(--pos));"
+		style="background-image: url('bg.webp'); clip-path: ellipse(50% 100% at 0% 20%); background-repeat: no-repeat; background-attachment: fixed; background-position: 50% calc(50% + var(--pos));"
 	/>
 	<div class="flex flex-col ml-6 lg:ml-16 z-10 items-center gap-5">
 		<span class="sm:text-6xl text-4xl">
 			<b>Szachy - gimnastyka dla umysłu</b><br />Dołącz do Klubu Szachowego RKS "Mat"!
 		</span>
 		<a href="/kontakt" class="btn variant-filled-primary px-5 py-4 text-token">Dołącz do klubu!</a>
+	</div>
+	<div
+		class="absolute top-0 right-[00%] transition-all h-[35vh] sm:h-[65vh] aspect-[2/5] md:translate-x-[-15vw] sm:translate-y-[5vh] translate-y-[17.5vh]"
+	>
+		<!-- center -->
+		<img id="queen" class="opacity-0" src="/queen.webp" alt="queen" />
 	</div>
 </div>
 
@@ -127,3 +133,22 @@
 		{/each}
 	</div>
 </div>
+
+<style>
+	@keyframes slideInRight {
+		0% {
+			transform: translateX(250%);
+		}
+		1% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	#queen {
+		animation: 1s cubic-bezier(1, 0, 0, 1) 0.5s forwards slideInRight;
+	}
+</style>

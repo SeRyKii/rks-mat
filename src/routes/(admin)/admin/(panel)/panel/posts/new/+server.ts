@@ -7,7 +7,12 @@ export const GET = async (event) => {
 	// create empty post and redirect to it
 	const post = await event.locals.pb
 		.collection(Collections.Posts)
-		.create<PostsResponse>({ title: 'Nowy post', content: '{}', users: event.locals.user.id });
+		.create<PostsResponse>({
+			title: 'Nowy post',
+			content: '{}',
+			users: event.locals.user.id,
+			type: 1
+		});
 
 	return json(post);
 };

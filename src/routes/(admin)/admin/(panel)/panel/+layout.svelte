@@ -36,6 +36,6 @@
 	</svelte:fragment>
 
 	<!-- Router Slot -->
-	<div class="mt-10"><slot /></div>
+	<div class="sm:mt-10"><slot /></div>
 	<!-- ---- / ---- -->
 </AppShell>

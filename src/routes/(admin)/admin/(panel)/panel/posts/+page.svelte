@@ -62,7 +62,9 @@
 </script>
 
 <div class="w-full flex items-center justify-center">
-	<div class="w-1/3 p-5 bg-surface-100 dark:bg-surface-800 rounded-md flex flex-col items-center">
+	<div
+		class="lg:w-1/3 p-5 bg-surface-100 dark:bg-surface-800 rounded-md flex flex-col items-center"
+	>
 		<h1>Posty</h1>
 		<div class="p-5 bg-surface-100 dark:bg-surface-800 rounded-md w-full">
 			<nav class="list-nav">
