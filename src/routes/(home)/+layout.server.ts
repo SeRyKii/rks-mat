@@ -4,7 +4,7 @@ export const load = (async ({ locals }) => {
 	return {
 		user: {
 			...locals.user,
-			avatarUrl: locals.pb.getFileUrl(locals.user, locals.user.avatar)
+			avatarUrl: !locals.user ? '' : locals.pb.getFileUrl(locals.user, locals.user?.avatar)
 		}
 	};
 }) as LayoutServerLoad;

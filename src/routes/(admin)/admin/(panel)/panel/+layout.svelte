@@ -32,6 +32,8 @@
 			<AppRailTile tag="a" href="/admin/panel">Home</AppRailTile>
 			<AppRailTile tag="a" href="/admin/panel/posts">Posts</AppRailTile>
 			<AppRailTile tag="a" href="/admin/panel/achievements">Osiągniecia</AppRailTile>
+			<AppRailTile tag="a" href="/admin/panel/tournaments">Turnieje</AppRailTile>
+			<AppRailTile tag="a" href="/admin/panel/tags">Tagi</AppRailTile>
 		</AppRail>
 	</svelte:fragment>
 

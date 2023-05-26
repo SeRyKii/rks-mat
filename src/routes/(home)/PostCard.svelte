@@ -28,7 +28,7 @@
 </script>
 
 <a class="card variant-filled-primary overflow-hidden h-fit w-3/4" href={`/post/${post.id}`}>
-	<header class="text-5xl card-header pb-4 text-left aspect-[21/9] relative w-full">
+	<header class="text-5xl card-header pb-4 text-left h-fit relative">
 		{#if post.content?.blocks?.filter((v) => v.type == 'image')[0]?.data.file.url != undefined}
 			<img
 				class="w-full aspect-[21/9] absolute top-0 left-0 brightness-75"
@@ -46,7 +46,7 @@
 	<div
 		class="overflow-hidden relative after:absolute after:w-full after:h-64 after:from-transparent after:to-white after:bg-gradient-to-b after:-bottom-48 after:left-0"
 	>
-		<div class="bg-inherit max-h-56 overflow-hidden">
+		<div class="bg-inherit max-h-36 overflow-hidden">
 			<PostContentViewer blocks={post.content} />
 		</div>
 	</div>
@@ -64,6 +64,15 @@
 		<div class="flex-auto flex justify-between items-center">
 			<span>{post.expand.users.username}</span>
 			<span>{dayjs(post.created).fromNow(false)}</span>
+		</div>
+		<div>
+			{#if post.expand.tags}
+				{#each post.expand.tags as tag}
+					<span class="chip variant-filled-primary text-token">
+						{tag.name}
+					</span>
+				{/each}
+			{/if}
 		</div>
 	</footer>
 </a>

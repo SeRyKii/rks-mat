@@ -15,7 +15,7 @@
 
 	export let data: PageData;
 
-	function getInitials(name: String) {
+	function getInitials(name: string) {
 		const names = name.split(' ');
 		let initials = names[0].substring(0, 1).toUpperCase();
 		if (names.length > 1) {
@@ -60,10 +60,10 @@
 	});
 </script>
 
-<div class="relative w-full min-h-[75vh] flex items-center dark:bg-surface-900">
+<div class="relative w-full min-h-[100vh] flex items-center dark:bg-surface-900">
 	<div
 		id="bg"
-		class="absolute w-screen h-[75vh] dark:brightness-75"
+		class="absolute w-screen h-[100vh] dark:brightness-75"
 		style="background-image: url('bg.webp'); clip-path: ellipse(50% 100% at 0% 20%); background-repeat: no-repeat; background-attachment: fixed; background-position: 50% calc(50% + var(--pos));"
 	/>
 	<div class="flex flex-col ml-6 lg:ml-16 z-10 items-center gap-5">
@@ -76,7 +76,7 @@
 		class="absolute top-0 right-[00%] transition-all h-[35vh] sm:h-[65vh] aspect-[2/5] md:translate-x-[-15vw] sm:translate-y-[5vh] translate-y-[17.5vh]"
 	>
 		<!-- center -->
-		<img id="queen" class="opacity-0" src="/queen.webp" alt="queen" />
+		<img id="queen" class="opacity-0 hidden" src="/queen.webp" alt="queen" />
 	</div>
 </div>
 
@@ -108,9 +108,9 @@
 
 		{#each tournaments as tournament}
 			<div
-				class="bg-surface-100-800-token flex flex-row items-center p-2 px-6 sm:w-1/2 h-24 rounded-md shadow-lg"
+				class="bg-surface-100-800-token flex flex-row items-center p-2 px-6 w-[100vw] sm:w-3/4 h-24 rounded-md shadow-lg gap-2"
 			>
-				<span class="text-xl sm:text-3xl">{tournament.name}</span>
+				<span class="text-xl sm:text-3xl break-words">{tournament.name}</span>
 				<div class="ml-auto flex flex-row gap-8 items-center h-3/4">
 					<!-- Change status depending on startDate and endDate -->
 					<span

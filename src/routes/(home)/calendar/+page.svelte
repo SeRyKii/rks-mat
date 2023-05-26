@@ -131,7 +131,7 @@
 </script>
 
 <div class="flex flex-col mt-20 w-full md:px-8 items-center h-screen justify-center">
-	<div class="w-full md:w-3/4 xl:w-1/2 bg-surface-100-800-token p-8">
+	<div class="w-full md:w-3/4 xl:w-1/2 p-8">
 		<!-- display name of the month and year -->
 		<div class="flex flex-row items-center justify-center gap-5">
 			<div
@@ -210,7 +210,16 @@
 				<div class="w-32 h-30" />
 			{/each}
 			{#each days as day, i}
-				<div class="relative aspect-square outline outline-black outline-1 mt-px ml-px w-auto">
+				<div
+					class="relative aspect-square outline outline-black outline-1 mt-1 ml-1 w-auto {dayjs().isSame(
+						dayjs()
+							.month(month)
+							.date(i + 1),
+						'D'
+					)
+						? `!outline-primary-400 outline-2 z-20`
+						: ''}"
+				>
 					<span class="absolute text-xs bottom-0 right-1">{i + 1}</span>
 					{#each day.slots as slot}
 						{#if slot}
@@ -219,7 +228,7 @@
 								style="--bgCol: {slot.color || '#000'}"
 							>
 								<span
-									class="z-10 text-white text-[14px] sm:text-[14px] md:text-[16px] lg:text-[18px] absolute whitespace-nowrap -top-[4px] left-0"
+									class="z-10 text-token text-[14px] sm:text-[14px] md:text-[16px] lg:text-[18px] absolute whitespace-nowrap -top-[4px] left-0"
 									>{dayjs(slot.startDate).date() === i + 1 || i + 1 === 1 ? slot.name : ''}</span
 								>
 							</div>

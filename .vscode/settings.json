@@ -73,5 +73,7 @@
 		"text",
 		"track",
 		"width"
-	]
+	],
+	"prettier.prettierPath": "./node_modules/prettier",
+	"editor.defaultFormatter": "esbenp.prettier-vscode"
 }

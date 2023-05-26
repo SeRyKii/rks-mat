@@ -1,21 +1,21 @@
 <script lang="ts">
-	import CustomPaginator from '$lib/CustomPaginator.svelte';
+	import { Paginator } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
+	import type { TagsResponse } from '$lib/pb_types';
 
 	export let data: PageData;
 
-	let page = {
+	let settings = {
 		offset: 0,
 		limit: 5,
-		size: data.posts.totalItems,
-		amounts: [5],
-		modes: ['wszystko', 'opublikowane', 'nie skończone', 'w śmietniku']
+		size: data.tags.totalItems,
+		amounts: [5]
 	};
 
 	function load(pageNumber: number, filter: string) {
-		fetch('/admin/panel/posts/loadMore', {
+		fetch('/admin/panel/tags/loadMore', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -27,8 +27,8 @@
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				paginatedPosts = [...data.items];
-				page.size = parseInt(data.totalItems, 10);
+				paginatedTags = [...data.items];
+				settings.size = parseInt(data.totalItems, 10);
 			});
 	}
 
@@ -36,17 +36,8 @@
 		load(e.detail, '');
 	}
 
-	function onModeChange(e: CustomEvent): void {
-		let nth = page.modes.indexOf(e.detail);
-		if (nth != 0) {
-			load(page.offset, `type = ${nth - 1}`);
-		} else {
-			load(page.offset, '');
-		}
-	}
-
-	function newPost() {
-		fetch('/admin/panel/posts/new', {
+	function newTag() {
+		fetch('/admin/panel/tags/new', {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
@@ -54,47 +45,35 @@
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				goto(`/admin/panel/posts/${data.id}`);
+				goto(`/admin/panel/tags/${data.id}`);
 			});
 	}
 
-	let paginatedPosts = [...data.posts.items];
+	let paginatedTags: TagsResponse | any = [...data.tags.items];
 </script>
 
 <div class="w-full flex items-center justify-center">
 	<div
 		class="lg:w-3/4 p-5 bg-surface-100 dark:bg-surface-800 rounded-md flex flex-col items-center"
 	>
-		<h1>Posty</h1>
+		<h1>Tagi</h1>
 		<div class="p-5 bg-surface-100 dark:bg-surface-800 rounded-md w-full">
 			<nav class="list-nav">
 				<!-- (optionally you can provde a label here) -->
 				<ul>
-					{#each paginatedPosts as post}
+					{#each paginatedTags as post}
 						<li class="list-item">
-							<a href={`/admin/panel/posts/${post.id}`}>
+							<a href={`/admin/panel/tags/${post.id}`}>
 								<span class="badge bg-primary-500">-></span>
-								<span class="flex-auto">{post.title}</span>
-								<span
-									class="chip transition-none variant-filled-{post.type == 0
-										? 'success'
-										: post.type == 1
-										? 'secondary'
-										: 'error'}"
-									>{post.type == 0
-										? 'opublikowane'
-										: post.type == 1
-										? 'nie skończone'
-										: 'w śmietniku'}</span
-								>
+								<span class="flex-auto">{post.name}</span>
 							</a>
 						</li>
 					{/each}
 					<div class="w-full bg-white/25 h-[1px] rounded-lg" />
 					<li class="list-item overflow-hidden relative">
-						<button on:click={newPost}>
+						<button on:click={newTag}>
 							<span class="badge bg-primary-500">+</span>
-							<span class="flex-auto">Dodaj nowy post</span>
+							<span class="flex-auto">Dodaj nowy tag</span>
 						</button>
 					</li>
 				</ul>
@@ -102,6 +81,6 @@
 		</div>
 		<!-- divider -->
 		<div class="w-full bg-white/25 h-[1px] rounded-lg my-4" />
-		<CustomPaginator bind:settings={page} on:page={onPageChange} on:mode={onModeChange} />
+		<Paginator bind:settings on:page={onPageChange} />
 	</div>
 </div>
