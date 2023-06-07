@@ -53,20 +53,23 @@
     drawerStore.open();
   }
 
-  $: positionClasses = $drawerStore.open ? "translate-x-[50%]" : "";
+  $: positionClasses = $drawerStore.open ? "translate-x-[-50%]" : "";
 
   onMount(() => {
     window.addEventListener("scroll", handleScrollThrottled);
   });
 </script>
 
-<div class="{positionClasses} transition-all ease-in-out duration-300">
+<div
+  class="{positionClasses} transition-all duration-150
+"
+>
   <div
-    class="fixed w-full z-20 transition-all ease-in-out duration-300 sm:!translate-y-0 {isMenuVisible
+    class="sticky w-full top-0 z-20 transition-all backdrop-opacity-40 duration-150 sm:!translate-y-0 dark:bg-black/40 bg-white/40 {isMenuVisible
       ? ''
       : 'translate-y-[-100%]'}"
   >
-    <AppBar background="dark:bg-black/40">
+    <AppBar background="">
       <svelte:fragment slot="lead">
         <span
           ><img
@@ -106,7 +109,7 @@
             <span>Kontakt</span>
           </a>
         </div>
-        <div class="block sm:">
+        <div class="block sm:hidden">
           <button class="btn variant-ghost" on:click={openDrawer}>
             <!-- Add icon Bars4 -->
             <Icon size="24px" src={Bars3} />
@@ -115,7 +118,13 @@
       </svelte:fragment>
     </AppBar>
   </div>
-  <slot />
+  <div
+    class="min-h-[75vh] mb-24
+
+"
+  >
+    <slot />
+  </div>
   <div class="dark:bg-black/25 bg-black/5 w-full">
     <div class="flex flex-row items-center gap-2 p-4">
       <img src="/logo-medium.webp" class="w-12 h-12" alt="rks mat" />
@@ -132,11 +141,6 @@
     </div>
     <hr />
   </div>
-
-  <!-- ---- / ---- -->
-
-  <!-- ---- / ---- -->
-  <!-- ---- / ---- -->
   <style>
   </style>
 </div>

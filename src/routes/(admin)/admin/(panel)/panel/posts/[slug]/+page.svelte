@@ -107,7 +107,6 @@
 					message: `Błąd: ${event.detail}`
 				});
 			}}
-			on:change={onChange}
 		/>
 		<hr />
 		<button class="btn variant-ghost-primary w-1/2" on:click={onChange}>Zapisz</button>

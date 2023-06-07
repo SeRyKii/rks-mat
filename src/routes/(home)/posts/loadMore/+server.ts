@@ -6,7 +6,8 @@ export const POST = (async (event) => {
 	const posts = await event.locals.pb
 		.collection(Collections.Posts)
 		.getList<PostsResponse>(body.page, body.limit, {
-			filter: 'type = 0'
+			filter: 'type = 0',
+			sort: "-created"
 		});
 
 	const reponse = new Response(JSON.stringify(posts), {

@@ -59,7 +59,7 @@
 	const edjsParser = edjsHTML({ linkTool, attaches, raw, table, paragraph, header, image });
 </script>
 
-<div id="html" class="prose prose-xl prose-invert bg-inherit flex flex-col">
+<div id="html" class="prose-4xl prose-neutral dark:prose-invert bg-inherit flex flex-col">
 	{#if blocks != null}
 		{@html edjsParser.parse(blocks).join('')}
 	{/if}
