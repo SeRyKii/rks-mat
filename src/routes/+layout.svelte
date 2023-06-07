@@ -1,5 +1,6 @@
 <script>
 	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
+  import {posts} from '$lib/stores'
 	import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
@@ -21,7 +22,7 @@
 </svelte:head>
 
 <Toast />
-<Drawer>
+<Drawer position="right">
 	<div class="flex flex-col p-5 gap-1">
 	<a href="/" class="w-full flex flex-row gap-1 items-center justify-center btn variant-ghost"
           ><Icon src={Home} size="24px" class="text-token" /><span
@@ -47,6 +48,7 @@
           <span>Kontakt</span>
         </a>
       </div>
+      
 </Drawer>
 
 <slot />
