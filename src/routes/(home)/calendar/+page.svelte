@@ -7,6 +7,7 @@
   import { onMount } from "svelte";
   import { popup } from "@skeletonlabs/skeleton";
   import type { PopupSettings } from "@skeletonlabs/skeleton";
+  import { drawerStore } from "@skeletonlabs/skeleton";
 
   export let data: PageData;
 
@@ -133,6 +134,9 @@
         console.log(err);
       });
   }
+  onMount(() => {
+    drawerStore.close();
+  });
 </script>
 
 <div class="flex flex-col w-full md:px-8 items-center justify-center">

@@ -13,8 +13,6 @@
     Bars3
   } from "svelte-hero-icons";
   export let data: PageData;
-
-  console.log(data.user);
   function getInitials(name: string) {
     const names = name.split(" ");
     let initials = names[0].substring(0, 1).toUpperCase();
@@ -78,7 +76,14 @@
             alt="logo"
           /></span
         >
-        <span>RKS "Mat"</span>
+        <span
+          class="ml-2 text-2xl md:text-2xl font-semibold sm:text-xl lg:hidden"
+          >RKS "Mat"</span
+        >
+        <span
+          class="ml-2 text-2xl md:text-2xl font-semibold sm:text-xl lg:block hidden"
+          >Rudzki Klub Sportow "Mat"</span
+        >
       </svelte:fragment>
       <svelte:fragment slot="trail">
         <div
@@ -104,7 +109,11 @@
             <span><Icon size="24px" src={Newspaper} /></span>
             <span>Posty</span>
           </a>
-          <a href="/contact" class="btn variant-filled-primary">
+          <a
+            href="mailto:rksmat@gmail.com
+"
+            class="btn variant-filled-primary"
+          >
             <span><Icon size="24px" src={Phone} /></span>
             <span>Kontakt</span>
           </a>
@@ -131,6 +140,9 @@
       <div class="flex-col flex">
         <span class="text-base font-bold">RKS "Mat"</span>
         <span class=" text-sm">RKS "Mat" - klub sportowy</span>
+        <span class="text-xs"
+          >Ul. Sztygarska 9, 41-705 Ruda Śląska, Województwo śląskie
+        </span>
       </div>
       <LightSwitch />
       <div class="ml-auto">

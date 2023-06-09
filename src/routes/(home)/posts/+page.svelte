@@ -6,10 +6,12 @@
   import type { PopupSettings } from "@skeletonlabs/skeleton";
   import type { PostsResponse } from "$lib/pb_types";
   import type { AutocompleteOption } from "@skeletonlabs/skeleton";
+  import { drawerStore } from "@skeletonlabs/skeleton";
 
   import dayjs from "dayjs";
   import "dayjs/locale/pl";
   import relativeTime from "dayjs/plugin/relativeTime"; // import the plugin
+  import { onMount } from "svelte";
   dayjs.locale("pl");
 
   dayjs.extend(relativeTime);
@@ -125,6 +127,10 @@
   }
 
   let input = "";
+
+  onMount(() => {
+    drawerStore.close();
+  });
 </script>
 
 <div class="mt-8 flex items-center w-full justify-center">
@@ -160,7 +166,7 @@
           class="relative overflow-hidden w-full p-2 py-5 bg-surface-100-800-token flex flex-row items-cente text-token"
           style="text-decoration: none !important;"
         >
-          {#if post.content?.blocks?.filter((v) => v.type == "image")[0]?.data.file.url != undefined}
+          <!-- {#if post.content?.blocks?.filter((v) => v.type == "image")[0]?.data.file.url != undefined}
             <img
               class="h-[200%] aspect-[7/3] absolute -top-1/2 -right-1/2 sm:-right-1/3 brightness-50"
               src={post.content?.blocks?.filter((v) => v.type == "image")[0]
@@ -168,7 +174,7 @@
               alt=""
               loading="lazy"
             />
-          {/if}
+          {/if} -->
 
           <span class="text-2xl z-10 text-token">{post.title}</span>
           <div

@@ -3,8 +3,14 @@
   import { Avatar } from "@skeletonlabs/skeleton";
   import type { PageData } from "./$types";
   import dayjs from "dayjs";
+  import { drawerStore } from "@skeletonlabs/skeleton";
+  import { onMount } from "svelte";
 
   export let data: PageData;
+
+  onMount(() => {
+    drawerStore.close();
+  });
 </script>
 
 <div
