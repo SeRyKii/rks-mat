@@ -1,6 +1,8 @@
 FROM alpine:latest as builder
 
 ARG NODE_VERSION=18.16.0
+
+# Dont know if needed 
 ARG SECRET_POCKETBASE_URL
 ENV SECRET_POCKETBASE_URL $SECRET_POCKETBASE_URL
 
@@ -25,7 +27,7 @@ COPY . .
 
 RUN npm install -g pnpm
 
-RUN pnpm install
+RUN pnpm fetch --prod
 RUN pnpm run build
 FROM alpine:latest
 
