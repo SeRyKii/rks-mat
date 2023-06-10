@@ -27,5 +27,6 @@ RUN pnpm install --offline --frozen-lockfile --prod
 COPY --from=builder /app/build ./
 # Expose port 8080 for the application
 EXPOSE 8080
+ENV PORT=8080
 # Run the application
-CMD ["PORT=8080", "node", "./index.js"]
+CMD ["node", "./index.js"]
