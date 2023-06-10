@@ -1,4 +1,4 @@
-FROM debian:bullseye as builder
+FROM alpine:latest as builder
 
 ARG NODE_VERSION=18.16.0
 ARG SECRET_POCKETBASE_URL
@@ -19,13 +19,15 @@ WORKDIR /app
 # to install all modules: "npm install --production=false".
 # Ref: https://docs.npmjs.com/cli/v9/commands/npm-install#description
 
-# ENV NODE_ENV production
+ENV NODE_ENV production
 
 COPY . .
 
-RUN npm install
-RUN npm run build
-FROM debian:bullseye
+RUN npm install -g pnpm
+
+RUN pnpm install
+RUN pnpm run build
+FROM alpine:latest
 
 LABEL fly_launch_runtime="nodejs"
 
@@ -35,5 +37,6 @@ COPY --from=builder /app /app
 WORKDIR /app
 ENV NODE_ENV production
 ENV PATH /root/.volta/bin:$PATH
+
 EXPOSE 8080
-CMD [ "npm", "run", "start" ]
+CMD [ "pnpm", "run", "start" ]
