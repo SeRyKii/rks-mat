@@ -3,11 +3,9 @@ FROM gplane/pnpm:8.6.1-node20-alpine
 RUN mkdir /app
 WORKDIR /app
 
-ENV NODE_ENV production
-
 COPY . .
 
-RUN pnpm fetch --prod
+RUN pnpm fetch
 RUN pnpm run build
 
 LABEL fly_launch_runtime="nodejs"
