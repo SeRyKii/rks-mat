@@ -52,6 +52,10 @@ pnpm run dev
 
 To deploy the project to Fly.io, follow the ~[Fly.io Documentation](https://fly.io/docs/)~.
 
+## Contributions
+
+It's a private website so im not accepting any contributions as of right now, but you are free to fork it and do with it what you want.
+
 ## License
 
 This project is licensed under the MIT License.
