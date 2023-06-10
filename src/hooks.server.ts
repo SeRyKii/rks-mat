@@ -1,10 +1,12 @@
 import PocketBase from 'pocketbase';
 import type { Handle } from '@sveltejs/kit';
-import { SECRET_POCKETBASE_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { Collections, type AnalyticsRecord } from './lib/pb_types';
 
 export const handle = (async ({ event, resolve }) => {
-	event.locals.pb = new PocketBase(SECRET_POCKETBASE_URL);
+	console.log(`DEBUG: ${env.SECRET_POCKETBASE_URL}`);
+	event.locals.pb = new PocketBase(env.SECRET_POCKETBASE_URL);
+	console.log(`DEBUG: ${event.locals.pb}`);
 	event.locals.pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
 	// Uncomment to log analytics
 	// event.locals.pb.collection(Collections.Analytics).create<AnalyticsRecord>({

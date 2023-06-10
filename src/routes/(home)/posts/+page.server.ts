@@ -15,7 +15,7 @@ export const load = async ({ locals }) => {
   const posts = await locals.pb
     .collection(Collections.Posts)
     .getList<PostsResponse<{ blocks: any[] }>>(1, 10, {
-      expand: "users, tags",
+      expand: "users",
       filter: "type = 0",
       sort: "-created",
     });
