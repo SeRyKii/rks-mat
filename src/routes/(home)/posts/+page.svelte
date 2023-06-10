@@ -98,7 +98,7 @@
   }
 
   let autoCompletePopup: PopupSettings = {
-    event: "focus",
+    event: "focus-click",
     target: "popupAutocomplete",
     placement: "bottom"
   };
@@ -154,7 +154,7 @@
       />
       <div
         data-popup="popupAutocomplete"
-        class="p-4 bg-surface-200-700-token w-full"
+        class="p-4 bg-surface-200-700-token w-full z-20"
       >
         <Autocomplete bind:input options={tagOptions} on:selection={onSelect} />
       </div>
