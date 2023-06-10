@@ -1,39 +1,31 @@
-FROM debian:bullseye as builder
-
-ARG NODE_VERSION=18.16.0
-ARG SECRET_POCKETBASE_URL
-ENV SECRET_POCKETBASE_URL $SECRET_POCKETBASE_URL
-
-RUN apt-get update; apt install -y curl
-RUN curl https://get.volta.sh | bash
-ENV VOLTA_HOME /root/.volta
-ENV PATH /root/.volta/bin:$PATH
-RUN volta install node@${NODE_VERSION}
-
-#######################################################################
-
-RUN mkdir /app
+# Stage 1: Build the application
+FROM gplane/pnpm:8.6.1-node20-alpine AS builder
 WORKDIR /app
-
-# NPM will not install any package listed in "devDependencies" when NODE_ENV is set to "production",
-# to install all modules: "npm install --production=false".
-# Ref: https://docs.npmjs.com/cli/v9/commands/npm-install#description
-
-# ENV NODE_ENV production
-
+# Copy application files and lockfile
 COPY . .
+COPY pnpm-lock.yaml ./
+# Fetch packages and cache them using the shared cache
+RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store/v3 \
+    pnpm fetch
+# Install packages offline using the fetched packages
+RUN pnpm install --offline --frozen-lockfile
+# Build the application
+RUN pnpm run build
 
-RUN npm install
-RUN npm run build
-FROM debian:bullseye
-
-LABEL fly_launch_runtime="nodejs"
-
-COPY --from=builder /root/.volta /root/.volta
-COPY --from=builder /app /app
-
+# Stage 2: Run the application with production dependencies
+FROM gplane/pnpm:8.6.1-node20-alpine
 WORKDIR /app
-ENV NODE_ENV production
-ENV PATH /root/.volta/bin:$PATH
+# Copy package files and lockfile from the builder stage
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/pnpm-lock.yaml ./
+# Fetch production packages and cache them using the shared cache
+RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store/v3 \
+    pnpm fetch --prod
+# Install production packages offline using the fetched packages
+RUN pnpm install --offline --frozen-lockfile --prod
+# Copy the build output from the builder stage
+COPY --from=builder /app/build ./
+# Expose port 8080 for the application
 EXPOSE 8080
-CMD [ "npm", "run", "start" ]
+# Run the application
+CMD ["PORT=8080", "node", "./index.js"]
