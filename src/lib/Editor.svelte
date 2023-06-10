@@ -1,6 +1,4 @@
-<script>
-	// @ts-nocheck
-
+<script lang="ts">
 	import '$lib/editor.css';
 	// event dispatcher
 	import { createEventDispatcher, onMount } from 'svelte';

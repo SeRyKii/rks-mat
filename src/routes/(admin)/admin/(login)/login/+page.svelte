@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { enhance } from '$app/forms';
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
 
@@ -6,8 +6,8 @@
 
 	const submitLogin = () => {
 		loading = true;
-		// @ts-ignore
-		return async ({ result, update }) => {
+		return async (res: any) => {
+			const { result, update } = res;
 			switch (result.type) {
 				case 'success':
 					await update();
@@ -28,7 +28,7 @@
 </script>
 
 <div class="w-full h-full flex items-center justify-center">
-	<div class="w-1/3 bg-surface-700 p-5 rounded-md ">
+	<div class="w-1/3 bg-surface-700 p-5 rounded-md">
 		<h1 class="text-center mb-5">Admin Login</h1>
 		<form class="space-y-4" action="?/login" method="POST" use:enhance={submitLogin}>
 			<label class="label">

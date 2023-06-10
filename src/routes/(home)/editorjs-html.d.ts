@@ -1,1 +1,1 @@
-declare module 'editorjs-html';
+declare module "editorjs-html";

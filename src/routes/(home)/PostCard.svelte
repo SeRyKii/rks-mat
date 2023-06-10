@@ -1,7 +1,6 @@
-<script>
-  // @ts-nocheck
-
+<script lang="ts">
   import PostContentViewer from "$lib/PostContentViewer.svelte";
+  import type { PostsResponse, UsersResponse } from "$lib/pb_types";
   import { Avatar } from "@skeletonlabs/skeleton";
   import dayjs from "dayjs";
   // import polish locale
@@ -9,12 +8,11 @@
   // relatice time
   import relativeTime from "dayjs/plugin/relativeTime";
   import { onMount } from "svelte";
-
   // initialize locale
   dayjs.locale("pl");
   // initialize plugin
   dayjs.extend(relativeTime);
-  function getInitials(name) {
+  function getInitials(name: string): string {
     const names = name.split(" ");
     let initials = names[0].substring(0, 1).toUpperCase();
     if (names.length > 1) {
@@ -23,8 +21,8 @@
     return initials;
   }
 
-  export let post;
-  export let avatars;
+  export let post: PostsResponse<{ blocks: any[] }, { users: UsersResponse }>;
+  export let avatars: Map<string, string>;
 </script>
 
 <a
@@ -58,24 +56,15 @@
     class="p-4 flex justify-start items-center space-x-4 dark:bg-surface-800 bg-surface-100 text-black dark:text-white"
   >
     <Avatar
-      src={avatars.get(post.expand.users.id) + "?thumb=260x260"}
-      initials={getInitials(post.expand.users.username)}
+      src={avatars.get(post.expand?.users.id || "") + "?thumb=260x260"}
+      initials={getInitials(post.expand?.users.username || "")}
       background="bg-transparent"
       border="border dark:border-white border-black"
       width="w-14"
     />
     <div class="flex-auto flex justify-between items-center">
-      <span>{post.expand.users.username}</span>
+      <span>{post.expand?.users.username}</span>
       <span>{dayjs(post.created).fromNow(false)}</span>
-    </div>
-    <div>
-      {#if post.expand.tags}
-        {#each post.expand.tags as tag}
-          <span class="chip variant-filled-primary text-token">
-            {tag.name}
-          </span>
-        {/each}
-      {/if}
     </div>
   </footer>
 </a>

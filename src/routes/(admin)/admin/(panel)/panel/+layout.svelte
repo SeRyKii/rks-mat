@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AppShell, Avatar } from '@skeletonlabs/skeleton';
+	import { AppRailAnchor, AppShell, Avatar } from '@skeletonlabs/skeleton';
 	import { AppRail, AppRailTile, AppBar } from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
 
@@ -29,11 +29,11 @@
 	>
 	<svelte:fragment slot="sidebarLeft">
 		<AppRail>
-			<AppRailTile tag="a" href="/admin/panel">Home</AppRailTile>
-			<AppRailTile tag="a" href="/admin/panel/posts">Posts</AppRailTile>
-			<AppRailTile tag="a" href="/admin/panel/achievements">Osiągniecia</AppRailTile>
-			<AppRailTile tag="a" href="/admin/panel/tournaments">Turnieje</AppRailTile>
-			<AppRailTile tag="a" href="/admin/panel/tags">Tagi</AppRailTile>
+			<AppRailAnchor tag="a" href="/admin/panel/posts">Posts</AppRailAnchor>
+			<AppRailAnchor tag="a" href="/admin/panel/achievements">Osiągniecia</AppRailAnchor>
+			<AppRailAnchor tag="a" href="/admin/panel/tournaments">Turnieje</AppRailAnchor>
+			<AppRailAnchor tag="a" href="/admin/panel">Home</AppRailAnchor>
+			<AppRailAnchor tag="a" href="/admin/panel/tags">Tagi</AppRailAnchor>
 		</AppRail>
 	</svelte:fragment>
 

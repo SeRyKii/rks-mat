@@ -10,7 +10,7 @@
     Phone,
     CalendarDays,
     Newspaper,
-    Bars3
+    Bars3,
   } from "svelte-hero-icons";
   export let data: PageData;
   function getInitials(name: string) {

@@ -16,14 +16,14 @@
   let month: number = dayjs().month();
   let year: number = dayjs().year();
   let days: any = [];
-  let daysBefore: number = 0;
+  let daysBefore = 0;
 
   let monthPopup: PopupSettings = {
     // Set the event as: click | hover | hover-click | focus | focus-click
     event: "click",
     // Provide a matching 'data-popup' value.
     target: "month-popup",
-    placement: "bottom"
+    placement: "bottom",
   };
 
   let yearPopup: PopupSettings = {
@@ -31,7 +31,7 @@
     event: "click",
     // Provide a matching 'data-popup' value.
     target: "year-popup",
-    placement: "bottom"
+    placement: "bottom",
   };
 
   function getDaysInMonth(month: number, year: number) {
@@ -45,7 +45,7 @@
     console.log(daysInMonth);
     for (let i = 0; i < daysInMonth; i++) {
       days.push({
-        slots: [null, null, null, null]
+        slots: [null, null, null, null],
       });
       // if tournament is between start and end date, push it to the days array
     }
@@ -86,7 +86,7 @@
               name: tournament.name,
               startDate: tournament.startDate,
               endDate: tournament.endDate,
-              color: tournament.color
+              color: tournament.color,
             };
           }
           currentDate = currentDate.add(1, "day");
@@ -120,9 +120,9 @@
     fetch("/calendar/loadMore", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ month, year })
+      body: JSON.stringify({ month, year }),
     })
       .then((res) => res.json())
       .then((newData) => {
