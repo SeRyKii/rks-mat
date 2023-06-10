@@ -22,7 +22,7 @@
     offset: 0,
     limit: 10,
     size: data.posts.totalItems,
-    amounts: [5, 10, 20]
+    amounts: [5, 10, 20],
   };
   let source: PostsResponse<{ blocks: any[] }>[] = data.posts.items;
 
@@ -37,13 +37,13 @@
     fetch("/posts/loadMore", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         page: e.detail,
         limit: settings.limit,
-        filter: ""
-      })
+        filter: "",
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -57,13 +57,13 @@
     fetch("/posts/loadMore", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         page: settings.offset,
         filter: "",
-        limit: e.detail
-      })
+        limit: e.detail,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -81,13 +81,13 @@
     fetch("/posts/tag", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         tag: input,
         limit: settings.limit,
-        page: settings.offset
-      })
+        page: settings.offset,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -100,13 +100,13 @@
   let autoCompletePopup: PopupSettings = {
     event: "focus-click",
     target: "popupAutocomplete",
-    placement: "bottom"
+    placement: "bottom",
   };
 
   let tagOptions = data.tags.map((tag) => {
     return {
       label: tag.name || "",
-      value: tag.id || ""
+      value: tag.id || "",
     };
   });
 

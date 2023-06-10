@@ -5,7 +5,7 @@ import { vitePreprocess } from '@sveltejs/kit/vite';
 const config = {
 	kit: {
 		adapter: adapter({
-			precompress: true,
+			precompress: true
 		})
 	},
 	preprocess: [
@@ -16,11 +16,10 @@ const config = {
 	vitePlugin: {
 		experimental: {
 			inspector: {
-				holdMode: true,
+				holdMode: true
 			}
 		}
-	}		
-
+	}
 };
 
 export default config;

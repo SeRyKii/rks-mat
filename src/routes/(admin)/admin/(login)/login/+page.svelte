@@ -28,7 +28,7 @@
 </script>
 
 <div class="w-full h-full flex items-center justify-center">
-	<div class="w-1/3 bg-surface-700 p-5 rounded-md ">
+	<div class="w-1/3 bg-surface-700 p-5 rounded-md">
 		<h1 class="text-center mb-5">Admin Login</h1>
 		<form class="space-y-4" action="?/login" method="POST" use:enhance={submitLogin}>
 			<label class="label">
