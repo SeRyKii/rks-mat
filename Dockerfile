@@ -1,4 +1,4 @@
-FROM g-plane/pnpm-docker:8.6.1-node20-alpine
+FROM gplane/pnpm:8.6.1-node20-alpine
 
 RUN mkdir /app
 WORKDIR /app
