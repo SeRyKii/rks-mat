@@ -1,6 +1,4 @@
-<script>
-	// @ts-nocheck
-
+<script lang="ts">
 	import { onMount } from 'svelte';
 	import { InputChip, toastStore } from '@skeletonlabs/skeleton';
 	import Editor from '$lib/Editor.svelte';
@@ -8,7 +6,7 @@
 
 	export let data;
 
-	let editor = {};
+	let editor: any = {};
 
 	const types = [
 		{ id: 0, name: 'Opublikowane' },
@@ -16,8 +14,7 @@
 		{ id: 2, name: 'W śmietniku' }
 	];
 	function onChange() {
-		// @ts-ignore
-		editor.save().then((outputData) => {
+		editor.save().then((outputData: any) => {
 			fetch('/admin/panel/posts/save', {
 				method: 'POST',
 				headers: {
@@ -42,15 +39,14 @@
 
 	let tagOptions = data.allTags.map((tag) => {
 		return {
-			label: tag.name,
+			label: tag.name || '',
 			value: tag.name
 		};
 	});
 
-	// @ts-ignore
 	let list = [...data.tags];
 
-	function onInputChipSelect(e) {
+	function onInputChipSelect(e: CustomEvent) {
 		if (list.includes(e.detail.value) === false) {
 			list = [...list, e.detail.value];
 			inputChip = '';

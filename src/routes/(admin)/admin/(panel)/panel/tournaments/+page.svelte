@@ -84,7 +84,7 @@
 								<span class="flex-auto">{post.name}</span>
 								<span
 									class="chip transition-none variant-filled-{post.type == 0
-										? 'success'
+										? 'primary'
 										: post.type == 1
 										? 'secondary'
 										: 'error'}"

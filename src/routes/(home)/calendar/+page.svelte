@@ -16,7 +16,7 @@
   let month: number = dayjs().month();
   let year: number = dayjs().year();
   let days: any = [];
-  let daysBefore: number = 0;
+  let daysBefore = 0;
 
   let monthPopup: PopupSettings = {
     // Set the event as: click | hover | hover-click | focus | focus-click

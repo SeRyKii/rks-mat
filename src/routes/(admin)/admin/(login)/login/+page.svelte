@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { enhance } from '$app/forms';
 	import { Toast, toastStore } from '@skeletonlabs/skeleton';
 
@@ -6,8 +6,8 @@
 
 	const submitLogin = () => {
 		loading = true;
-		// @ts-ignore
-		return async ({ result, update }) => {
+		return async (res: any) => {
+			const { result, update } = res;
 			switch (result.type) {
 				case 'success':
 					await update();
