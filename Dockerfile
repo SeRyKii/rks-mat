@@ -6,7 +6,7 @@ ARG NODE_VERSION=18.16.0
 ARG SECRET_POCKETBASE_URL
 ENV SECRET_POCKETBASE_URL $SECRET_POCKETBASE_URL
 
-RUN apt-get update; apt install -y curl
+RUN apk add curl
 RUN curl https://get.volta.sh | bash
 ENV VOLTA_HOME /root/.volta
 ENV PATH /root/.volta/bin:$PATH
