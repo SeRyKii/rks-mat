@@ -24,7 +24,6 @@ WORKDIR /app
 COPY . .
 
 RUN npm install
-RUN npm run typegen
 RUN npm run build
 FROM debian:bullseye
 
