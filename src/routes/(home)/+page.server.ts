@@ -1,7 +1,7 @@
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
-import { Collections, type TournamentsResponse } from "../../lib/pb_types";
-import type { AchievementsResponse, PostsResponse } from "../../lib/pb_types";
+import { Collections, type TournamentsResponse } from "$lib/pb_types";
+import type { AchievementsResponse, PostsResponse } from "$lib/pb_types";
 
 export const load = (async ({ locals }) => {
   console.log(`DEBUG: ${locals.pb}`);

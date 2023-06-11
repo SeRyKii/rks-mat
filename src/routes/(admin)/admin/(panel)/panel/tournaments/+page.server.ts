@@ -3,7 +3,7 @@ import {
 	Collections,
 	type PostsResponse,
 	type TournamentsResponse
-} from '../../../../../../lib/pb_types';
+} from '$lib/pb_types';
 
 export const load = (async ({ locals }) => {
 	const tournaments = await locals.pb

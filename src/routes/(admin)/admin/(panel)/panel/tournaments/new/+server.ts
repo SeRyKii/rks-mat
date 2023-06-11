@@ -4,7 +4,7 @@ import type {
 	PostsResponse,
 	PostsRecord,
 	TournamentsRecord
-} from '../../../../../../../lib/pb_types';
+} from '$lib/pb_types';
 import { json, redirect } from '@sveltejs/kit';
 
 export const GET = async (event) => {

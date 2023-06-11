@@ -1,6 +1,6 @@
 import { Collections, type FilesResponse, type PostsResponse } from '$lib/pb_types';
-import type { RequestHandler } from '../$types';
-import type { PostsRecord } from '../../../../../../../../lib/pb_types';
+import type { RequestHandler } from './$types';
+import type { PostsRecord } from '$lib/pb_types';
 import { json } from '@sveltejs/kit';
 
 export const POST = (async (event) => {
