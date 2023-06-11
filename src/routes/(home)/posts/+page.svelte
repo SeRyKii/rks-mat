@@ -92,6 +92,8 @@
       .then((res) => res.json())
       .then((data) => {
         source = [...data.posts.items.map((item: any) => item.expand.post)];
+        // filter out undefined or null
+        source = source.filter((item) => item);
         //data.userAvatars = data.userAvatars;
         settings.size = parseInt(data.posts.totalItems, 10);
       });
@@ -190,7 +192,9 @@
               >
             {/each}
 
-            <span class="text-xs">{dayjs(post.created).fromNow(false)}</span>
+            <span class="text-xs text-token"
+              >{dayjs(post.created).fromNow(false)}</span
+            >
           </div>
         </a>
       {/each}
