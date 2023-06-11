@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Trainer from '$lib/Trainer.svelte';
+
   import { Avatar } from "@skeletonlabs/skeleton";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
@@ -10,7 +12,7 @@
   import dayjs from "dayjs";
   import "dayjs/locale/pl";
   import relativeTime from "dayjs/plugin/relativeTime";
-
+  
   dayjs.locale("pl");
   dayjs.extend(relativeTime);
 
@@ -100,33 +102,12 @@
 <BlogPosts {data} />
 
 <span class="text-4xl sm:text-6xl font-bold text-center mt-36 mb-4 block"
-  >Instruktorzy</span
+  >Szkoleniowcy</span
 >
-<div class="flex flex-col sm:flex-row w-screen min-h-[50vh] gap-2">
-  <div class="flex flex-col items-center w-full px-4 sm:pl-12">
-    <div class="w-full flex flex-row items-center">
-      <span class="text-4xl text-right w-full mr-6">Marian Twardoń</span>
-      <img
-        src="/queen.webp"
-        alt="Marian Twardoń"
-        class="ml-auto aspect-square w-32"
-      />
-    </div>
-    <span class="text-justify w-full">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nesciunt
-      dolorem vero sunt quo, dolore ipsum suscipit cumque magnam voluptatum
-      incidunt neque explicabo maiores eius nostrum minima aliquid nulla
-      perspiciatis.
-    </span>
-  </div>
-  <span class="divider-vertical hidden sm:block" />
-  <hr class="block sm:hidden" />
-  <div class="flex flex-col items-center w-full px-4 sm:pr-12">
-    <div class="w-full flex flex-row">
-      <img src="" alt="Dariusz Smagacz" class="ml-auto aspect-square w-32" />
-      <span class="text-4xl text-left w-full ml-6">Dariusz smagacz</span>
-    </div>
-  </div>
+<div class="w-screen gap-2 grid grid-cols-1 sm:grid-cols-3 sm:grid-flow-col justify-center p-4">
+  <Trainer image="mt.webp" name="Marian Twardoń" description="Mistrz fide, trener klasy pierwszej. Wśród jego wychowanków nie brakuje medalistów Mistrzostw Śląska i Mistrzostw Polski Juniorów. W ponad 30-letniej pracy szkoleniowej prowadził wiele drużyn ze Śląska i Małopolski, osiągając z nimi sukcesy, m.in. brązowy medal Górnika Zabrze w DMP Juniorów w 1995 r." />
+  <Trainer image="ah.webp" name="Ania Hampel" description="Instruktorka szachowa, wychowanka naszego Klubu. Wielokrotna medalistka Mistrzostw Śląska i uczestniczka finałów Mistrzostw Polski"></Trainer>
+  <Trainer image="ds.webp" name="Dariusz Smagacz" description="Kandydat na mistrza krajowego, instruktor szachowy. W przeszłości jeden z trenerów utytułowanej drużyny juniorskiej KŚ AZS Politechniki Śląskiej Gliwice. Wciąż czynny zawodnik, kapitan naszej drużyny seniorskiej." />
 </div>
 
 <div class="w-screen min-h-[50vh] text-center space-y-8">
@@ -186,22 +167,3 @@
     {/each}
   </div>
 </div>
-
-<style>
-  @keyframes slideInRight {
-    0% {
-      transform: translateX(250%);
-    }
-    1% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  #queen {
-    animation: 1s cubic-bezier(1, 0, 0, 1) 0.5s forwards slideInRight;
-  }
-</style>
