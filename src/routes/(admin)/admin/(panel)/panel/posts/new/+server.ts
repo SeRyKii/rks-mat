@@ -1,6 +1,6 @@
 import { Collections } from '$lib/pb_types';
 import type { RequestHandler } from './$types';
-import type { PostsResponse, PostsRecord } from '../../../../../../../lib/pb_types';
+import type { PostsResponse, PostsRecord } from '$lib/pb_types';
 import { json, redirect } from '@sveltejs/kit';
 
 export const GET = async (event) => {

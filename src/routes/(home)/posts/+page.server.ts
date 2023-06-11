@@ -5,11 +5,8 @@ import {
   type PostTagsResponse,
   type TagsResponse,
   type TournamentsResponse,
-} from "../../../lib/pb_types";
-import type {
-  AchievementsResponse,
-  PostsResponse,
-} from "../../../lib/pb_types";
+} from "$lib/pb_types";
+import type { AchievementsResponse, PostsResponse } from "$lib/pb_types";
 
 export const load = async ({ locals }) => {
   const posts = await locals.pb

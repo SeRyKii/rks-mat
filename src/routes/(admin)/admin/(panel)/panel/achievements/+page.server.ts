@@ -1,9 +1,5 @@
 import type { PageServerLoad, Actions } from './$types';
-import {
-	Collections,
-	type PostsResponse,
-	type AchievementsResponse
-} from '../../../../../../lib/pb_types';
+import { Collections, type PostsResponse, type AchievementsResponse } from '$lib/pb_types';
 
 export const load = (async ({ locals }) => {
 	const achievements = await locals.pb

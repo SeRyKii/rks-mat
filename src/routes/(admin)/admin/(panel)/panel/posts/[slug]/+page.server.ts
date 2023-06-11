@@ -5,7 +5,7 @@ import {
 	type PostTagsResponse,
 	type TagsRecord,
 	type TagsResponse
-} from '../../../../../../../lib/pb_types';
+} from '$lib/pb_types';
 import { error } from '@sveltejs/kit';
 
 export const load = (async ({ locals, params }) => {

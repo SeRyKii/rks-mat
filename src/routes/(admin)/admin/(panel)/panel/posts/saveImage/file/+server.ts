@@ -1,8 +1,8 @@
 import { Collections, type PostsResponse } from '$lib/pb_types';
 import { json } from '@sveltejs/kit';
-import type { RequestHandler } from '../$types';
-import type { PostsRecord } from '../../../../../../../../lib/pb_types';
-import type { FilesResponse } from '../../../../../../../../lib/pb_types';
+import type { RequestHandler } from './$types';
+import type { PostsRecord } from '$lib/pb_types';
+import type { FilesResponse } from '$lib/pb_types';
 
 export const POST = (async (event) => {
 	const body = await event.request.formData();

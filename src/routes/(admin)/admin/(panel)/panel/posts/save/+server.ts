@@ -1,6 +1,6 @@
 import { Collections, type PostsResponse } from '$lib/pb_types';
 import type { RequestHandler } from './$types';
-import type { PostTagsRecord, PostsRecord, TagsResponse } from '../../../../../../../lib/pb_types';
+import type { PostTagsRecord, PostsRecord, TagsResponse } from '$lib/pb_types';
 
 export const POST = (async (event) => {
 	const body = await event.request.json();

@@ -5,8 +5,8 @@ import {
 	type PostsDeletedResponse,
 	type PostsDraftResponse,
 	type PostsResponse
-} from '../../../../../lib/pb_types';
-import type { AnalyticsCountResponse, AnalyticsResponse } from '../../../../../lib/pb_types';
+} from '$lib/pb_types';
+import type { AnalyticsCountResponse, AnalyticsResponse } from '$lib/pb_types';
 
 export const load = (async ({ locals }) => {
 	const analyticsCount = await locals.pb
