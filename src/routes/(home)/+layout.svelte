@@ -2,7 +2,6 @@
   import { AppShell, Avatar, drawerStore } from "@skeletonlabs/skeleton";
   import { AppBar } from "@skeletonlabs/skeleton";
   import type { PageData } from "./$types";
-  import { LightSwitch } from "@skeletonlabs/skeleton";
   import { onMount } from "svelte";
   import {
     Icon,
@@ -10,6 +9,8 @@
     Phone,
     CalendarDays,
     Newspaper,
+    Envelope,
+    Link,
     Bars3,
   } from "svelte-hero-icons";
   export let data: PageData;
@@ -140,15 +141,24 @@
       <div class="flex-col flex">
         <span class="text-base font-bold">RKS "Mat"</span>
         <span class=" text-sm">RKS "Mat" - klub sportowy</span>
-        <span class="text-xs"
+        <a class="text-xs" href="maps.google.com"
           >Ul. Sztygarska 9, 41-705 Ruda Śląska, Województwo śląskie
-        </span>
+        </a>
       </div>
-      <LightSwitch />
-      <div class="ml-auto">
-        <p class="text-base">Facebook</p>
-        <p class="text-base">Kontakt</p>
-        <p class="text-base">Kontakt</p>
+      <div class="ml-auto flex flex-col mr-0">
+        <a class="btn" href="https://facebook.com"
+          ><span><Icon src={Link} size="20px" /></span><span>Facebook</span></a
+        >
+        <a class="btn" href="mailto:rksmat@gmail.com"
+          ><span><Icon src={Envelope} size="20px" /></span><span
+            >example@mail.to</span
+          ></a
+        >
+        <a class="btn" href="tel:+48123123123"
+          ><span><Icon src={Phone} size="20px" /></span><span
+            >+48 123123123</span
+          ></a
+        >
       </div>
     </div>
     <hr />
