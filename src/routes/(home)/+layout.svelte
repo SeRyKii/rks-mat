@@ -111,7 +111,7 @@
             <span>Posty</span>
           </a>
           <a
-            href="mailto:rksmat@gmail.com
+            href="mailto:oleksmagacz16@gmail.com
 "
             class="btn variant-filled-primary"
           >
@@ -141,12 +141,19 @@
       <div class="flex-col flex">
         <span class="text-base font-bold">RKS "Mat"</span>
         <span class=" text-sm">RKS "Mat" - klub sportowy</span>
-        <a class="text-xs" href="maps.google.com"
+        <a
+          class="text-xs"
+          href="https://goo.gl/maps/sSFe8TpYa4q77qAN8"
+          target="_blank"
+        >
           >Ul. Sztygarska 9, 41-705 Ruda Śląska, Województwo śląskie
         </a>
       </div>
       <div class="ml-auto flex flex-col mr-0">
-        <a class="btn" href="https://www.facebook.com/rks.mat.rsl"
+        <a
+          class="btn"
+          href="https://www.facebook.com/rks.mat.rsl"
+          target="_blank"
           ><span><Icon src={Link} size="20px" /></span><span>Facebook</span></a
         >
         <a class="btn" href="mailto:oleksmagacz16@gmail.com"
