@@ -1,14 +1,16 @@
 # Stage 1: Build the application
 FROM gplane/pnpm:8.6.1-node20-alpine AS builder
 WORKDIR /app
-# Copy application files and lockfile
-COPY . .
+# Copy package files and lockfile separately
+COPY package*.json ./
 COPY pnpm-lock.yaml ./
 # Fetch packages and cache them using the shared cache
 RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store/v3 \
     pnpm fetch
 # Install packages offline using the fetched packages
 RUN pnpm install --offline --frozen-lockfile
+# Copy application files
+COPY . .
 # Build the application
 RUN pnpm run build
 
