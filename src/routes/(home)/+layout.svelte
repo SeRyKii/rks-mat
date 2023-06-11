@@ -151,8 +151,8 @@
         >
         <a class="btn" href="mailto:oleksmagacz16@gmail.com"
           ><span><Icon src={Envelope} size="20px" /></span><span
-            >oleksmagacz16@gmail.com </span
-          ></a
+            >oleksmagacz16@gmail.com
+          </span></a
         >
         <a class="btn" href="tel:+48537884283"
           ><span><Icon src={Phone} size="20px" /></span><span
