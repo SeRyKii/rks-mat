@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
 	import { posts } from '$lib/stores';
+	import { autoModeWatcher } from '@skeletonlabs/skeleton';
 	import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
@@ -12,10 +13,8 @@
 	// import { autoModeWatcher } from '@skeletonlabs/skeleton';
 </script>
 
-<!-- <svelte:head
-	>{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}</svelte:head
-> -->
 <svelte:head>
+	{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}
 	<title>RKS "Mat"</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="Klubowa strona klubu RKS 'Mat'" />
