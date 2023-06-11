@@ -83,7 +83,7 @@
         >
         <span
           class="ml-2 text-2xl md:text-2xl font-semibold sm:text-xl lg:block hidden"
-          >Rudzki Klub Sportow "Mat"</span
+          >Rudzki Klub Sportowy "Mat"</span
         >
       </svelte:fragment>
       <svelte:fragment slot="trail">
