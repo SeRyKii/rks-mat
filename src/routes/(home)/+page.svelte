@@ -84,7 +84,7 @@
       "Mat"!
     </span>
     <a
-      href="mailto:rksmat@gmail.com"
+      href="mailto:oleksmagacz16@gmail.com"
       class="btn variant-filled-primary px-5 py-4 text-token"
       >Dołącz do klubu!</a
     >

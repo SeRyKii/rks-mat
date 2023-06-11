@@ -146,17 +146,17 @@
         </a>
       </div>
       <div class="ml-auto flex flex-col mr-0">
-        <a class="btn" href="https://facebook.com"
+        <a class="btn" href="https://www.facebook.com/rks.mat.rsl"
           ><span><Icon src={Link} size="20px" /></span><span>Facebook</span></a
         >
-        <a class="btn" href="mailto:rksmat@gmail.com"
+        <a class="btn" href="mailto:oleksmagacz16@gmail.com"
           ><span><Icon src={Envelope} size="20px" /></span><span
-            >example@mail.to</span
+            >oleksmagacz16@gmail.com </span
           ></a
         >
-        <a class="btn" href="tel:+48123123123"
+        <a class="btn" href="tel:+48537884283"
           ><span><Icon src={Phone} size="20px" /></span><span
-            >+48 123123123</span
+            >+48 537 884 283</span
           ></a
         >
       </div>
