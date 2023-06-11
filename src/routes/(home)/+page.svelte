@@ -36,11 +36,15 @@
 
     const bg = document.getElementById("bg");
     const pos = document.documentElement.style;
-    pos.setProperty("--pos", `-${window.scrollY * 2}px`);
+    pos.setProperty("--pos", `-${window.scrollY / 3}px`);
     const scroll = () => {
       pos.setProperty("--pos", `-${window.scrollY / 3}px`);
     };
-    window.addEventListener("scroll", scroll);
+    // request animation frame to throttle scroll event make it do it on scroll
+    const raf = requestAnimationFrame;
+    window.addEventListener("scroll", () => {
+      raf(scroll);
+    });
   });
 
   // Add status field to each tournament with either "planowany", "w trakie", "zakońcony"
