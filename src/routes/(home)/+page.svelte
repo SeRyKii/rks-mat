@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Trainer from '$lib/Trainer.svelte';
+  import Trainer from "$lib/Trainer.svelte";
 
   import { Avatar } from "@skeletonlabs/skeleton";
   import { onMount } from "svelte";
@@ -12,7 +12,7 @@
   import dayjs from "dayjs";
   import "dayjs/locale/pl";
   import relativeTime from "dayjs/plugin/relativeTime";
-  
+
   dayjs.locale("pl");
   dayjs.extend(relativeTime);
 
@@ -104,10 +104,24 @@
 <span class="text-4xl sm:text-6xl font-bold text-center mt-36 mb-4 block"
   >Szkoleniowcy</span
 >
-<div class="w-screen gap-2 grid grid-cols-1 sm:grid-cols-3 sm:grid-flow-col justify-center p-4">
-  <Trainer image="mt.webp" name="Marian Twardoń" description="Mistrz fide, trener klasy pierwszej. Wśród jego wychowanków nie brakuje medalistów Mistrzostw Śląska i Mistrzostw Polski Juniorów. W ponad 30-letniej pracy szkoleniowej prowadził wiele drużyn ze Śląska i Małopolski, osiągając z nimi sukcesy, m.in. brązowy medal Górnika Zabrze w DMP Juniorów w 1995 r." />
-  <Trainer image="ah.webp" name="Ania Hampel" description="Instruktorka szachowa, wychowanka naszego Klubu. Wielokrotna medalistka Mistrzostw Śląska i uczestniczka finałów Mistrzostw Polski"></Trainer>
-  <Trainer image="ds.webp" name="Dariusz Smagacz" description="Kandydat na mistrza krajowego, instruktor szachowy. W przeszłości jeden z trenerów utytułowanej drużyny juniorskiej KŚ AZS Politechniki Śląskiej Gliwice. Wciąż czynny zawodnik, kapitan naszej drużyny seniorskiej." />
+<div
+  class="w-screen gap-2 grid grid-cols-1 sm:grid-cols-3 sm:grid-flow-col justify-center p-4"
+>
+  <Trainer
+    image="mt.webp"
+    name="Marian Twardoń"
+    description="Mistrz fide, trener klasy pierwszej. Wśród jego wychowanków nie brakuje medalistów Mistrzostw Śląska i Mistrzostw Polski Juniorów. W ponad 30-letniej pracy szkoleniowej prowadził wiele drużyn ze Śląska i Małopolski, osiągając z nimi sukcesy, m.in. brązowy medal Górnika Zabrze w DMP Juniorów w 1995 r."
+  />
+  <Trainer
+    image="ah.webp"
+    name="Ania Hampel"
+    description="Instruktorka szachowa, wychowanka naszego Klubu. Wielokrotna medalistka Mistrzostw Śląska i uczestniczka finałów Mistrzostw Polski"
+  />
+  <Trainer
+    image="ds.webp"
+    name="Dariusz Smagacz"
+    description="Kandydat na mistrza krajowego, instruktor szachowy. W przeszłości jeden z trenerów utytułowanej drużyny juniorskiej KŚ AZS Politechniki Śląskiej Gliwice. Wciąż czynny zawodnik, kapitan naszej drużyny seniorskiej."
+  />
 </div>
 
 <div class="w-screen min-h-[50vh] text-center space-y-8">
