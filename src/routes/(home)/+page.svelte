@@ -110,7 +110,7 @@
   <Trainer
     image="mt.webp"
     name="Marian Twardoń"
-    description="Mistrz fide, trener klasy pierwszej. Wśród jego wychowanków nie brakuje medalistów Mistrzostw Śląska i Mistrzostw Polski Juniorów. W ponad 30-letniej pracy szkoleniowej prowadził wiele drużyn ze Śląska i Małopolski, osiągając z nimi sukcesy, m.in. brązowy medal Górnika Zabrze w DMP Juniorów w 1995 r."
+    description="Mistrz Fide, trener klasy pierwszej. Wśród jego wychowanków nie brakuje medalistów Mistrzostw Śląska i Mistrzostw Polski Juniorów. W ponad 30-letniej pracy szkoleniowej prowadził wiele drużyn ze Śląska i Małopolski, osiągając z nimi sukcesy, m.in. brązowy medal Górnika Zabrze w DMP Juniorów w 1995 r."
   />
   <Trainer
     image="ah.webp"
