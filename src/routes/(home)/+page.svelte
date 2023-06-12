@@ -7,7 +7,7 @@
   import { posts } from "$lib/stores";
   import { drawerStore } from "@skeletonlabs/skeleton";
 
-  import BlogPosts from "./BlogPosts.svelte";
+  import BlogPosts from "$lib/BlogPosts.svelte";
   import ConditionalLink from "$lib/ConditionalLink.svelte";
   import dayjs from "dayjs";
   import "dayjs/locale/pl";
