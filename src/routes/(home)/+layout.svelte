@@ -137,16 +137,19 @@
   </div>
   <div class="dark:bg-black/25 bg-black/5 w-full">
     <div class="flex flex-row items-center gap-2 p-4">
-      <img src="/logo-medium.webp" class="w-12 h-12" alt="rks mat" />
+      <img
+        src="/logo-medium.webp"
+        class="w-12 h-12 sm:block hidden"
+        alt="rks mat"
+      />
       <div class="flex-col flex">
         <span class="text-base font-bold">RKS "Mat"</span>
-        <span class=" text-sm">RKS "Mat" - klub sportowy</span>
         <a
           class="text-xs"
           href="https://goo.gl/maps/sSFe8TpYa4q77qAN8"
           target="_blank"
         >
-          >Ul. Sztygarska 9, 41-705 Ruda Śląska, Województwo śląskie
+          Ul. Sztygarska 9, 41-705 Ruda Śląska, Województwo śląskie
         </a>
       </div>
       <div class="ml-auto flex flex-col mr-0">
@@ -154,17 +157,20 @@
           class="btn"
           href="https://www.facebook.com/rks.mat.rsl"
           target="_blank"
-          ><span><Icon src={Link} size="20px" /></span><span>Facebook</span></a
+          ><span class="scale-50 sm:scale-100 w-3 sm:w-5"
+            ><Icon src={Link} size="20px" /></span
+          ><span class="text-xs sm:text-sm">Facebook</span></a
         >
         <a class="btn" href="mailto:oleksmagacz16@gmail.com"
-          ><span><Icon src={Envelope} size="20px" /></span><span
-            >oleksmagacz16@gmail.com
-          </span></a
+          ><span class="scale-50 sm:scale-100 w-3 sm:w-5"
+            ><Icon src={Envelope} size="20px" /></span
+          >
+          <span class="text-xs sm:text-sm">oleksmagacz16@gmail.com </span></a
         >
         <a class="btn" href="tel:+48537884283"
-          ><span><Icon src={Phone} size="20px" /></span><span
-            >+48 537 884 283</span
-          ></a
+          ><span class="scale-50 sm:scale-100 w-3 sm:w-5"
+            ><Icon src={Phone} size="20px" /></span
+          ><span class="text-xs sm:text-sm">+48 537 884 283</span></a
         >
       </div>
     </div>

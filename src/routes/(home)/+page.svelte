@@ -114,8 +114,8 @@
   />
   <Trainer
     image="ah.webp"
-    name="Ania Hampel"
-    description="Instruktorka szachowa, wychowanka naszego Klubu. Wielokrotna medalistka Mistrzostw Śląska i uczestniczka finałów Mistrzostw Polski"
+    name="Anna Hampel"
+    description="Instruktorka szachowa, wychowanka naszego Klubu. Wielokrotna medalistka Mistrzostw Śląska i uczestniczka finałów Mistrzostw Polski."
   />
   <Trainer
     image="ds.webp"
