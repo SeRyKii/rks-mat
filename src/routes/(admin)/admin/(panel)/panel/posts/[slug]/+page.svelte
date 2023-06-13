@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { InputChip, toastStore } from '@skeletonlabs/skeleton';
+	import BtnConfirm from '$lib/BtnConfirm.svelte';
 	import Editor from '$lib/Editor.svelte';
 	import { Autocomplete } from '@skeletonlabs/skeleton';
 
@@ -13,6 +14,21 @@
 		{ id: 1, name: 'Nie skończone' },
 		{ id: 2, name: 'W śmietniku' }
 	];
+
+	function remove() {
+		fetch('/admin/panel/posts/delete', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				id: data.post.id
+			})
+		}).then(() => {
+			window.location.href = '/admin/panel/posts';
+		});
+	}
+
 	function onChange() {
 		editor.save().then((outputData: any) => {
 			fetch('/admin/panel/posts/save', {
@@ -106,5 +122,13 @@
 		/>
 		<hr />
 		<button class="btn variant-ghost-primary w-1/2" on:click={onChange}>Zapisz</button>
+		<BtnConfirm
+			confirmFunction={remove}
+			confirmText="Czy na pewno?"
+			text="Usuń"
+			btnColor="primary"
+			confirmColor="secondary-500"
+			classes="w-1/2"
+		/>
 	</div>
 </div>
