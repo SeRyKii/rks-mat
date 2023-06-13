@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let confirmFunction: Function;
+	export let confirmFunction: () => void;
 	export let confirmText = 'Czy na pewno?';
 	export let text = 'Usuń';
 	export let btnColor = 'primary';
