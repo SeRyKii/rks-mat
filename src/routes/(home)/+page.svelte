@@ -17,6 +17,9 @@
   dayjs.extend(relativeTime);
 
   let currDate = dayjs();
+  let active1 = false;
+  let active2 = false;
+  let active3 = false;
 
   export let data: PageData;
   posts.set(data.posts.items);
@@ -73,6 +76,32 @@
 </script>
 
 <div
+  class="w-screen h-screen fixed top-0 left-0 backdrop-blur-sm backdrop-brightness-50 z-10 {active1 ||
+  active2 ||
+  active3
+    ? 'block'
+    : 'hidden'}"
+  on:keydown={() => {
+    if (active1) {
+      active1 = false;
+    } else if (active2) {
+      active2 = false;
+    } else if (active3) {
+      active3 = false;
+    }
+  }}
+  on:click={() => {
+    if (active1) {
+      active1 = false;
+    } else if (active2) {
+      active2 = false;
+    } else if (active3) {
+      active3 = false;
+    }
+  }}
+/>
+
+<div
   class="relative w-full min-h-[100vh] flex items-center dark:bg-surface-900 -mt-28"
 >
   <div
@@ -103,22 +132,53 @@
   >Szkoleniowcy</span
 >
 <div
-  class="w-screen gap-2 grid grid-cols-1 sm:grid-cols-3 sm:grid-flow-col justify-center p-4"
+  class="w-screen gap-2 grid grid-cols-1 sm:grid-cols-3 sm:grid-flow-col {!active1 &&
+  !active2 &&
+  !active3
+    ? 'min-h-[0]'
+    : ''} justify-center p-4"
 >
   <Trainer
     image="mt.webp"
     name="Marian Twardoń"
     description="Mistrz Fide, trener klasy pierwszej. Wśród jego wychowanków nie brakuje medalistów Mistrzostw Śląska i Mistrzostw Polski Juniorów. W ponad 30-letniej pracy szkoleniowej prowadził wiele drużyn ze Śląska i Małopolski, osiągając z nimi sukcesy, m.in. brązowy medal Górnika Zabrze w DMP Juniorów w 1995 r."
+    nth={1}
+    email="marian@email.com"
+    phone="+48 678 567 568"
+    bind:active={active1}
+    on:clicked={() => {
+      console.log(active1, active2, active3);
+      active2 = false;
+      active3 = false;
+    }}
   />
   <Trainer
     image="ah.webp"
     name="Anna Hampel"
     description="Instruktorka szachowa, wychowanka naszego Klubu. Wielokrotna medalistka Mistrzostw Śląska i uczestniczka finałów Mistrzostw Polski."
+    nth={2}
+    email="marian@email.com"
+    phone="+48 678 567 568"
+    bind:active={active2}
+    on:clicked={() => {
+      console.log(active1, active2, active3);
+      active1 = false;
+      active3 = false;
+    }}
   />
   <Trainer
     image="ds.webp"
     name="Dariusz Smagacz"
     description="Kandydat na mistrza krajowego, instruktor szachowy. W przeszłości jeden z trenerów utytułowanej drużyny juniorskiej KŚ AZS Politechniki Śląskiej Gliwice. Wciąż czynny zawodnik, kapitan naszej drużyny seniorskiej."
+    nth={3}
+    email="marian@email.com"
+    phone="+48 678 567 568"
+    bind:active={active3}
+    on:clicked={() => {
+      console.log(active1, active2, active3);
+      active2 = false;
+      active1 = false;
+    }}
   />
 </div>
 
