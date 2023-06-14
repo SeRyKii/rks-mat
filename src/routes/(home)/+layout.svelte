@@ -3,6 +3,8 @@
   import { AppBar } from "@skeletonlabs/skeleton";
   import type { PageData } from "./$types";
   import { onMount } from "svelte";
+  import { popup } from "@skeletonlabs/skeleton";
+  import type { PopupSettings } from "@skeletonlabs/skeleton";
   import {
     Icon,
     Home,
@@ -12,6 +14,9 @@
     Envelope,
     Link,
     Bars3,
+    ChevronDown,
+    Photo,
+    PencilSquare,
   } from "svelte-hero-icons";
   export let data: PageData;
   function getInitials(name: string) {
@@ -22,6 +27,20 @@
     }
     return initials;
   }
+
+  const popupNews: PopupSettings = {
+    // Represents the type of event that opens/closed the popup
+    event: "click",
+    // Matches the data-popup value on your popup element
+    target: "popupNews",
+    // Defines which side of your trigger the popup will appear
+    placement: "bottom",
+    middleware: {
+      offset: {
+        crossAxis: -18,
+      },
+    },
+  };
 
   // mobile make menu appear when scrolling down
   let lastScrollTop = 0;
@@ -105,13 +124,30 @@
             <span><Icon size="24px" src={CalendarDays} /></span>
             <span>Kalendarz</span>
           </a>
-          <a
-            href="/posts"
+          <button
+            use:popup={popupNews}
             class="flex flex-row gap-1 items-center justify-center"
           >
             <span><Icon size="24px" src={Newspaper} /></span>
             <span>Aktualności</span>
-          </a>
+            <span><Icon size="16px" src={ChevronDown} /></span>
+          </button>
+
+          <div
+            class="p-4 w-fit shadow-xl !flex flex-col gap-1 bg-surface-100-800-token left-2"
+            data-popup="popupNews"
+          >
+            <a href="/posts" class="btn"
+              ><span><Icon src={PencilSquare} size="18px" /></span><span
+                >Posty</span
+              ></a
+            >
+            <a href="/gallery" class="btn justify-center items-center"
+              ><span><Icon src={Photo} size="18px" /></span><span>Galeria</span
+              ></a
+            >
+          </div>
+
           <a
             href="/contact
 "
