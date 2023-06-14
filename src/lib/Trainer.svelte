@@ -3,16 +3,18 @@
 	import { fade, fly } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
 	import { Envelope, Icon, Phone } from 'svelte-hero-icons';
+	import { toastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 
 	const dispatch = createEventDispatcher();
 	export let image: string;
 	export let name: string;
 	export let description: string;
-	export let nth: number = 1;
+	export let nth: number;
 	export let active: boolean;
 	export let email: string;
+	export let phone: string;
 	let styles = '';
-	let height: number = 0;
+	let height = 0;
 
 	onMount(() => {
 		// get height of id = nth
@@ -55,18 +57,67 @@
 		}
 	}
 
+	function copyEmail() {
+		navigator.clipboard
+			.writeText(email)
+			.then(() => {
+				let t = {
+					timeout: 2000,
+					message: 'Skopiowano!',
+					background: 'bg-primary-500',
+					autohide: true
+				};
+
+				toastStore.trigger(t);
+			})
+			.catch((err) => {
+				let t = {
+					timeout: 2000,
+					message: err,
+					background: 'bg-primary-500',
+					autohide: true
+				};
+
+				toastStore.trigger(t);
+			});
+	}
+	function copyPhone() {
+		navigator.clipboard
+			.writeText(phone)
+			.then(() => {
+				let t = {
+					timeout: 2000,
+					message: 'Skopiowano!',
+					background: 'bg-primary-500',
+					autohide: true
+				};
+
+				toastStore.trigger(t);
+			})
+			.catch((err) => {
+				let t = {
+					timeout: 2000,
+					message: err,
+					background: 'bg-primary-500',
+					autohide: true
+				};
+
+				toastStore.trigger(t);
+			});
+	}
+
 	let classes = '';
 </script>
 
 <div
 	id={nth.toString()}
 	style={styles}
-	class="card overflow-hidden transition-all {classes} hover:scale-105 cursor-pointer shadow-md shadow-surface-400 dark:shadow-surface-500"
+	class="relative card overflow-hidden transition-all {classes} hover:scale-105 shadow-md shadow-surface-400 dark:shadow-surface-500"
 	on:click={() => {
-		active = active !== true;
+		active = true;
 	}}
 	on:keypress={() => {
-		active = active !== true;
+		active = true;
 	}}
 >
 	{#if !active}
@@ -87,17 +138,19 @@
 	{:else}
 		<div
 			in:fly={{ x: -2000, duration: 500 }}
-			class="w-auto logo-cloud grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4 gap-0.5"
+			class="top-0 absolute w-full items-center logo-cloud grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4 gap-0.5"
 		>
-			<a href="/elements/logo-clouds" class="logo-item">
-				<span><Icon src={Envelope} /></span>
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<a on:keydown={copyEmail} on:click={copyEmail} class="logo-item cursor-pointer">
+				<span><Icon src={Envelope} size="20px" /></span>
 				<span>{email}</span>
 			</a>
-			<a href="/elements/logo-clouds" class="logo-item">
-				<span><Icon src={Phone} /></span>
-				<span>+48 884629596</span>
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<a on:keydown={copyEmail} on:click={copyPhone} class="logo-item cursor-pointer">
+				<span><Icon src={Phone} size="20px" /></span>
+				<span>{phone}</span>
 			</a>
+			<p class="w-full text-center text-xs text-opacity-50">Kliknij aby skopiować</p>
 		</div>
-		<p class="w-full text-center text-xs">Kliknij aby skopiować</p>
 	{/if}
 </div>
