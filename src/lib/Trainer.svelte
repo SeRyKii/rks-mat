@@ -138,7 +138,7 @@
 	{:else}
 		<div
 			in:fly={{ x: -2000, duration: 500 }}
-			class="top-0 absolute w-full items-center logo-cloud grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4 gap-0.5"
+			class="top-0 absolute w-full items-center logo-cloud flex flex-col gap-0.5"
 		>
 			<!-- svelte-ignore a11y-missing-attribute -->
 			<a on:keydown={copyEmail} on:click={copyEmail} class="logo-item cursor-pointer">
