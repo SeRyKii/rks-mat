@@ -73,7 +73,7 @@
 </script>
 
 <div
-  class="relative w-full min-h-[100vh] flex items-center dark:bg-surface-900"
+  class="relative w-full min-h-[100vh] flex items-center dark:bg-surface-900 -mt-28"
 >
   <div
     id="bg"
@@ -85,9 +85,7 @@
       <b>Szachy - gimnastyka dla umysłu</b><br />Dołącz do Klubu Szachowego RKS
       "Mat"!
     </span>
-    <a
-      href="mailto:oleksmagacz16@gmail.com"
-      class="btn variant-filled-primary px-5 py-4 text-token"
+    <a href="/contact" class="btn variant-filled-primary px-5 py-4 text-token"
       >Dołącz do klubu!</a
     >
   </div>
@@ -148,36 +146,40 @@
   </div>
 </div>
 
-<div class="w-screen min-h-[50vh] text-center space-y-8">
+<div class=" max-w-[100vw] min-h-[50vh] text-center space-y-8">
   <div class="mt-36 w-full flex flex-col items-center gap-5">
     <span class="text-6xl font-bold text-center">Turnieje</span>
 
     {#each tournaments as tournament}
       <div
-        class="bg-surface-100-800-token flex flex-row items-center p-2 px-6 w-[100vw] sm:w-3/4 h-fit rounded-md shadow-lg gap-2"
+        class="bg-surface-100-800-token flex flex-row items-center p-2 px-6 w-screen sm:w-3/4 h-fit rounded-md shadow-lg gap-2 justify-around"
       >
-        <span class="text-md sm:text-3xl break-words">{tournament.name}</span>
-        <div class="ml-auto flex flex-row gap-8 items-center h-3/4">
-          <!-- Change status depending on startDate and endDate -->
-          <span
-            class="badge {tournament.status == 'planowany'
-              ? 'variant-filled-primary'
-              : tournament.status == 'w trakcie'
-              ? 'variant-filled-secondary'
-              : 'variant-filled-tertiary'}">{tournament.status}</span
-          >
-          <span class="text-token/10 text-sm sm:text-md hidden sm:block"
-            >{tournament.status == "planowany"
-              ? dayjs(tournament.startDate).fromNow(false)
-              : dayjs(tournament.endDate).fromNow(false)}</span
-          >
-          <a
-            href={tournament.link}
-            target="_blank"
-            class="btn variant-ghost-primary h-full">Chessarbiter</a
-          >
-        </div>
+        <span class="text-sm sm:text-3xl whitespace-nowrap"
+          >{tournament.name.length > 15
+            ? tournament.name.slice(0, 15) + "..."
+            : tournament.name}</span
+        >
+        <!-- <div class="ml-auto flex flex-row gap-8 items-center h-3/4">
+          Change status depending on startDate and endDate -->
+        <span
+          class="badge {tournament.status == 'planowany'
+            ? 'variant-filled-primary'
+            : tournament.status == 'w trakcie'
+            ? 'variant-filled-secondary'
+            : 'variant-filled-tertiary'}">{tournament.status}</span
+        >
+        <span class="text-token/10 text-sm sm:text-md hidden sm:block"
+          >{tournament.status == "planowany"
+            ? dayjs(tournament.startDate).fromNow(false)
+            : dayjs(tournament.endDate).fromNow(false)}</span
+        >
+        <a
+          href={tournament.link}
+          target="_blank"
+          class="btn variant-ghost-primary sm:h-full">Chessarbiter</a
+        >
       </div>
+      <!-- </div> -->
     {/each}
   </div>
 </div>
