@@ -4,7 +4,6 @@ import { Collections, type TournamentsResponse } from "$lib/pb_types";
 import type { AchievementsResponse, PostsResponse } from "$lib/pb_types";
 
 export const load = (async ({ locals }) => {
-  console.log(`DEBUG: ${locals.pb}`);
   const posts = await locals.pb
     .collection(Collections.Posts)
     .getList<PostsResponse>(1, 4, {
@@ -12,7 +11,6 @@ export const load = (async ({ locals }) => {
       filter: "type = 0",
       sort: "-created",
     });
-  console.log(`DEBUG after get posts`);
   const userAvatars = new Map();
   for (const post of posts.items) {
     // change type of post.expand to any
