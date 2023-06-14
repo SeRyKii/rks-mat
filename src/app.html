@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark min-h-full scroll-smooth relative overflow-x-hidden">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		%sveltekit.head%
 	</head>
-	<body data-theme="crimson">
-		<div class="h-full overflow-x-hidden relative">%sveltekit.body%</div>
+	<body data-theme="crimson" class="h-screen">
+		<div class="contents">
+		%sveltekit.body%
+		</div>
 	</body>
 </html>

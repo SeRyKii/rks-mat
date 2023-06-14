@@ -60,11 +60,13 @@
 </script>
 
 <div
-  class="{positionClasses} transition-all duration-150
+  class="{positionClasses} transition-all duration-150 top-0 min-h-full
 "
 >
+  <!-- prevent margin collapse -->
+  <div class="w-full h-[0.1px]" />
   <div
-    class="sticky w-full top-0 z-20 transition-all backdrop-opacity-40 duration-150 sm:!translate-y-0 dark:bg-black/40 bg-white/40 {isMenuVisible
+    class="fixed w-full top-0 z-20 transition-all backdrop-opacity-40 duration-150 sm:!translate-y-0 dark:bg-black/40 bg-white/40 {isMenuVisible
       ? ''
       : 'translate-y-[-100%]'}"
   >
@@ -111,7 +113,7 @@
             <span>Posty</span>
           </a>
           <a
-            href="mailto:oleksmagacz16@gmail.com
+            href="/contact
 "
             class="btn variant-filled-primary"
           >
@@ -128,14 +130,11 @@
       </svelte:fragment>
     </AppBar>
   </div>
-  <div
-    class="min-h-[75vh] mb-24
-
-"
-  >
+  <div class="mt-28 mb-4">
     <slot />
   </div>
-  <div class="dark:bg-black/25 bg-black/5 w-full">
+
+  <footer class="dark:bg-black/25 bg-black/5 w-full sticky top-full">
     <div class="flex flex-row items-center gap-2 p-4">
       <img
         src="/logo-medium.webp"
@@ -161,21 +160,18 @@
             ><Icon src={Link} size="20px" /></span
           ><span class="text-xs sm:text-sm">Facebook</span></a
         >
-        <a class="btn" href="mailto:oleksmagacz16@gmail.com"
+        <a class="btn" href="/contact"
           ><span class="scale-50 sm:scale-100 w-3 sm:w-5"
             ><Icon src={Envelope} size="20px" /></span
           >
           <span class="text-xs sm:text-sm">oleksmagacz16@gmail.com </span></a
         >
-        <a class="btn" href="tel:+48537884283"
+        <a class="btn" href="/contact"
           ><span class="scale-50 sm:scale-100 w-3 sm:w-5"
             ><Icon src={Phone} size="20px" /></span
           ><span class="text-xs sm:text-sm">+48 537 884 283</span></a
         >
       </div>
     </div>
-    <hr />
-  </div>
-  <style>
-  </style>
+  </footer>
 </div>

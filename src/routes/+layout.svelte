@@ -20,6 +20,8 @@
 	<meta name="description" content="Klubowa strona klubu RKS 'Mat'" />
 </svelte:head>
 
+<!-- for some reason body goes down with the margin-top of child -->
+
 <Toast />
 <Drawer position="right">
 	<div class="flex flex-col p-5 gap-1">
@@ -41,7 +43,7 @@
 			<span><Icon size="24px" src={Newspaper} /></span>
 			<span>Posty</span>
 		</a>
-		<a href="/mailto:rksmat@gmail.com" class="w-full btn variant-filled-primary">
+		<a href="/contact" class="w-full btn variant-filled-primary">
 			<span><Icon size="24px" src={Phone} /></span>
 			<span>Kontakt</span>
 		</a>
