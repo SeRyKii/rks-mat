@@ -29,7 +29,7 @@
 	>
 	<svelte:fragment slot="sidebarLeft">
 		<AppRail>
-			<AppRailAnchor tag="a" href="/admin/panel/posts">Posts</AppRailAnchor>
+			<AppRailAnchor tag="a" href="/admin/panel/posts">Aktualności</AppRailAnchor>
 			<AppRailAnchor tag="a" href="/admin/panel/achievements">Osiągniecia</AppRailAnchor>
 			<AppRailAnchor tag="a" href="/admin/panel/tournaments">Turnieje</AppRailAnchor>
 			<AppRailAnchor tag="a" href="/admin/panel">Home</AppRailAnchor>

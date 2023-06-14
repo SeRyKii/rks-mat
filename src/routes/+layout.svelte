@@ -39,7 +39,7 @@
 			class="w-full flex flex-row gap-1 items-center justify-center btn variant-ghost"
 		>
 			<span><Icon size="24px" src={Newspaper} /></span>
-			<span>Posty</span>
+			<span>Aktualności</span>
 		</a>
 		<a href="/mailto:rksmat@gmail.com" class="w-full btn variant-filled-primary">
 			<span><Icon size="24px" src={Phone} /></span>
@@ -47,7 +47,7 @@
 		</a>
 
 		<hr class="my-4" />
-		<h1 class="text-xl font-bold text-center">Posty</h1>
+		<h1 class="text-xl font-bold text-center">Aktualności</h1>
 		{#each $posts as post}
 			<a href={`/posts/${post.id}`} class="btn variant-soft-surface">
 				<span>{post.title}</span>
