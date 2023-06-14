@@ -110,7 +110,7 @@
             class="flex flex-row gap-1 items-center justify-center"
           >
             <span><Icon size="24px" src={Newspaper} /></span>
-            <span>Posty</span>
+            <span>Aktualności</span>
           </a>
           <a
             href="/contact

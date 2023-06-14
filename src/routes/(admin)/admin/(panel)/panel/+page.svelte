@@ -56,7 +56,7 @@
 					<li>
 						<a href="/admin/panel/posts">
 							<span class="badge bg-primary-500">-></span>
-							<span class="flex-auto">Posty</span>
+							<span class="flex-auto">Aktualności</span>
 							<span class="font-bold">{data.postsCount.nth}</span>
 						</a>
 					</li>
