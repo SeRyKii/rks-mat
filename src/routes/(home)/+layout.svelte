@@ -134,18 +134,21 @@
           </button>
 
           <div
-            class="p-4 w-fit shadow-xl !flex flex-col gap-1 bg-surface-100-800-token left-2"
+            class="p-4 w-fit shadow-xl gap-1 bg-surface-100-800-token"
             data-popup="popupNews"
           >
-            <a href="/posts" class="btn"
-              ><span><Icon src={PencilSquare} size="18px" /></span><span
-                >Posty</span
-              ></a
-            >
-            <a href="/gallery" class="btn justify-center items-center"
-              ><span><Icon src={Photo} size="18px" /></span><span>Galeria</span
-              ></a
-            >
+            <div class="flex flex-col items-center">
+              <a href="/posts" class="btn"
+                ><span><Icon src={PencilSquare} size="18px" /></span><span
+                  >Posty</span
+                ></a
+              >
+              <a href="/gallery" class="btn justify-center items-center"
+                ><span><Icon src={Photo} size="18px" /></span><span
+                  >Galeria</span
+                ></a
+              >
+            </div>
           </div>
 
           <a

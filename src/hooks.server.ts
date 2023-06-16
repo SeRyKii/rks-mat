@@ -4,10 +4,19 @@ import { env } from '$env/dynamic/private';
 import { Collections, type AnalyticsRecord } from './lib/pb_types';
 
 export const handle = (async ({ event, resolve }) => {
-	console.log(`DEBUG: ${env.SECRET_POCKETBASE_URL}`);
 	event.locals.pb = new PocketBase(env.SECRET_POCKETBASE_URL);
-	console.log(`DEBUG: ${event.locals.pb}`);
 	event.locals.pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
+	event.locals.getFile = (
+		collectionId: string,
+		recordId: string,
+		fileName: string,
+		token?: string,
+		thumb?: string
+	) => {
+		return `${env.SECRET_POCKETBASE_URL}/api/files/${collectionId}/${recordId}/${fileName}?token=${
+			token || ''
+		}${thumb ? `&thumb=${thumb}` : ''}`;
+	};
 	// Uncomment to log analytics
 	// event.locals.pb.collection(Collections.Analytics).create<AnalyticsRecord>({
 	// 	user_agent: event.request.headers.get('user-agent'),
