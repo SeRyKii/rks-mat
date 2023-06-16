@@ -8,6 +8,46 @@
   import type { PageData } from "./$types";
   import { fade, fly } from "svelte/transition";
   import { ProgressRadial } from "@skeletonlabs/skeleton";
+  import { cubicOut } from "svelte/easing";
+
+  interface SlideScaleXYOptions {
+    x?: number;
+    y?: number;
+    scaleFrom?: number;
+    scaleTo?: number;
+    duration?: number;
+    delay?: number;
+    easing?: (t: number) => number;
+  }
+
+  function slideScaleXY(
+    node: HTMLElement,
+    {
+      x = 0,
+      y = 0,
+      scaleFrom = 1,
+      scaleTo = 1,
+      duration = 400,
+      delay = 0,
+      easing = cubicOut,
+    }: SlideScaleXYOptions
+  ) {
+    const deltaX = x * scaleFrom;
+    const deltaY = y * scaleFrom;
+
+    return {
+      duration,
+      delay,
+      easing,
+      css: (t: number, u: number) => {
+        const currentScale = scaleFrom + (scaleTo - scaleFrom) * t;
+        const currentX = x * u + deltaX * (1 - t);
+        const currentY = y * u + deltaY * (1 - t);
+
+        return `transform: translate(${currentX}px, ${currentY}px) scale(${currentScale}); z-index: 1000; position: relative;`;
+      },
+    };
+  }
 
   export let data: PageData;
 
@@ -18,6 +58,9 @@
   let width: number = 0;
   let top: number = 0;
   let left: number = 0;
+  let currentScale: number = 1;
+  let childTop: number = 0;
+  let childLeft: number = 0;
 
   async function fetchData(i: number) {
     try {
@@ -76,7 +119,7 @@
             } else {
               scale = 2;
             }
-
+            currentScale = scale;
             el1.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
           }
         }, 1);
@@ -100,10 +143,14 @@
       {#if selected != i}
         <!-- if i % 3 = 0 in:fly from left =1 fade =2 fly from right -->
         <span
-          in:fly={{
-            x: i % 3 == 0 ? -1000 : i % 3 == 2 ? 1000 : -1000,
-
-            duration: 1000,
+          in:slideScaleXY={{
+            x: childLeft,
+            y: childTop,
+            scaleFrom: currentScale,
+            scaleTo: 1,
+            duration: 400,
+            delay: 0,
+            easing: cubicOut,
           }}
           class="w-full h-full flex flex-col items-start rounded-md overflow-hidden transition-all hover:scale-105 shadow-lg dark:shadow-surface-600 hover:brightness-105 cursor-pointer text-white {data
             .years.items.length > 1
@@ -116,15 +163,11 @@
           <div
             class="w-full h-full flex justify-center items-center backdrop-blur-[1px]"
           >
-            <span class="text-8xl font-bold">{year.year}</span>
+            <span class="text-8xl font-bold block z-10">{year.year}</span>
           </div>
         </span>
       {:else if selected == i}
         <div
-          out:fly={{
-            x: i % 3 == 0 ? -1000 : i % 3 == 2 ? 1000 : -1000,
-            duration: 1000,
-          }}
           class="absolute z-30 transition-all bg-surface-100-800-token rounded-md flex flex-col items-center justify-center"
           id={i + "child"}
           style={`top: ${top}px; left: ${left}px; width: ${width}px; height: ${height}px;`}
@@ -171,8 +214,23 @@
     out:fade
     class="fixed inset-0 bg-black bg-opacity-50 z-10"
     on:click={() => {
+      let el1 = document.getElementById(selected + "child");
+      let el = document.getElementById(selected.toString());
+      if (el1) {
+        // get offsets position relative to the viewport
+        const rect = el1.getBoundingClientRect();
+        let centerX = window.innerWidth / 2;
+        let centerY = window.innerHeight / 2;
+        childLeft =
+          centerX -
+          (rect.left + rect.width / 2) +
+          (centerX - (left + width / 2)) / 2.5;
+        childTop =
+          centerY -
+          (rect.top + rect.height / 2) +
+          (centerY - (top + height / 2)) / 2.5;
+      }
       selected = -1;
-      window.history.pushState({}, "", `/gallery`);
     }}
   />
 {/if}
