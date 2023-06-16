@@ -46,10 +46,11 @@ export type AuthSystemFields<T = never> = {
 
 // Record types for each collection
 
-export type TournamentsByYearRecord<Tyear = unknown> = {
+export type TournamentsByYearRecord<Tphoto = unknown, Tyear = unknown> = {
 	year?: null | Tyear
-	photo?: string
+	photo?: null | Tphoto
 	photoId?: RecordIdString
+	name?: string
 }
 
 export type AchievementsRecord = {
@@ -131,7 +132,7 @@ export type YearsRecord<Tphoto = unknown, Tyear = unknown> = {
 }
 
 // Response types include system fields and match responses from the PocketBase API
-export type TournamentsByYearResponse<Tyear = unknown, Texpand = unknown> = Required<TournamentsByYearRecord<Tyear>> & BaseSystemFields<Texpand>
+export type TournamentsByYearResponse<Tphoto = unknown, Tyear = unknown, Texpand = unknown> = Required<TournamentsByYearRecord<Tphoto, Tyear>> & BaseSystemFields<Texpand>
 export type AchievementsResponse<Texpand = unknown> = Required<AchievementsRecord> & BaseSystemFields<Texpand>
 export type AnalyticsResponse = Required<AnalyticsRecord> & BaseSystemFields
 export type AnalyticsCountResponse = Required<AnalyticsCountRecord> & BaseSystemFields

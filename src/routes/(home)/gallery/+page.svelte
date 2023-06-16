@@ -1,22 +1,42 @@
 <script lang="ts">
   import type {
     TournamentsByYearRecord,
+    TournamentsByYearResponse,
     TournamentsResponse,
   } from "$lib/pb_types";
   import { onDestroy, onMount } from "svelte";
   import type { PageData } from "./$types";
   import { fade, fly } from "svelte/transition";
+  import { ProgressRadial } from "@skeletonlabs/skeleton";
 
   export let data: PageData;
 
   let selected: number = -1;
-  let displayedData: TournamentsByYearRecord[] = [];
+  let displayedData: Promise<TournamentsByYearResponse[]>;
+  let displayedDataSelected: number = -1;
   let height: number = 0;
   let width: number = 0;
   let top: number = 0;
   let left: number = 0;
 
-  function fetchData() {}
+  async function fetchData(i: number) {
+    try {
+      displayedDataSelected = i;
+      let res = await fetch("/gallery/year", {
+        method: "POST",
+        body: JSON.stringify({
+          year: data.years.items[selected].year,
+        }),
+      });
+
+      let json: Promise<TournamentsByYearResponse[]> = await res.json();
+      return json;
+    } catch (e) {
+      console.log(e);
+      displayedDataSelected = -1;
+      return [];
+    }
+  }
 </script>
 
 <div class="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-2 p-2">
@@ -24,6 +44,8 @@
     <div
       on:click={() => {
         if (selected == i) return;
+        selected = i;
+        if (displayedDataSelected != i) displayedData = fetchData(i);
         let el = document.getElementById(i.toString());
         if (el) {
           height = el.clientHeight;
@@ -31,9 +53,8 @@
           top = el.offsetTop;
           left = el.offsetLeft;
         }
-        selected = i;
         // change url to gallery/year.year without reloading the page
-        window.history.pushState({}, "", `/gallery/${year.year}`);
+        //window.history.pushState({}, "", `/gallery/${year.year}`);
 
         setTimeout(() => {
           let el1 = document.getElementById(i + "child");
@@ -68,7 +89,7 @@
             width = el.clientWidth;
           }
           selected = i;
-          window.history.pushState({}, "", `/gallery/${year.year}`);
+          //window.history.pushState({}, "", `/gallery/${year.year}`);
         }
       }}
       id={i.toString(10)}
@@ -84,16 +105,18 @@
 
             duration: 1000,
           }}
-          class="w-full h-full flex flex-col items-start text-white {data.years
-            .items.length > 1
+          class="w-full h-full flex flex-col items-start rounded-md overflow-hidden transition-all hover:scale-105 shadow-lg dark:shadow-surface-600 hover:brightness-105 cursor-pointer text-white {data
+            .years.items.length > 1
             ? data.years.items.length > 2
               ? 'text-2xl'
               : 'text-4xl'
             : 'text-8xl'}"
           style={`background-image: url(${data.photos[i]}); background-size: cover; background-position: center;`}
         >
-          <div class="w-full h-full backdrop-blur-[1px]">
-            {year.year}
+          <div
+            class="w-full h-full flex justify-center items-center backdrop-blur-[1px]"
+          >
+            <span class="text-8xl font-bold">{year.year}</span>
           </div>
         </span>
       {:else if selected == i}
@@ -102,11 +125,38 @@
             x: i % 3 == 0 ? -1000 : i % 3 == 2 ? 1000 : -1000,
             duration: 1000,
           }}
-          class="absolute z-30 transition-all bg-surface-100-800-token rounded-md}"
+          class="absolute z-30 transition-all bg-surface-100-800-token rounded-md flex flex-col items-center justify-center"
           id={i + "child"}
           style={`top: ${top}px; left: ${left}px; width: ${width}px; height: ${height}px;`}
         >
-          test
+          <div
+            class="w-full h-full bg-surface-100-800-token overflow-x-scroll block"
+          >
+            <div
+              class="w-full grid-cols-1 bg-surface-100-800-token sm:grid-cols-2 gap-1 grid overflow-x-scroll h-fit p-2 no-underline"
+            >
+              {#await displayedData}
+                {#each Array(2) as _}
+                  <div
+                    class="placeholder animate-pulse aspect-[20/12] w-full rounded-md overflow-hidden h-full"
+                  />
+                {/each}
+              {:then tournaments}
+                {#each tournaments as tournament}
+                  <a
+                    style="background-image: url({tournament.photo}); background-size: cover; background-position: center; text-decoration: none;"
+                    class="aspect-[20/12] w-full rounded-md overflow-hidden text-center no-underline"
+                    href={`/gallery/${tournament.year}/${tournament.id}`}
+                  >
+                    <span
+                      class="bg-surface-50-900-token text-token text-md sm:text-md md:text-sm lg:text-xl w-full h-fit block no-underline"
+                      >{tournament.name}</span
+                    >
+                  </a>
+                {/each}
+              {/await}
+            </div>
+          </div>
         </div>
       {/if}
     </div>
