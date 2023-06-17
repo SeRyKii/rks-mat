@@ -8,6 +8,7 @@
   import { popup } from "@skeletonlabs/skeleton";
   import type { PopupSettings } from "@skeletonlabs/skeleton";
   import { drawerStore } from "@skeletonlabs/skeleton";
+  import { ChevronRight, ChevronLeft, Icon } from "svelte-hero-icons";
 
   export let data: PageData;
 
@@ -304,10 +305,14 @@
     </div>
     <div class="flex flex-row">
       <button class="btn variant-filled-primary mr-auto" on:click={prevMonth}
-        >Prev</button
+        ><span>
+          <Icon src={ChevronLeft} size="24px" />
+        </span></button
       >
       <button class="btn variant-filled-primary ml-auto" on:click={nextMonth}
-        >Next</button
+        ><span>
+          <Icon src={ChevronRight} size="24px" />
+        </span></button
       >
     </div>
   </div>
