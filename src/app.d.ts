@@ -8,6 +8,13 @@ declare global {
 		interface Locals {
 			pb: PocketBase;
 			user: any | undefined;
+			getFile: (
+				collectionId: string,
+				recordId: string,
+				fileName: string,
+				token?: string,
+				thumb?: string
+			) => string;
 		}
 		// interface PageData {}
 		// interface Error {}

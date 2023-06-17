@@ -25,8 +25,6 @@ export const POST = (async (event) => {
 			await event.locals.pb.collection(Collections.PostTags).delete(tag.id);
 		});
 
-		console.log(body.id, tags);
-
 		for (let i = 0; i < tags.length; i++) {
 			setTimeout(async () => {
 				await event.locals.pb.collection(Collections.PostTags).create<PostTagsRecord>({

@@ -42,7 +42,7 @@
     daysBefore = date.startOf("month").day();
 
     const daysInMonth = date.daysInMonth();
-    console.log(daysInMonth);
+
     for (let i = 0; i < daysInMonth; i++) {
       days.push({
         slots: [null, null, null, null],
@@ -72,7 +72,6 @@
         } else if (days[currentDate.date() - 1].slots[3] === null) {
           slot = 3;
         } else {
-          console.log("no slot available");
           return;
         }
 
