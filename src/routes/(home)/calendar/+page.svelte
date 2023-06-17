@@ -34,7 +34,7 @@
     placement: "bottom",
   };
 
-  function getDaysInMonth(month: number, year: number) {
+  function getDaysInMonth(month: number, year: number, dummy: boolean = false) {
     days = [];
     const date = dayjs().set("month", month).set("year", year);
 
@@ -49,11 +49,60 @@
       });
       // if tournament is between start and end date, push it to the days array
     }
-    fillTournaments();
+    if (!dummy) fillTournaments();
   }
   getDaysInMonth(month, year);
 
   function fillTournaments() {
+    // get dates of all tuesdays and thursdays in current month
+    let tuesdays = [];
+    let thursdays = [];
+    let date = dayjs().set("month", month).set("year", year);
+    for (let i = 0; i < date.daysInMonth(); i++) {
+      date = date.set("date", i + 1);
+      // if date is in polish vacation (from 23.06 to 01.09), skip it
+      if (
+        date.isAfter(dayjs().set("month", 5).set("date", 23)) &&
+        date.isBefore(dayjs().set("month", 8).set("date", 1))
+      )
+        continue;
+
+      if (date.day() === 1) {
+        tuesdays.push(date.date());
+      }
+      if (date.day() === 3) {
+        thursdays.push(date.date());
+      }
+    }
+
+    // add tournaments to data.tournaments.items for each of tuesdays and thursdays in current month
+    tuesdays.forEach((day, i) => {
+      if (i == tuesdays.length - 1) {
+        data.tournaments.items.push({
+          name: "Grand Prix",
+          startDate: dayjs().set("month", month).set("date", day).format(),
+          endDate: dayjs().set("month", month).set("date", day).format(),
+          color: "red",
+        });
+        return;
+      }
+      data.tournaments.items.push({
+        name: "Zajęcia",
+        startDate: dayjs().set("month", month).set("date", day).format(),
+        endDate: dayjs().set("month", month).set("date", day).format(),
+        color: "red",
+      });
+    });
+
+    thursdays.forEach((day, i) => {
+      data.tournaments.items.push({
+        name: "Zajęcia",
+        startDate: dayjs().set("month", month).set("date", day).format(),
+        endDate: dayjs().set("month", month).set("date", day).format(),
+        color: "red",
+      });
+    });
+
     data.tournaments.items.forEach(
       (tournament: TournamentsResponse, z: number) => {
         // fill in the days array with tournaments while using the same slot if possible
@@ -115,7 +164,8 @@
     fetchFromServer();
   }
 
-  function fetchFromServer() {
+  async function fetchFromServer() {
+    getDaysInMonth(month, year, true);
     fetch("/calendar/loadMore", {
       method: "POST",
       headers: {
