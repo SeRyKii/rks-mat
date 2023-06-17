@@ -2,7 +2,7 @@
 	import edjsHTML from 'editorjs-html';
 
 	export let blocks: any;
-	// console.log(JSON.stringify(blocks));
+	//
 	function linkTool(block: any) {
 		return `<a href="${block.data.link}" target="_blank" rel="noopener noreferrer"><div class="p-5 w-full rounded-md bg-white text-black flex flex-col gap-2"><span class="font-bold">${block.data.meta.title}</span><span>${block.data.meta.description}</span><span class="font-sm text-black/50">${block.data.link}</span></div></a>`;
 	}

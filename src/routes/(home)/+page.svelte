@@ -147,7 +147,6 @@
     phone="+48 678 567 568"
     bind:active={active1}
     on:clicked={() => {
-      console.log(active1, active2, active3);
       active2 = false;
       active3 = false;
     }}
@@ -161,7 +160,6 @@
     phone="+48 678 567 568"
     bind:active={active2}
     on:clicked={() => {
-      console.log(active1, active2, active3);
       active1 = false;
       active3 = false;
     }}
@@ -175,7 +173,6 @@
     phone="+48 678 567 568"
     bind:active={active3}
     on:clicked={() => {
-      console.log(active1, active2, active3);
       active2 = false;
       active1 = false;
     }}

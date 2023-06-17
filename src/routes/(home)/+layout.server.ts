@@ -1,7 +1,6 @@
 import type { LayoutServerLoad } from "./$types";
 
 export const load = (async ({ locals }) => {
-  console.log(`DEBUG from layout: ${locals.user}`);
   return {
     user: {
       ...locals.user,

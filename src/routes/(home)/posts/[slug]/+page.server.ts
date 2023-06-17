@@ -27,14 +27,13 @@ export const load = (async ({ locals, params }) => {
       expand.users,
       expand.users?.avatar
     );
-    console.log(post, tags);
+
     return {
       post: structuredClone(post),
       tags: structuredClone(tags),
       userAvatar,
     };
   } catch (err) {
-    console.log(err);
     throw error(404);
   }
 }) satisfies PageServerLoad;

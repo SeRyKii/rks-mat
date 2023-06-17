@@ -26,7 +26,6 @@ export const load = (async ({ locals, params }) => {
 			allTags: structuredClone(allTags)
 		};
 	} catch (err) {
-		console.log(err);
 		throw error(404);
 	}
 }) satisfies PageServerLoad;

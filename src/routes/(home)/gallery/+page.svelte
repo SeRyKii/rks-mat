@@ -51,16 +51,16 @@
 
   export let data: PageData;
 
-  let selected: number = -1;
+  let selected = -1;
   let displayedData: Promise<TournamentsByYearResponse[]>;
-  let displayedDataSelected: number = -1;
-  let height: number = 0;
-  let width: number = 0;
-  let top: number = 0;
-  let left: number = 0;
-  let currentScale: number = 1;
-  let childTop: number = 0;
-  let childLeft: number = 0;
+  let displayedDataSelected = -1;
+  let height = 0;
+  let width = 0;
+  let top = 0;
+  let left = 0;
+  let currentScale = 1;
+  let childTop = 0;
+  let childLeft = 0;
 
   async function fetchData(i: number) {
     try {
@@ -75,7 +75,6 @@
       let json: Promise<TournamentsByYearResponse[]> = await res.json();
       return json;
     } catch (e) {
-      console.log(e);
       displayedDataSelected = -1;
       return [];
     }
@@ -213,6 +212,9 @@
   <div
     out:fade
     class="fixed inset-0 bg-black bg-opacity-50 z-10"
+    on:keydown={() => {
+      return;
+    }}
     on:click={() => {
       let el1 = document.getElementById(selected + "child");
       let el = document.getElementById(selected.toString());

@@ -12,7 +12,6 @@ export const actions = {
 					body.get('password')?.toString() || ''
 				);
 		} catch (err) {
-			console.log(err);
 			throw error(400, 'Invalid email or password');
 		}
 
