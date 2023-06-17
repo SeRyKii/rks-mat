@@ -22,7 +22,7 @@
     offset: 0,
     limit: 10,
     size: data.posts.totalItems,
-    amounts: [5, 10, 20],
+    amounts: [10],
   };
   let source: PostsResponse<{ blocks: any[] }>[] = data.posts.items;
 
@@ -203,6 +203,9 @@
       bind:settings
       on:onAmountChange={onAmountChange}
       on:onPageChange={onPageChange}
+      amountText="Postów na stronę"
+      showFirstLastButtons={true}
+      showPreviousNextButtons={true}
     />
   </div>
 </div>
