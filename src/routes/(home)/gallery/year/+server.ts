@@ -13,7 +13,7 @@ export const POST = (async (event) => {
     .getList<TournamentsByYearResponse>(0, 32, {
       filter: `year   = '${body.year}'`,
     });
-  let photos: TournamentsByYearRecord[] = [];
+  const photos: TournamentsByYearRecord[] = [];
   photo.items.forEach((item) => {
     item.photo = event.locals.getFile(
       "mpzr3s6p7kf0noq",

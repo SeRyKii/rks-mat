@@ -6,7 +6,7 @@ import {
 } from "$lib/pb_types";
 import type { PageServerLoad } from "./$types";
 
-export let load = (async (event) => {
+export const load = (async (event) => {
   const { year, tournament } = event.params;
 
   const photo = await event.locals.pb
@@ -16,7 +16,7 @@ export let load = (async (event) => {
       sort: "+created",
       expand: "tournament",
     });
-  let photos: PhotosResponse<{ tournament: TournamentsResponse }>[] = [];
+  const photos: PhotosResponse<{ tournament: TournamentsResponse }>[] = [];
   photo.items.forEach((item) => {
     item.photo = event.locals.getFile(
       "mpzr3s6p7kf0noq",
