@@ -34,7 +34,7 @@
     placement: "bottom",
   };
 
-  function getDaysInMonth(month: number, year: number, dummy: boolean = false) {
+  function getDaysInMonth(month: number, year: number, dummy = false) {
     days = [];
     const date = dayjs().set("month", month).set("year", year);
 
