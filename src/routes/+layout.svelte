@@ -8,7 +8,7 @@
 	import { Toast } from '@skeletonlabs/skeleton';
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
-	import { CalendarDays, Home, Icon, Newspaper, Phone } from 'svelte-hero-icons';
+	import { CalendarDays, Home, Icon, Newspaper, Phone, Photo, UserGroup } from 'svelte-hero-icons';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 	// import { autoModeWatcher } from '@skeletonlabs/skeleton';
 </script>
@@ -42,6 +42,18 @@
 		>
 			<span><Icon size="24px" src={Newspaper} /></span>
 			<span>Aktualności</span>
+		</a>
+		<a
+			href="/gallery"
+			class="w-full flex flex-row gap-1 items-center justify-center btn variant-ghost"
+			><span><Icon src={Photo} size="24px" /></span><span>Galeria</span></a
+		>
+		<a
+			href="/about"
+			class="w-full flex flex-row gap-1 items-center justify-center btn variant-ghost"
+		>
+			<span><Icon size="24px" src={UserGroup} /></span>
+			<span>O nas</span>
 		</a>
 		<a href="/contact" class="w-full btn variant-filled-primary">
 			<span><Icon size="24px" src={Phone} /></span>

@@ -203,7 +203,7 @@
 </div>
 
 <div class=" max-w-[100vw] min-h-[50vh] text-center space-y-8">
-  <div class="mt-36 w-full flex flex-col items-center gap-5">
+  <div class="mt-36 w-full flex flex-col items-center gap-2">
     <span class="text-6xl font-bold text-center">Turnieje</span>
 
     {#each tournaments as tournament}
@@ -217,23 +217,25 @@
         >
         <!-- <div class="ml-auto flex flex-row gap-8 items-center h-3/4">
           Change status depending on startDate and endDate -->
-        <span
-          class="badge {tournament.status == 'planowany'
-            ? 'variant-filled-primary'
-            : tournament.status == 'w trakcie'
-            ? 'variant-filled-secondary'
-            : 'variant-filled-tertiary'}">{tournament.status}</span
-        >
-        <span class="text-token/10 text-sm sm:text-md hidden sm:block"
-          >{tournament.status == "planowany"
-            ? dayjs(tournament.startDate).fromNow(false)
-            : dayjs(tournament.endDate).fromNow(false)}</span
-        >
-        <a
-          href={tournament.link}
-          target="_blank"
-          class="btn variant-ghost-primary sm:h-full">Chessarbiter</a
-        >
+        <div class="ml-auto flex items-center justify-center gap-2">
+          <span
+            class="badge {tournament.status == 'planowany'
+              ? 'variant-filled-primary'
+              : tournament.status == 'w trakcie'
+              ? 'variant-filled-secondary'
+              : 'variant-filled-tertiary'}">{tournament.status}</span
+          >
+          <span class="text-token/10 text-sm sm:text-md hidden sm:block"
+            >{tournament.status == "planowany"
+              ? dayjs(tournament.startDate).fromNow(false)
+              : dayjs(tournament.endDate).fromNow(false)}</span
+          >
+          <a
+            href={tournament.link}
+            target="_blank"
+            class="btn variant-ghost-primary sm:h-full">Chessarbiter</a
+          >
+        </div>
       </div>
       <!-- </div> -->
     {/each}

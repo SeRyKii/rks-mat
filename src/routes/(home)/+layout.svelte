@@ -18,6 +18,7 @@
     ChevronDown,
     Photo,
     PencilSquare,
+    UserGroup,
   } from "svelte-hero-icons";
   export let data: PageData;
 
@@ -154,6 +155,14 @@
               >
             </div>
           </div>
+
+          <a
+            href="/about"
+            class="flex-row flex gap-1 items-center justify-center"
+          >
+            <span><Icon size="24px" src={UserGroup} /></span>
+            <span>O nas</span>
+          </a>
 
           <a
             href="/contact
