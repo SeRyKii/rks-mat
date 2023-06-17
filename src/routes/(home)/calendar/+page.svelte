@@ -129,7 +129,9 @@
         // update days array
         getDaysInMonth(month, year);
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.log(err);
+      });
   }
   onMount(() => {
     drawerStore.close();
