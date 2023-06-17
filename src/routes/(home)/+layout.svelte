@@ -1,6 +1,7 @@
 <script lang="ts">
   import { AppShell, Avatar, drawerStore } from "@skeletonlabs/skeleton";
   import { AppBar } from "@skeletonlabs/skeleton";
+  import { posts } from "$lib/stores";
   import type { PageData } from "./$types";
   import { onMount } from "svelte";
   import { popup } from "@skeletonlabs/skeleton";
@@ -19,6 +20,9 @@
     PencilSquare,
   } from "svelte-hero-icons";
   export let data: PageData;
+
+  posts.set(data.posts.items);
+
   function getInitials(name: string) {
     const names = name.split(" ");
     let initials = names[0].substring(0, 1).toUpperCase();

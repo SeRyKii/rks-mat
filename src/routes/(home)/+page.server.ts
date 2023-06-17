@@ -11,7 +11,6 @@ export const load = (async ({ locals }) => {
       filter: "type = 0",
       sort: "-created",
     });
-
   const userAvatars = new Map();
   for (const post of posts.items) {
     // change type of post.expand to any

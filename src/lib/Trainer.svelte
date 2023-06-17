@@ -122,14 +122,14 @@
 >
 	{#if !active}
 		<header
-			in:fly={{ x: -2000, duration: 500 }}
+			in:fly={{ y: 2000, duration: 500 }}
 			out:fade
 			class="card-header overflow-hidden aspect-[21/12] -m-4 mb-0"
 		>
 			<img class="w-full" src={image} alt={name} />
 		</header>
 		<hr />
-		<section in:fly={{ x: -2000, duration: 500 }} out:fade class="p-4 flex flex-col">
+		<section in:fly={{ y: 2000, duration: 500 }} out:fade class="p-4 flex flex-col">
 			<span class="text-3xl font-bold whitespace-nowrap">{name}</span>
 			<span class="text-justify">
 				{description}

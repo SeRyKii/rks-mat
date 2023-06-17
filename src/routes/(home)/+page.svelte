@@ -22,7 +22,6 @@
   let active3 = false;
 
   export let data: PageData;
-  posts.set(data.posts.items);
 
   function getInitials(name: string) {
     const names = name.split(" ");
