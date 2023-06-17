@@ -22,7 +22,7 @@ export const POST = (async (event) => {
 	}
 
 	for (const file of body.getAll('filesForDelete')) {
-		let id = await event.locals.pb.collection(Collections.Photos).getList<PostsResponse>(0, 1, {
+		const id = await event.locals.pb.collection(Collections.Photos).getList<PostsResponse>(0, 1, {
 			filter: `photo = '${(file as string).split('?')[0]}'`
 		});
 
