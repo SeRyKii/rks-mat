@@ -35,6 +35,8 @@
     const deltaX = x * scaleFrom;
     const deltaY = y * scaleFrom;
 
+    console.log(closing);
+
     return {
       duration,
       delay,
@@ -44,7 +46,9 @@
         const currentX = x * u + deltaX * (1 - t);
         const currentY = y * u + deltaY * (1 - t);
 
-        return `transform: translate(${currentX}px, ${currentY}px) scale(${currentScale}); z-index: 1000; position: relative;`;
+        return `transform: translate(${currentX}px, ${currentY}px) scale(${currentScale}); z-index: 1000; position: relative; ${
+          closing ? "" : "display: none; opacity: 0;"
+        }`;
       },
     };
   }
@@ -52,6 +56,7 @@
   export let data: PageData;
 
   let selected = -1;
+  let closing = false;
   let displayedData: Promise<TournamentsByYearResponse[]>;
   let displayedDataSelected = -1;
   let height = 0;
@@ -81,13 +86,14 @@
   }
 </script>
 
-<div class="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-2 p-2">
+<div class="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-2 p-2" id="page">
   {#each data.years.items as year, i}
     <div
       on:click={() => {
         if (selected == i) return;
         selected = i;
         if (displayedDataSelected != i) displayedData = fetchData(i);
+        closing = false;
         let el = document.getElementById(i.toString());
         if (el) {
           height = el.clientHeight;
@@ -126,6 +132,7 @@
       on:keydown={(e) => {
         if (e.key == i.toString(10)) {
           let el = document.getElementById(i.toString());
+
           if (el) {
             height = el.clientHeight;
             width = el.clientWidth;
@@ -186,6 +193,17 @@
               {:then tournaments}
                 {#each tournaments as tournament}
                   <a
+                    on:click={() => {
+                      closing = false;
+                      let el = document.getElementById(selected.toString());
+                      if (el) {
+                        el.style.display = "none";
+                      }
+                      let page = document.getElementById("page");
+                      if (page) {
+                        page.style.display = "none";
+                      }
+                    }}
                     style="background-image: url({tournament.photo}); background-size: cover; background-position: center; text-decoration: none;"
                     class="aspect-[20/12] w-full rounded-md overflow-hidden text-center no-underline"
                     href={`/gallery/${tournament.year}/${tournament.id}`}
@@ -218,6 +236,7 @@
     on:click={() => {
       let el1 = document.getElementById(selected + "child");
       let el = document.getElementById(selected.toString());
+      closing = true;
       if (el1) {
         // get offsets position relative to the viewport
         const rect = el1.getBoundingClientRect();

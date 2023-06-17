@@ -137,7 +137,8 @@
 		</section>
 	{:else}
 		<div
-			in:fly={{ x: -2000, duration: 500 }}
+			in:fly={{ y: -2000, duration: 500 }}
+			out:fade
 			class="top-0 absolute w-full items-center logo-cloud flex flex-col gap-0.5"
 		>
 			<!-- svelte-ignore a11y-missing-attribute -->
