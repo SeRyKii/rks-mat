@@ -7,9 +7,6 @@
 	let rotationClass = '';
 	if (rotate) {
 		rotationClass = 'rotate-180';
-		waveColors = waveColors.reverse();
-		waveColors = waveColors.reverse();
-		waveColors = waveColors.reverse();
 	} else {
 		rotationClass = '';
 	}
