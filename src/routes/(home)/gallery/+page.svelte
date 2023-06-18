@@ -12,7 +12,7 @@
   import { drawerStore } from "@skeletonlabs/skeleton";
   onMount(() => {
     drawerStore.close();
-  })
+  });
   interface SlideScaleXYOptions {
     x?: number;
     y?: number;
