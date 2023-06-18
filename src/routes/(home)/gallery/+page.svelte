@@ -9,7 +9,10 @@
   import { fade, fly } from "svelte/transition";
   import { ProgressRadial } from "@skeletonlabs/skeleton";
   import { cubicOut } from "svelte/easing";
-
+  import { drawerStore } from "@skeletonlabs/skeleton";
+  onMount(() => {
+    drawerStore.close();
+  })
   interface SlideScaleXYOptions {
     x?: number;
     y?: number;
