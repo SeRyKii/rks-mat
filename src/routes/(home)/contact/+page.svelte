@@ -1,5 +1,10 @@
 <script>
   import { Icon, Envelope, Phone } from "svelte-hero-icons";
+  import { drawerStore } from "@skeletonlabs/skeleton";
+  import { onMount } from "svelte";
+  onMount(() => {
+    drawerStore.close();
+  });
 </script>
 
 <!-- TODO Add background -->
