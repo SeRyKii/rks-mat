@@ -43,7 +43,7 @@
 			<a
 				href="/posts"
 				id="btn-show-more"
-				class={`btn variant-ghost-secondary absolute z-20 transition-all duration-300 ease-in-out md:opacity-0 scale-100 bottom-20 md:bottom-0`}
+				class={`btn variant-ghost-secondary absolute z-20 transition-all duration-300 ease-in-out md:opacity-0 scale-100 bottom-20 md:bottom-0 hidden sm:block`}
 				>Pokaż więcej</a
 			>
 			<div class="flex flex-col w-full items-center lg:items-end gap-5">
