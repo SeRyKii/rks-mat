@@ -216,7 +216,7 @@
             isWrapped={achievements.post != ""}
           >
             <div
-              class="relative shadow-md rounded-sm overflow-hidden bg-surface-100 dark:bg-surface-800 p-3 sm:px-24 h-fit after:absolute after:h-[200%] after:w-4 after:right-5 after:top-[-50%] after:bg-[var(--color)] after:-rotate-45 !no-underline !text-token flex flex-row items-center justify-center"
+              class="relative shadow-md rounded-sm overflow-hidden bg-surface-200 dark:bg-surface-900 p-3 sm:px-24 h-fit after:absolute after:h-[200%] after:w-4 after:right-5 after:top-[-50%] after:bg-[var(--color)] after:-rotate-45 !no-underline !text-token flex flex-row items-center justify-center"
               style={`--color: ${achievements.color}`}
             >
               <span class="text-2xl">{achievements.emoji}</span
@@ -246,7 +246,7 @@
 
     {#each tournaments as tournament}
       <div
-        class="bg-surface-100-800-token flex flex-row items-center p-2 px-6 w-screen sm:w-3/4 h-fit rounded-md shadow-lg gap-2 justify-around"
+        class="bg-surface-50-900-token flex flex-row items-center p-2 px-6 w-screen sm:w-3/4 h-fit rounded-md shadow-lg gap-2 justify-around"
       >
         <span class="text-sm sm:text-3xl whitespace-nowrap"
           >{tournament.name.length > 15
