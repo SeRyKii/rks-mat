@@ -182,11 +182,11 @@
       </svelte:fragment>
     </AppBar>
   </div>
-  <div class="mt-28 mb-4">
+  <div class="mt-28">
     <slot />
   </div>
 
-  <footer class="dark:bg-black/25 bg-black/5 w-full sticky top-full">
+  <footer class="dark:bg-surface-900 bg-surface-200 w-full sticky top-full">
     <div class="flex flex-row items-center gap-2 p-4">
       <img
         src="/logo-medium.webp"
