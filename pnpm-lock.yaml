@@ -23,6 +23,9 @@ dependencies:
   pocketbase:
     specifier: ^0.12.1
     version: 0.12.1
+  svelte-inview:
+    specifier: ^4.0.0
+    version: 4.0.0(svelte@3.59.1)
   svelte-markdown:
     specifier: ^0.2.3
     version: 0.2.3(svelte@3.59.1)
@@ -3181,6 +3184,14 @@ packages:
     dependencies:
       svelte: 3.59.1
     dev: true
+
+  /svelte-inview@4.0.0(svelte@3.59.1):
+    resolution: {integrity: sha512-2lvfkJRkmHt19RvDe5MrIK/pFiPJhyXbKL6JrEyRNC73EYTmFSMBc7481UIw01s5+/+uRQXRPvrtC0zA45HLaA==}
+    peerDependencies:
+      svelte: ^3.0.0
+    dependencies:
+      svelte: 3.59.1
+    dev: false
 
   /svelte-markdown@0.2.3(svelte@3.59.1):
     resolution: {integrity: sha512-2h680NzTXnAD0CXhxe3GeHl6W+ayG4iKQRl+BIDRw+R0mUE0OiNxP1Vt8Rn+aWevB/LBiBIPCAwvL+0BkG057A==}
