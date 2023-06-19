@@ -29,7 +29,7 @@
 		<span class="text-4xl sm:text-6xl font-bold text-center">Aktualności</span>
 	</div>
 	<div
-		class="relative after:absolute after:w-full after:h-96 after:z-10 after:from-transparent dark:after:to-surface-800 after:to-surface-100 after:bg-gradient-to-b after:bottom-0 after:left-0 after:pointer-events-none"
+		class="relative after:absolute after:sm:hidden after:block after:w-full after:h-96 after:z-10 after:from-transparent dark:after:to-surface-800 after:to-surface-100 after:bg-gradient-to-b after:bottom-0 after:left-0 after:pointer-events-none"
 	>
 		<div
 			class="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-5 overflow-hidden h-[60vh]"

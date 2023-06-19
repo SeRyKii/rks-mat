@@ -1,6 +1,6 @@
 <script lang="ts">
   import Trainer from "$lib/Trainer.svelte";
-
+  import { inview } from "svelte-inview";
   import { Avatar } from "@skeletonlabs/skeleton";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
@@ -13,6 +13,7 @@
   import "dayjs/locale/pl";
   import relativeTime from "dayjs/plugin/relativeTime";
   import WaveBorder from "$lib/WaveBorder.svelte";
+  import EmojiAnimation from "$lib/EmojiAnimation.svelte";
 
   dayjs.locale("pl");
   dayjs.extend(relativeTime);
@@ -35,22 +36,9 @@
 
   onMount(() => {
     drawerStore.close();
-
-    // paralax scrolling effect with scroling event
-    // change --pos variable of bg element
-
-    const bg = document.getElementById("bg");
-    const pos = document.documentElement.style;
-    pos.setProperty("--pos", `-${window.scrollY / 3}px`);
-    const scroll = () => {
-      pos.setProperty("--pos", `-${window.scrollY / 3}px`);
-    };
-    // request animation frame to throttle scroll event make it do it on scroll
-    const raf = requestAnimationFrame;
-    window.addEventListener("scroll", () => {
-      raf(scroll);
-    });
   });
+
+  let y = 0;
 
   // Add status field to each tournament with either "planowany", "w trakie", "zakońcony"
   // based on the startDate and endDate of the tournament
@@ -101,13 +89,16 @@
   }}
 />
 
+<svelte:window bind:scrollY={y} />
+
 <div
   class="relative w-full min-h-[100vh] flex items-center dark:bg-primary-900 bg-primary-900 -mt-28"
 >
   <div
     id="bg"
     class="absolute w-screen h-[100vh] dark:brightness-75"
-    style="background-image: url('bg.webp'); clip-path: ellipse(50% 100% at 0% 20%); background-repeat: no-repeat; background-attachment: fixed; background-position: 50% calc(50% + var(--pos));"
+    style="background-image: url('bg.webp'); clip-path: ellipse(50% 100% at 0% 20%); background-repeat: no-repeat; background-attachment: fixed; background-position: 50% calc(50% + {-y /
+      3}px);"
   />
   <div class="flex flex-col ml-6 lg:ml-16 z-10 items-center gap-5">
     <span
@@ -133,8 +124,9 @@
   waveColors={["fill-primary-700", "fill-primary-800", "fill-primary-900"]}
 />
 
-<BlogPosts {data} />
-
+<EmojiAnimation emojis={["📰", "📣", "📝", "📩", "📬", "📫", "📭"]}>
+  <BlogPosts {data} />
+</EmojiAnimation>
 <div class="mt-24" />
 
 <WaveBorder
@@ -204,30 +196,36 @@
     "dark:fill-secondary-900 fill-secondary-400",
   ]}
 />
-
-<div class="w-screen min-h-[50vh] text-center space-y-8">
-  <div class="mt-36 w-full flex flex-col items-center gap-5">
-    <span class="text-4xl sm:text-6xl font-bold text-center">Osiągnięcia</span>
-    <div>
-      <ul class="flex flex-col gap-2">
-        {#each data.achievements.items as achievements}
-          <ConditionalLink
-            href={`/blog/${achievements.post}`}
-            isWrapped={achievements.post != ""}
-          >
-            <div
-              class="relative shadow-md rounded-sm overflow-hidden bg-surface-200 dark:bg-surface-900 p-3 sm:px-24 h-fit after:absolute after:h-[200%] after:w-4 after:right-5 after:top-[-50%] after:bg-[var(--color)] after:-rotate-45 !no-underline !text-token flex flex-row items-center justify-center"
-              style={`--color: ${achievements.color}`}
+<EmojiAnimation
+  emojis={["🏆", "🎖️", "🥇", "🎗️", "🌟"]}
+  resizeYMultipler={0.8}
+  classes="-z-20"
+>
+  <div class="w-screen min-h-[50vh] text-center space-y-8">
+    <div class="mt-36 w-full flex flex-col items-center gap-5">
+      <span class="text-4xl sm:text-6xl font-bold text-center">Osiągnięcia</span
+      >
+      <div>
+        <ul class="flex flex-col gap-2">
+          {#each data.achievements.items as achievements}
+            <ConditionalLink
+              href={`/blog/${achievements.post}`}
+              isWrapped={achievements.post != ""}
             >
-              <span class="text-2xl">{achievements.emoji}</span
-              >{achievements.description}
-            </div>
-          </ConditionalLink>
-        {/each}
-      </ul>
+              <div
+                class="relative shadow-md rounded-sm overflow-hidden bg-surface-200 dark:bg-surface-900 p-3 sm:px-24 h-fit after:absolute after:h-[200%] after:w-4 after:right-5 after:top-[-50%] after:bg-[var(--color)] after:-rotate-45 !no-underline !text-token flex flex-row items-center justify-center"
+                style={`--color: ${achievements.color}`}
+              >
+                <span class="text-2xl">{achievements.emoji}</span
+                >{achievements.description}
+              </div>
+            </ConditionalLink>
+          {/each}
+        </ul>
+      </div>
     </div>
   </div>
-</div>
+</EmojiAnimation>
 
 <div class="mt-36" />
 
@@ -238,47 +236,53 @@
     "dark:fill-secondary-900 fill-secondary-400",
   ]}
 />
-<div
-  class=" max-w-[100vw] min-h-[50vh] text-center space-y-8 bg-secondary-400 dark:bg-secondary-900 py-4"
+<EmojiAnimation
+  emojis={["🏆", "🎮", "🏅", "🎌", "🥊"]}
+  resizeXMultiplier={1.2}
+  classes="z-20"
 >
-  <div class="mb-24 w-full flex flex-col items-center gap-2">
-    <span class="text-6xl font-bold text-center">Turnieje</span>
+  <div
+    class="-z-30 relative block max-w-[100vw] min-h-[50vh] text-center space-y-8 bg-secondary-400 dark:bg-secondary-900 py-4"
+  >
+    <div class="mb-24 w-full flex flex-col items-center gap-2">
+      <span class="text-6xl font-bold text-center">Turnieje</span>
 
-    {#each tournaments as tournament}
-      <div
-        class="bg-surface-50-900-token flex flex-row items-center p-2 px-6 w-screen sm:w-3/4 h-fit rounded-md shadow-lg gap-2 justify-around"
-      >
-        <span class="text-sm sm:text-3xl whitespace-nowrap"
-          >{tournament.name.length > 15
-            ? tournament.name.slice(0, 15) + "..."
-            : tournament.name}</span
+      {#each tournaments as tournament}
+        <div
+          class="bg-surface-50-900-token flex flex-row items-center p-2 px-6 w-screen sm:w-3/4 h-fit rounded-md shadow-lg gap-2 justify-around"
         >
-        <!-- <div class="ml-auto flex flex-row gap-8 items-center h-3/4">
+          <span class="text-sm sm:text-3xl whitespace-nowrap"
+            >{tournament.name.length > 15
+              ? tournament.name.slice(0, 15) + "..."
+              : tournament.name}</span
+          >
+          <!-- <div class="ml-auto flex flex-row gap-8 items-center h-3/4">
           Change status depending on startDate and endDate -->
-        <div class="ml-auto flex items-center justify-center gap-2">
-          <span
-            class="badge {tournament.status == 'planowany'
-              ? 'variant-filled-primary'
-              : tournament.status == 'w trakcie'
-              ? 'variant-filled-secondary'
-              : 'variant-filled-tertiary'}">{tournament.status}</span
-          >
-          <span class="text-token/10 text-sm sm:text-md hidden sm:block"
-            >{tournament.status == "planowany"
-              ? dayjs(tournament.startDate).fromNow(false)
-              : dayjs(tournament.endDate).fromNow(false)}</span
-          >
-          <a
-            href={tournament.link}
-            target="_blank"
-            class="btn variant-ghost-primary sm:h-full">Chessarbiter</a
-          >
+          <div class="ml-auto flex items-center justify-center gap-2">
+            <span
+              class="badge {tournament.status == 'planowany'
+                ? 'variant-filled-primary'
+                : tournament.status == 'w trakcie'
+                ? 'variant-filled-secondary'
+                : 'variant-filled-tertiary'}">{tournament.status}</span
+            >
+            <span class="text-token/10 text-sm sm:text-md hidden sm:block"
+              >{tournament.status == "planowany"
+                ? dayjs(tournament.startDate).fromNow(false)
+                : dayjs(tournament.endDate).fromNow(false)}</span
+            >
+            <a
+              href={tournament.link}
+              target="_blank"
+              class="btn variant-ghost-primary sm:h-full">Chessarbiter</a
+            >
+          </div>
         </div>
-      </div>
-      <!-- </div> -->
-    {/each}
+        <!-- </div> -->
+      {/each}
+    </div>
   </div>
-</div>
+</EmojiAnimation>
 
 <div
   class="absolute -bottom-48 -z-10 w-full h-48 bg-secondary-400 dark:bg-secondary-900"
