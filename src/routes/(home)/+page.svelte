@@ -3,7 +3,7 @@
   import { inview } from "svelte-inview";
   import { gsap } from "gsap";
   import { Avatar } from "@skeletonlabs/skeleton";
-  import { debounce } from "lodash";
+  import lodash from "lodash";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
   import { posts } from "$lib/stores";
@@ -16,7 +16,7 @@
   import relativeTime from "dayjs/plugin/relativeTime";
   import WaveBorder from "$lib/WaveBorder.svelte";
   import EmojiAnimation from "$lib/EmojiAnimation.svelte";
-
+  const { debounce } = lodash;
   dayjs.locale("pl");
   dayjs.extend(relativeTime);
 
