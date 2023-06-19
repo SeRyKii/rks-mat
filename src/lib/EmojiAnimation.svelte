@@ -2,11 +2,13 @@
 	import { inview } from 'svelte-inview';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
-	import { debounce } from 'lodash';
+	import lodash from 'lodash';
 	export let emojis: string[] = [];
 	export let classes = '';
 	export let resizeXMultiplier = 1;
 	export let resizeYMultipler = 1;
+
+	const { debounce } = lodash;
 
 	function handleResize() {
 		const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
