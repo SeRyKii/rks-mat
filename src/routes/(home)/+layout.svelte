@@ -20,6 +20,7 @@
     PencilSquare,
     UserGroup,
   } from "svelte-hero-icons";
+  import WaveBorder from "$lib/WaveBorder.svelte";
   export let data: PageData;
 
   posts.set(data.posts.items);
@@ -139,7 +140,7 @@
           </button>
 
           <div
-            class="p-4 w-fit shadow-xl gap-1 bg-surface-100-800-token"
+            class="p-4 w-fit shadow-xl gap-1 bg-surface-200 dark:bg-surface-900"
             data-popup="popupNews"
           >
             <div class="flex flex-col items-center">
@@ -182,9 +183,18 @@
       </svelte:fragment>
     </AppBar>
   </div>
-  <div class="mt-28">
+  <div class="mt-28 relative">
     <slot />
   </div>
+
+  <WaveBorder
+    classes="w-full h-full bg-transparent z-10 relative -bottom-[0.75rem]"
+    waveColors={[
+      "dark:fill-surface-700 fill-surface-50",
+      "dark:fill-surface-800 fill-surface-100",
+      "dark:fill-surface-900 fill-surface-200",
+    ]}
+  />
 
   <footer class="dark:bg-surface-900 bg-surface-200 w-full sticky top-full">
     <div class="flex flex-row items-center gap-2 p-4">

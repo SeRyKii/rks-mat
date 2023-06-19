@@ -74,7 +74,7 @@
 
 <div class="w-full flex justify-center">
 	<div
-		class=" bg-surface-100 dark:bg-surface-700 p-12 w-[836px] flex flex-col gap-5 items-center justify-center"
+		class=" bg-surface-200 dark:bg-surface-700 p-12 w-[836px] flex flex-col gap-5 items-center justify-center"
 	>
 		<div class="">
 			<label class="label">

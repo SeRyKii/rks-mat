@@ -165,7 +165,7 @@
       {#each paginatedSource as post}
         <a
           href="/posts/{post.id}"
-          class="relative overflow-hidden w-full p-2 py-5 bg-surface-100-800-token flex flex-row items-cente text-token"
+          class="relative overflow-hidden w-full p-2 py-5 bg-surface-200 dark:bg-surface-900 flex flex-row items-cente text-token"
           style="text-decoration: none !important;"
         >
           <!-- {#if post.content?.blocks?.filter((v) => v.type == "image")[0]?.data.file.url != undefined}

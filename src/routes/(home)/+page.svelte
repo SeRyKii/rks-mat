@@ -280,11 +280,6 @@
   </div>
 </div>
 
-<WaveBorder
-  classes="w-full h-full bg-secondary-400 dark:bg-secondary-900"
-  waveColors={[
-    "dark:fill-surface-700 fill-surface-50",
-    "dark:fill-surface-800 fill-surface-100",
-    "dark:fill-surface-900 fill-surface-200",
-  ]}
+<div
+  class="absolute -bottom-48 -z-10 w-full h-48 bg-secondary-400 dark:bg-secondary-900"
 />
