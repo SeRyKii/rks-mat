@@ -93,8 +93,10 @@
 	}
 
 	function handleScroll() {
-		if (!inView || !boundingRect) return;
-		const deltaY = Math.abs(y - initialY);
+		requestAnimationFrame(()  => {
+			if (!inView || !boundingRect) return;
+
+			const deltaY = Math.abs(y - initialY);
 		// scroll progress goes from 0 to 1 depending on how far the user has scrolled and the viewport height
 		const scrollProgress = deltaY / boundingRect.height;
 
@@ -133,12 +135,12 @@
 
 			gsap.set(elem, props);
 		}
+	})
 	}
 
-	$: y, handleScroll();
 </script>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window bind:scrollY={y} on:scroll={handleScroll} />
 
 <div
 	use:inview={{ rootMargin: '0px', threshold: 0 }}
