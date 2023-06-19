@@ -93,52 +93,53 @@
 	}
 
 	function handleScroll() {
-		if (!inView || !boundingRect) return;
-		const deltaY = Math.abs(y - initialY);
-		// scroll progress goes from 0 to 1 depending on how far the user has scrolled and the viewport height
-		const scrollProgress = deltaY / boundingRect.height;
+		requestAnimationFrame(() => {
+			if (!inView || !boundingRect) return;
 
-		// progress goes from 0 to 1 fast in 0 to 0.4 scroll progress, stays at 1 from 0.4 to 0.6 scroll progress, and goes from 1 to 0 in 0.6 to 1 scroll progress
-		let progress = 0;
-		if (scrollProgress < 0.4) {
-			progress = scrollProgress / 0.4;
-		} else if (scrollProgress < 2) {
-			progress = 1;
-		} else {
-			progress = 1 - (scrollProgress - 2) / 0.4;
-		}
+			const deltaY = Math.abs(y - initialY);
+			// scroll progress goes from 0 to 1 depending on how far the user has scrolled and the viewport height
+			const scrollProgress = deltaY / boundingRect.height;
 
-		inViewRatio = progress;
+			// progress goes from 0 to 1 fast in 0 to 0.4 scroll progress, stays at 1 from 0.4 to 0.6 scroll progress, and goes from 1 to 0 in 0.6 to 1 scroll progress
+			let progress = 0;
+			if (scrollProgress < 0.4) {
+				progress = scrollProgress / 0.4;
+			} else if (scrollProgress < 2) {
+				progress = 1;
+			} else {
+				progress = 1 - (scrollProgress - 2) / 0.4;
+			}
 
-		let wrapperRotation = Math.PI * scrollProgress * CONFIG.rotationMultiplier;
+			inViewRatio = progress;
 
-		gsap.set(emojiWrapper, { rotation: wrapperRotation, ease: 'power1.inOut' });
+			let wrapperRotation = Math.PI * scrollProgress * CONFIG.rotationMultiplier;
 
-		for (let i = 0; i < emojiElements.length; i++) {
-			const elem = emojiElements[i].elem;
-			if (!elem) continue;
+			gsap.set(emojiWrapper, { rotation: wrapperRotation, ease: 'power1.inOut' });
 
-			const rot = emojiElements[i].rot;
-			const dist = emojiElements[i].dist;
+			for (let i = 0; i < emojiElements.length; i++) {
+				const elem = emojiElements[i].elem;
+				if (!elem) continue;
 
-			const x = Math.cos(rot) * dist * progress * CONFIG.xMultiplier * 100;
-			const y = Math.sin(rot) * dist * progress * CONFIG.yMultiplier * 100;
-			const scale =
-				CONFIG.maxScale - progress * (CONFIG.maxScale - CONFIG.minScale) * CONFIG.scaleMultiplier;
-			const opacity =
-				CONFIG.minOpacity +
-				progress * (CONFIG.maxOpacity - CONFIG.minOpacity) * CONFIG.opacityMultiplier;
+				const rot = emojiElements[i].rot;
+				const dist = emojiElements[i].dist;
 
-			let props = { x, y, scale, opacity, rotation: (rot * 180) / Math.PI, ease: 'power1.inOut' };
+				const x = Math.cos(rot) * dist * progress * CONFIG.xMultiplier * 100;
+				const y = Math.sin(rot) * dist * progress * CONFIG.yMultiplier * 100;
+				const scale =
+					CONFIG.maxScale - progress * (CONFIG.maxScale - CONFIG.minScale) * CONFIG.scaleMultiplier;
+				const opacity =
+					CONFIG.minOpacity +
+					progress * (CONFIG.maxOpacity - CONFIG.minOpacity) * CONFIG.opacityMultiplier;
 
-			gsap.set(elem, props);
-		}
+				let props = { x, y, scale, opacity, rotation: (rot * 180) / Math.PI, ease: 'power1.inOut' };
+
+				gsap.set(elem, props);
+			}
+		});
 	}
-
-	$: y, handleScroll();
 </script>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window bind:scrollY={y} on:scroll={handleScroll} />
 
 <div
 	use:inview={{ rootMargin: '0px', threshold: 0 }}

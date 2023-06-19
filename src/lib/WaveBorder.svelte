@@ -17,23 +17,23 @@
 
 	$: if (wave) {
 		wavify(wave, {
-			height: 20,
+			height: 10,
 			bones: 3,
-			amplitude: 30,
+			amplitude: 50,
 			color: 'transparent',
 			speed: 0.35
 		});
 		wavify(wave1, {
-			height: 80,
+			height: 40,
 			bones: 4,
 			amplitude: 20,
 			color: 'transparent',
 			speed: 0.3
 		});
 		wavify(wave2, {
-			height: 100,
-			bones: 3,
-			amplitude: 20,
+			height: 50,
+			bones: 4,
+			amplitude: 30,
 			color: 'transparent',
 			speed: 0.25
 		});
