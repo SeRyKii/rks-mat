@@ -14,7 +14,7 @@
 </script>
 
 <div
-  class="mt-8 flex flex-col items-center w-full px-0 sm:px-12 lg:px-72 gap-2"
+  class="mt-8 flex flex-col items-center w-full px-0 sm:px-12 lg:px-72 gap-2 mb-36"
 >
   <div
     class="bg-surface-200-700-token p-4 w-full flex flex-col gap-2 shadow-lg rounded -md overflow-hidden"
@@ -36,7 +36,7 @@
       <PostContentViewer blocks={data.post.content} />
     </section>
     <footer
-      class="w-auto text-token text-left p-4 bg-surface-100-800-token flex flex-row items-center gap-4 -mx-4 -mb-4"
+      class="w-auto text-token text-left p-4 bg-surface-200 dark:bg-surface-900 flex flex-row items-center gap-4 -mx-4 -mb-4"
     >
       <Avatar width="w-12" src={data.userAvatar} />
       <span class="text-xl">{data.post?.expand?.users.username}</span>

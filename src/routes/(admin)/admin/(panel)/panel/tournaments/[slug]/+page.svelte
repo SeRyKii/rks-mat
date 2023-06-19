@@ -84,7 +84,7 @@
 </script>
 
 <div class="w-full flex justify-center">
-	<div class="w-fit bg-surface-100 dark:bg-surface-700 p-12 flex flex-col gap-5 items-center">
+	<div class="w-fit bg-surface-200 dark:bg-surface-700 p-12 flex flex-col gap-5 items-center">
 		<label class="label">
 			<span>Nazwa:</span>
 			<input type="text" class="input" bind:value={data.tournaments.name} />

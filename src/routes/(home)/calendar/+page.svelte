@@ -195,11 +195,11 @@
     <div class="flex flex-row items-center justify-center gap-5">
       <div
         use:popup={monthPopup}
-        class="w-8 h-8 rounded-full bg-surface-100-800-token btn-icon variant-ringed-primary"
+        class="w-8 h-8 rounded-full bg-surface-200-800-token btn-icon variant-ringed-primary"
       >
         <span>
           <svg
-            class="w-4 h-4 text-on-surface-100-800-token"
+            class="w-4 h-4 text-on-surface-200-800-token"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -219,11 +219,11 @@
       </div>
       <button
         use:popup={yearPopup}
-        class="w-8 h-8 rounded-full bg-surface-100-800-token btn-icon variant-ringed-primary"
+        class="w-8 h-8 rounded-full bg-surface-200-800-token btn-icon variant-ringed-primary"
       >
         <span>
           <svg
-            class="w-4 h-4 text-on-surface-100-800-token flex"
+            class="w-4 h-4 text-on-surface-200-800-token flex"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"

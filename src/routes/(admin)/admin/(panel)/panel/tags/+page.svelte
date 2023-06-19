@@ -54,10 +54,10 @@
 
 <div class="w-full flex items-center justify-center">
 	<div
-		class="lg:w-3/4 p-5 bg-surface-100 dark:bg-surface-800 rounded-md flex flex-col items-center"
+		class="lg:w-3/4 p-5 bg-surface-200 dark:bg-surface-900 rounded-md flex flex-col items-center"
 	>
 		<h1>Tagi</h1>
-		<div class="p-5 bg-surface-100 dark:bg-surface-800 rounded-md w-full">
+		<div class="p-5 bg-surface-200 dark:bg-surface-900 rounded-md w-full">
 			<nav class="list-nav">
 				<!-- (optionally you can provde a label here) -->
 				<ul>

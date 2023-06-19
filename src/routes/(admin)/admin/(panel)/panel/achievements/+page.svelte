@@ -38,10 +38,10 @@
 
 <div class="w-full flex items-center justify-center">
 	<div
-		class="bg-surface-100 dark:bg-surface-800 items-center gap-5 flex flex-col w-fit p-5 rounded-md"
+		class="bg-surface-200 dark:bg-surface-900 items-center gap-5 flex flex-col w-fit p-5 rounded-md"
 	>
 		<h1>Typy osiągnieć</h1>
-		<div class="p-5 bg-surface-100 dark:bg-surface-800 rounded-md w-full">
+		<div class="p-5 bg-surface-200 dark:bg-surface-900 rounded-md w-full">
 			<nav class="list-nav">
 				<!-- (optionally you can provde a label here) -->
 				<ul>

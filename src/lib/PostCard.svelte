@@ -50,7 +50,7 @@
 	</div>
 	<hr class="opacity-50 bg-white" />
 	<footer
-		class="p-4 flex justify-start items-center space-x-4 dark:bg-surface-800 bg-surface-100 text-black dark:text-white"
+		class="p-4 flex justify-start items-center space-x-4 dark:bg-surface-900 bg-surface-200 text-black dark:text-white"
 	>
 		<Avatar
 			src={avatars.get(post.expand?.users.id || '') + '?thumb=260x260'}
