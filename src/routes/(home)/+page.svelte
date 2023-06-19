@@ -1,7 +1,7 @@
 <script lang="ts">
   import Trainer from "$lib/Trainer.svelte";
   import { inview } from "svelte-inview";
-  import {gsap} from "gsap";
+  import { gsap } from "gsap";
   import { Avatar } from "@skeletonlabs/skeleton";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
@@ -64,13 +64,15 @@
   });
 
   let bg: HTMLDivElement;
-  let pos = 0
+  let pos = 0;
 
   function handleScroll() {
     requestAnimationFrame(() => {
-      gsap.set(bg, { backgroundPosition: `50% calc(50% + ${-y/3}px)`, ease: "Power3.InOut" });
-    })
-  
+      gsap.set(bg, {
+        backgroundPosition: `50% calc(50% + ${-y / 3}px)`,
+        ease: "Power3.InOut",
+      });
+    });
   }
 </script>
 
