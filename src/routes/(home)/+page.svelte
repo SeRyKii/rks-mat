@@ -3,6 +3,7 @@
   import { inview } from "svelte-inview";
   import { gsap } from "gsap";
   import { Avatar } from "@skeletonlabs/skeleton";
+  import { debounce } from "lodash";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
   import { posts } from "$lib/stores";
@@ -74,6 +75,7 @@
       });
     });
   }
+  const handleScrollDebounced = debounce(handleScroll, 17);
 </script>
 
 <div
@@ -102,7 +104,7 @@
   }}
 />
 
-<svelte:window bind:scrollY={y} on:scroll={handleScroll} />
+<svelte:window bind:scrollY={y} on:scroll={handleScrollDebounced} />
 
 <div
   class="relative w-full min-h-[100vh] flex items-center dark:bg-primary-900 bg-primary-900 -mt-28"
@@ -110,7 +112,7 @@
   <div
     id="bg"
     class="absolute w-screen h-[100vh] dark:brightness-75"
-    style="background-image: url('bg.webp'); clip-path: ellipse(50% 100% at 0% 20%); background-repeat: no-repeat; background-attachment: fixed;"
+    style="background-image: url('bg.webp'); clip-path: ellipse(50% 100% at 0% 20%); background-repeat: no-repeat; background-attachment: fixed; transform: translateZ(0);"
     bind:this={bg}
   />
   <div class="flex flex-col ml-6 lg:ml-16 z-10 items-center gap-5">

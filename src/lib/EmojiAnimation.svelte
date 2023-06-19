@@ -2,6 +2,7 @@
 	import { inview } from 'svelte-inview';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
+	import { debounce } from 'lodash';
 	export let emojis: string[] = [];
 	export let classes = '';
 	export let resizeXMultiplier = 1;
@@ -56,7 +57,7 @@
 		maxScale: 2,
 		minOpacity: 0,
 		maxOpacity: 1,
-		rotationMultiplier: 2
+		rotationMultiplier: 0.1
 	};
 
 	let y = 0;
@@ -114,7 +115,10 @@
 
 			let wrapperRotation = Math.PI * scrollProgress * CONFIG.rotationMultiplier;
 
-			gsap.set(emojiWrapper, { rotation: wrapperRotation, ease: 'power1.inOut' });
+			gsap.set(emojiWrapper, {
+				'-webkit-transform': `rotate(${wrapperRotation}rad)`,
+				ease: 'power1.inOut'
+			});
 
 			for (let i = 0; i < emojiElements.length; i++) {
 				const elem = emojiElements[i].elem;
@@ -131,15 +135,20 @@
 					CONFIG.minOpacity +
 					progress * (CONFIG.maxOpacity - CONFIG.minOpacity) * CONFIG.opacityMultiplier;
 
-				let props = { x, y, scale, opacity, rotation: (rot * 180) / Math.PI, ease: 'power1.inOut' };
+				let props = {
+					'-webkit-transform': `translate3d(${x}px, ${y}px, 0) scale(${scale}) rotate(${rot}rad)`,
+					opacity,
+					ease: 'power1.inOut'
+				};
 
 				gsap.set(elem, props);
 			}
 		});
 	}
+	const debouncedHandleScroll = debounce(handleScroll, 5);
 </script>
 
-<svelte:window bind:scrollY={y} on:scroll={handleScroll} />
+<svelte:window bind:scrollY={y} on:scroll={debouncedHandleScroll} />
 
 <div
 	use:inview={{ rootMargin: '0px', threshold: 0 }}
@@ -148,7 +157,7 @@
 >
 	<slot />
 	<div
-		class="absolute w-fit h-fit -z-20 block top-1/2 left-1/2 select-none pointer-events-none -translate-x-1/2 -translate-y-1/2"
+		class="absolute w-fit h-fit -z-20 top-1/2 left-1/2 select-none pointer-events-none -translate-x-1/2 -translate-y-1/2"
 		bind:this={emojiWrapper}
 	>
 		{#each emojis as emoji, i}
