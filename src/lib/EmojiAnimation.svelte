@@ -2,13 +2,10 @@
 	import { inview } from 'svelte-inview';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
-	import lodash from 'lodash';
 	export let emojis: string[] = [];
 	export let classes = '';
 	export let resizeXMultiplier = 1;
 	export let resizeYMultipler = 1;
-
-	const { debounce } = lodash;
 
 	function handleResize() {
 		const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -39,7 +36,7 @@
 		}
 		CONFIG.xMultiplier = CONFIG.xMultiplier * resizeXMultiplier;
 		CONFIG.yMultiplier = CONFIG.yMultiplier * resizeYMultipler;
-		CONFIG.minDist = 0.92 + vw / 2000;
+		CONFIG.minDist = 0.95 + vw / 2000;
 		CONFIG.maxDist = 0.98 + vw / 2000;
 	}
 
@@ -53,8 +50,8 @@
 		yMultiplier: 4,
 		scaleMultiplier: 0.5,
 		opacityMultiplier: 1,
-		minDist: 0.92,
-		maxDist: 0.94,
+		minDist: 0.9,
+		maxDist: 0.92,
 		minScale: 1,
 		maxScale: 2,
 		minOpacity: 0,
@@ -107,10 +104,10 @@
 			let progress = 0;
 			if (scrollProgress < 0.4) {
 				progress = scrollProgress / 0.4;
-			} else if (scrollProgress < 2) {
+			} else if (scrollProgress < 2.5) {
 				progress = 1;
 			} else {
-				progress = 1 - (scrollProgress - 2) / 0.4;
+				progress = 1 - (scrollProgress - 2.5) / 0.4;
 			}
 
 			inViewRatio = progress;
@@ -139,7 +136,6 @@
 
 				let props = {
 					'-webkit-transform': `translate3d(${x}px, ${y}px, 0) scale(${scale}) rotate(${rot}rad)`,
-					opacity,
 					ease: 'power1.inOut'
 				};
 
@@ -147,10 +143,9 @@
 			}
 		});
 	}
-	const debouncedHandleScroll = debounce(handleScroll, 5);
 </script>
 
-<svelte:window bind:scrollY={y} on:scroll={debouncedHandleScroll} />
+<svelte:window bind:scrollY={y} on:scroll={handleScroll} />
 
 <div
 	use:inview={{ rootMargin: '0px', threshold: 0 }}
@@ -159,13 +154,13 @@
 >
 	<slot />
 	<div
-		class="absolute w-fit h-fit -z-20 top-1/2 left-1/2 select-none pointer-events-none -translate-x-1/2 -translate-y-1/2"
+		class="absolute w-fit h-fit -z-20 top-1/2 left-1/2 select-none pointer-events-none -translate-x-1/2 -translate-y-1/2 sm:will-change-transform"
 		bind:this={emojiWrapper}
 	>
 		{#each emojis as emoji, i}
 			<div
 				class="text-4xl absolute {inView ? 'block' : 'hidden'} {classes}"
-				style="--ratio: {inViewRatio};"
+				style="will-change: transform;"
 				bind:this={emojiElements[i].elem}
 			>
 				{emoji}

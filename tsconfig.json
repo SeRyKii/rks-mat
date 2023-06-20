@@ -9,8 +9,7 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"declaration": true,
-		"types": ["lodash"]
+		"declaration": true
 	},
 	"nocheck": ["./src/lib/Editor.svelte", "./node_modules/**/*"]
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias

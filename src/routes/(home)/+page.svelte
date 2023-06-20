@@ -3,7 +3,6 @@
   import { inview } from "svelte-inview";
   import { gsap } from "gsap";
   import { Avatar } from "@skeletonlabs/skeleton";
-  import lodash from "lodash";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
   import { posts } from "$lib/stores";
@@ -16,7 +15,6 @@
   import relativeTime from "dayjs/plugin/relativeTime";
   import WaveBorder from "$lib/WaveBorder.svelte";
   import EmojiAnimation from "$lib/EmojiAnimation.svelte";
-  const { debounce } = lodash;
   dayjs.locale("pl");
   dayjs.extend(relativeTime);
 
@@ -24,6 +22,7 @@
   let active1 = false;
   let active2 = false;
   let active3 = false;
+  let vw = 0;
 
   export let data: PageData;
 
@@ -70,12 +69,11 @@
   function handleScroll() {
     requestAnimationFrame(() => {
       gsap.set(bg, {
-        backgroundPosition: `50% calc(50% + ${-y / 3}px)`,
-        ease: "Power3.InOut",
+        y: y * 0.6,
+        ease: "Quad",
       });
     });
   }
-  const handleScrollDebounced = debounce(handleScroll, 17);
 </script>
 
 <div
@@ -104,18 +102,24 @@
   }}
 />
 
-<svelte:window bind:scrollY={y} on:scroll={handleScrollDebounced} />
+<svelte:window bind:scrollY={y} bind:innerWidth={vw} on:scroll={handleScroll} />
 
 <div
-  class="relative w-full min-h-[100vh] flex items-center dark:bg-primary-900 bg-primary-900 -mt-28"
+  class="relative w-full min-h-[100vh] flex items-center dark:bg-primary-900 bg-primary-900 -mt-28 oveflow-y-hidden"
 >
   <div
-    id="bg"
-    class="absolute w-screen h-[100vh] dark:brightness-75"
-    style="background-image: url('bg.webp'); clip-path: ellipse(50% 100% at 0% 20%); background-repeat: no-repeat; background-attachment: fixed; transform: translateZ(0);"
-    bind:this={bg}
-  />
-  <div class="flex flex-col ml-6 lg:ml-16 z-10 items-center gap-5">
+    class="absolute w-10/12 h-screen overflow-hidden dark:brightness-75"
+    style="clip-path: ellipse(50% 100% at 0% 20%);"
+  >
+    <img
+      src="bg.webp"
+      alt=""
+      bind:this={bg}
+      style=""
+      class="will-change-transform h-full"
+    />
+  </div>
+  <div class="flex flex-col ml-6 lg:ml-16 z-10 items-center gap-5 w-full">
     <span
       class="sm:text-6xl text-4xl drop-shadow-white drop-shadow-2xl text-center text-dark-token"
     >
@@ -254,6 +258,7 @@
 <EmojiAnimation
   emojis={["🏆", "🎮", "🏅", "🎌", "🥊"]}
   resizeXMultiplier={1.2}
+  resizeYMultipler={0.6}
   classes="z-20"
 >
   <div
@@ -300,5 +305,5 @@
 </EmojiAnimation>
 
 <div
-  class="absolute -bottom-48 -z-10 w-full h-48 bg-secondary-400 dark:bg-secondary-900"
+  class="absolute -bottom-16 -z-10 w-full h-48 bg-secondary-400 dark:bg-secondary-900"
 />

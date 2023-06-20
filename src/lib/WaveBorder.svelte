@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { wavify } from '$lib/wavify';
+	import { onMount } from 'svelte';
+	import { noAnimations } from '$lib/stores';
 	export let waveColors: string[];
 	export let rotate = false;
 	export let classes = 'w-full h-full';
@@ -15,29 +17,33 @@
 	let wave1: SVGPathElement;
 	let wave2: SVGPathElement;
 
-	$: if (wave) {
-		wavify(wave, {
+	let waveInstance1: any;
+	let waveInstance2: any;
+	let waveInstance3: any;
+
+	onMount(() => {
+		waveInstance1 = wavify(wave, {
 			height: 10,
 			bones: 3,
 			amplitude: 50,
 			color: 'transparent',
 			speed: 0.35
 		});
-		wavify(wave1, {
+		waveInstance2 = wavify(wave1, {
 			height: 40,
 			bones: 4,
 			amplitude: 20,
 			color: 'transparent',
 			speed: 0.3
 		});
-		wavify(wave2, {
+		waveInstance3 = wavify(wave2, {
 			height: 50,
 			bones: 4,
 			amplitude: 30,
 			color: 'transparent',
 			speed: 0.25
 		});
-	}
+	});
 </script>
 
 <svg class="{classes} {rotationClass}" version="1.1" xmlns="http://www.w3.org/2000/svg"
