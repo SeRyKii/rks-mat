@@ -188,7 +188,7 @@
   </div>
 
   <WaveBorder
-    classes="w-full h-full bg-transparent z-10 relative -bottom-[0.75rem]"
+    classes="w-full h-fit bg-transparent z-10 relative -bottom-[0.75rem]"
     waveColors={[
       "dark:fill-surface-700 fill-surface-50",
       "dark:fill-surface-800 fill-surface-100",

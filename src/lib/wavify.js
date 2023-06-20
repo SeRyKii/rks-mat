@@ -139,7 +139,7 @@ export function wavify(wave_element, options) {
 			lastUpdate = now;
 		}
 
-		animationInstance = requestAnimationFrame(draw);
+		if (window.innerWidth > 640) animationInstance = requestAnimationFrame(draw);
 	}
 
 	//  Pure js debounce function to optimize resize method
