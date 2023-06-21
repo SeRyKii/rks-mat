@@ -25,7 +25,7 @@
 		waveInstance1 = wavify(wave, {
 			height: 10,
 			bones: 3,
-			amplitude: 50,
+			amplitude: 30,
 			color: 'transparent',
 			speed: 0.35
 		});
@@ -39,7 +39,7 @@
 		waveInstance3 = wavify(wave2, {
 			height: 50,
 			bones: 4,
-			amplitude: 30,
+			amplitude: 20,
 			color: 'transparent',
 			speed: 0.25
 		});
