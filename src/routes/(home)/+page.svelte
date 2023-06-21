@@ -65,15 +65,6 @@
 
   let bg: HTMLDivElement;
   let pos = 0;
-
-  function handleScroll() {
-    requestAnimationFrame(() => {
-      gsap.set(bg, {
-        y: y * 0.6,
-        ease: "Quad",
-      });
-    });
-  }
 </script>
 
 <div
@@ -102,7 +93,7 @@
   }}
 />
 
-<svelte:window bind:scrollY={y} bind:innerWidth={vw} on:scroll={handleScroll} />
+<svelte:window bind:scrollY={y} bind:innerWidth={vw} />
 
 <div
   class="relative w-full min-h-[100vh] flex items-center dark:bg-primary-900 bg-primary-900 -mt-28 oveflow-y-hidden"
@@ -115,7 +106,7 @@
       src="bg.webp"
       alt=""
       bind:this={bg}
-      style=""
+      style="transform: translate3d(0px, {y * 0.3}px, 0px) scale(1.5);"
       class="will-change-transform h-full"
     />
   </div>
@@ -218,6 +209,8 @@
 <EmojiAnimation
   emojis={["🏆", "🎖️", "🥇", "🎗️", "🌟"]}
   resizeYMultipler={0.8}
+  resizeXMultiplier={0.8}
+  middle={3}
   classes="-z-20"
 >
   <div class="w-screen min-h-[50vh] text-center space-y-8">
@@ -258,18 +251,22 @@
 <EmojiAnimation
   emojis={["🏆", "🎮", "🏅", "🎌", "🥊"]}
   resizeXMultiplier={1.2}
-  resizeYMultipler={0.6}
-  classes="z-20"
+  rotationMultiplier={0.05}
+  resizeYMultipler={0.7}
+  classes="!z-10 absolute"
 >
   <div
-    class="-z-30 relative block max-w-[100vw] min-h-[50vh] text-center space-y-8 bg-secondary-400 dark:bg-secondary-900 py-4"
+    class="relative block max-w-[100vw] min-h-[50vh] text-center space-y-8 overflow-hidden"
   >
+    <div
+      class="absolute w-screen h-screen bg-secondary-400 dark:bg-secondary-900 -z-20"
+    />
     <div class="mb-24 w-full flex flex-col items-center gap-2">
       <span class="text-6xl font-bold text-center">Turnieje</span>
 
       {#each tournaments as tournament}
         <div
-          class="bg-surface-50-900-token flex flex-row items-center p-2 px-6 w-screen sm:w-3/4 h-fit rounded-md shadow-lg gap-2 justify-around"
+          class="z-20 relative bg-surface-50-900-token flex flex-row items-center p-2 px-6 w-screen sm:w-3/4 h-fit rounded-md shadow-lg gap-2 justify-around"
         >
           <span class="text-sm sm:text-3xl whitespace-nowrap"
             >{tournament.name.length > 15
@@ -305,5 +302,5 @@
 </EmojiAnimation>
 
 <div
-  class="absolute -bottom-16 -z-10 w-full h-48 bg-secondary-400 dark:bg-secondary-900"
+  class="absolute -bottom-16 -z-20 w-full h-48 bg-secondary-400 dark:bg-secondary-900"
 />

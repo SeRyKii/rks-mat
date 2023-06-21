@@ -6,6 +6,9 @@
 	export let classes = '';
 	export let resizeXMultiplier = 1;
 	export let resizeYMultipler = 1;
+	export let rotationMultiplier = 0.1;
+	export let rootMargin = '100px';
+	export let middle = 2.5;
 
 	function handleResize() {
 		const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -56,7 +59,7 @@
 		maxScale: 2,
 		minOpacity: 0,
 		maxOpacity: 1,
-		rotationMultiplier: 0.1
+		rotationMultiplier: rotationMultiplier
 	};
 
 	let y = 0;
@@ -66,7 +69,13 @@
 	let boundingRect: DOMRect | undefined;
 	let emojiWrapper: HTMLDivElement | null = null;
 
-	let emojiElements: { elem: HTMLDivElement | null; rot: number; dist: number }[] = [];
+	let emojiElements: {
+		elem: HTMLDivElement | null;
+		rot: number;
+		dist: number;
+		cosRot: number;
+		sinRot: number;
+	}[] = [];
 	for (let i = 0; i < emojis.length; i++) {
 		// emojiElements.push({
 		// 	elem: null,
@@ -80,7 +89,9 @@
 		emojiElements.push({
 			elem: null,
 			rot,
-			dist
+			dist,
+			sinRot: Math.sin(rot),
+			cosRot: Math.cos(rot)
 		});
 	}
 
@@ -104,10 +115,10 @@
 			let progress = 0;
 			if (scrollProgress < 0.4) {
 				progress = scrollProgress / 0.4;
-			} else if (scrollProgress < 2.5) {
+			} else if (scrollProgress < middle) {
 				progress = 1;
 			} else {
-				progress = 1 - (scrollProgress - 2.5) / 0.4;
+				progress = 1 - (scrollProgress - middle) / 0.4;
 			}
 
 			inViewRatio = progress;
@@ -115,7 +126,7 @@
 			let wrapperRotation = Math.PI * scrollProgress * CONFIG.rotationMultiplier;
 
 			gsap.set(emojiWrapper, {
-				'-webkit-transform': `rotate(${wrapperRotation}rad)`,
+				transform: `rotate(${wrapperRotation}rad)`,
 				ease: 'power1.inOut'
 			});
 
@@ -123,11 +134,10 @@
 				const elem = emojiElements[i].elem;
 				if (!elem) continue;
 
-				const rot = emojiElements[i].rot;
-				const dist = emojiElements[i].dist;
+				const { rot, dist, cosRot, sinRot } = emojiElements[i];
 
-				const x = Math.cos(rot) * dist * progress * CONFIG.xMultiplier * 100;
-				const y = Math.sin(rot) * dist * progress * CONFIG.yMultiplier * 100;
+				const x = cosRot * dist * progress * CONFIG.xMultiplier * 100;
+				const y = sinRot * dist * progress * CONFIG.yMultiplier * 100;
 				const scale =
 					CONFIG.maxScale - progress * (CONFIG.maxScale - CONFIG.minScale) * CONFIG.scaleMultiplier;
 				const opacity =
@@ -135,7 +145,7 @@
 					progress * (CONFIG.maxOpacity - CONFIG.minOpacity) * CONFIG.opacityMultiplier;
 
 				let props = {
-					'-webkit-transform': `translate3d(${x}px, ${y}px, 0) scale(${scale}) rotate(${rot}rad)`,
+					transform: `translateX(${x}px) translateY(${y}px) scale(${scale})`,
 					ease: 'power1.inOut'
 				};
 
@@ -148,7 +158,7 @@
 <svelte:window bind:scrollY={y} on:scroll={handleScroll} />
 
 <div
-	use:inview={{ rootMargin: '0px', threshold: 0 }}
+	use:inview={{ rootMargin, threshold: 0 }}
 	on:inview_change={handleInView}
 	class="relative {classes}"
 >
