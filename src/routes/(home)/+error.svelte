@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-    <title>Błąd {$page.status}</title>
+  <title>Błąd {$page.status}</title>
 </svelte:head>
 
 <div class="w-full h-full flex flex-col items-center -mt-20">
