@@ -164,7 +164,7 @@
 >
 	<slot />
 	<div
-		class="absolute w-fit h-fit -z-20 top-1/2 left-1/2 select-none pointer-events-none -translate-x-1/2 -translate-y-1/2 sm:will-change-transform"
+		class="absolute w-fit h-fit -z-20 top-1/3 left-1/2 select-none pointer-events-none -translate-x-1/2 -translate-y-1/2 sm:will-change-transform"
 		bind:this={emojiWrapper}
 	>
 		{#each emojis as emoji, i}
