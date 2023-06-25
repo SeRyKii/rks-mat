@@ -38,13 +38,13 @@
 				loading="lazy"
 			/>
 		{/if}
-		<span class="relative z-10 flex items-center h-full text-dark-token">
+		<span class="relative z-10 flex items-center h-full text-token">
 			{post.title}
 		</span>
 	</header>
 	<hr class="opacity-50" />
 	<div
-		class="overflow-hidden relative after:absolute after:w-full after:h-64 after:from-transparent after:to-white after:bg-gradient-to-b after:-bottom-48 after:left-0"
+		class="overflow-hidden relative after:absolute after:w-full after:h-64 after:from-transparent after:to-surface-100 dark:after:to-surface-900 after:bg-gradient-to-b after:-bottom-48 after:left-0"
 	>
 		<div class="bg-inherit max-h-36 overflow-hidden p-4">
 			<PostContentViewer blocks={post.content} />

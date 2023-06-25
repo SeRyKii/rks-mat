@@ -29,7 +29,7 @@
 <!-- TODO Add background -->
 
 <div
-  class="flex flex-col w-full md:px-8 items-center justify-center mb-[35vh]"
+  class="flex flex-col w-full md:px-8 items-center justify-center"
   style="margin-top: 8rem"
 >
   <div class="space-y-2 p-4">
