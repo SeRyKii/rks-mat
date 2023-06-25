@@ -93,6 +93,25 @@
   }}
 />
 
+<svelte:head>
+  <title>Strona Główna</title>
+  <meta
+    name="description"
+    content="Strona główna RKS Mat - Klubu Szachowego działającego przy Ul. Sztygarskiej 9 w Rudzie Śląskiej"
+  />
+
+  <meta property="og:title" content="Strona Główna" />
+  <meta
+    property="og:description"
+    content="Strona główna RKS Mat - Klubu Szachowego działającego przy Ul. Sztygarskiej 9 w Rudzie Śląskiej"
+  />
+  <meta property="og:image" content="https://rksmat.pl/logo-medium.webp" />
+  <meta property="og:url" content="https://rksmat.pl/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:site_name" content="RKS Mat" />
+</svelte:head>
+
 <svelte:window bind:scrollY={y} bind:innerWidth={vw} />
 
 <div

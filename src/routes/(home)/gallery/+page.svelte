@@ -89,6 +89,19 @@
   }
 </script>
 
+<svelte:head>
+  <title>Galeria</title>
+  <meta name="description" content="Galeria RKS Mat" />
+
+  <meta property="og:title" content="Galeria" />
+  <meta property="og:description" content="Galeria RKS Mat" />
+  <meta property="og:image" content="https://rksmat.pl/logo-medium.webp" />
+  <meta property="og:url" content="https://rksmat.pl/gallery" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:site_name" content="RKS Mat" />
+</svelte:head>
+
 <div class="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-2 p-2" id="page">
   {#each data.years.items as year, i}
     <div

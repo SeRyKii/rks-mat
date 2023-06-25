@@ -135,6 +135,19 @@
   });
 </script>
 
+<svelte:head>
+  <title>Posty</title>
+  <meta name="description" content="Lista postów RKS Mat" />
+
+  <meta property="og:title" content="Lista postów" />
+  <meta property="og:description" content="Lista postów RKS Mat" />
+  <meta property="og:image" content="https://rksmat.pl/logo-medium.webp" />
+  <meta property="og:url" content="https://rksmat.pl/posts" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:site_name" content="RKS Mat" />
+</svelte:head>
+
 <div class="mt-8 flex items-center w-full justify-center">
   <div class="w-full sm:w-3/4">
     <div class="relative">

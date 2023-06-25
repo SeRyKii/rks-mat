@@ -15,9 +15,7 @@
 
 <svelte:head>
 	{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}
-	<title>RKS "Mat"</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="Klubowa strona klubu RKS 'Mat'" />
 </svelte:head>
 
 <!-- for some reason body goes down with the margin-top of child -->
