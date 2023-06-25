@@ -187,17 +187,18 @@
     <slot />
   </div>
 
-  <WaveBorder
-    classes="w-full bg-transparent z-10 relative -bottom-[0.75rem] mt-full "
-    waveColors={[
-      "dark:fill-surface-700 fill-surface-50",
-      "dark:fill-surface-800 fill-surface-100",
-      "dark:fill-surface-900 fill-surface-200",
-    ]}
-  />
-
-  <footer class="dark:bg-surface-900 bg-surface-200 w-full sticky top-full">
-    <div class="flex flex-row items-center gap-2 p-4">
+  <footer class=" w-full sticky top-full">
+    <WaveBorder
+      classes="w-full bg-transparent z-10 relative -bottom-[0.75rem] mt-full "
+      waveColors={[
+        "dark:fill-surface-700 fill-surface-50",
+        "dark:fill-surface-800 fill-surface-100",
+        "dark:fill-surface-900 fill-surface-200",
+      ]}
+    />
+    <div
+      class="flex flex-row items-center gap-2 p-4 dark:bg-surface-900 bg-surface-200"
+    >
       <img
         src="/logo-medium.webp"
         class="w-12 h-12 sm:block hidden"

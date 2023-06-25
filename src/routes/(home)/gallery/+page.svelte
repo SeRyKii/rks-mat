@@ -102,10 +102,7 @@
   <meta property="og:site_name" content="RKS Mat" />
 </svelte:head>
 
-<div
-  class="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-2 p-2 mb-[28vh]"
-  id="page"
->
+<div class="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-2 p-2" id="page">
   {#each data.years.items as year, i}
     <div
       on:click={() => {
@@ -193,15 +190,15 @@
         </span>
       {:else if selected == i}
         <div
-          class="absolute z-30 transition-all bg-surface-200-800-token rounded-md flex flex-col items-center justify-center"
+          class="absolute z-30 transition-all bg-surface-100-800-token rounded-md flex flex-col items-center justify-center"
           id={i + "child"}
           style={`top: ${top}px; left: ${left}px; width: ${width}px; height: ${height}px;`}
         >
           <div
-            class="w-full h-full bg-surface-200-800-token overflow-x-scroll block"
+            class="w-full h-full bg-surface-100-800-token overflow-x-scroll block"
           >
             <div
-              class="w-full grid-cols-1 bg-surface-200-800-token sm:grid-cols-2 gap-1 grid overflow-x-scroll h-fit p-2 no-underline"
+              class="w-full grid-cols-1 bg-surface-100-800-token sm:grid-cols-2 gap-1 grid overflow-x-scroll h-fit p-2 no-underline"
             >
               {#await displayedData}
                 {#each Array(2) as _}
@@ -224,7 +221,7 @@
                       }
                     }}
                     style="background-image: url({tournament.photo}); background-size: cover; background-position: center; text-decoration: none;"
-                    class="aspect-[20/12] w-full rounded-md overflow-hidden text-center no-underline"
+                    class="aspect-[20/12] w-full rounded-md overflow-hidden text-center no-underline bg-surface-800"
                     href={`/gallery/${tournament.year}/${tournament.id}`}
                   >
                     <span
