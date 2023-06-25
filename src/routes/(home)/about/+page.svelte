@@ -23,7 +23,9 @@
   <meta property="og:site_name" content="RKS Mat" />
 </svelte:head>
 
-<div class="flex flex-col items-center w-full px-0 sm:px-32 md:px-64 lg:px-80">
+<div
+  class="flex flex-col items-center w-full px-0 sm:px-32 md:px-64 lg:px-80 mb-[30vh]"
+>
   <div class="bg-surface-200-800-token p-4">
     <h1 class="text-4xl font-bold text-center">O nas</h1>
     <div class="p-4 px-0 sm:px-4 text-justify space-y-2">

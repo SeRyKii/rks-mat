@@ -102,7 +102,10 @@
   <meta property="og:site_name" content="RKS Mat" />
 </svelte:head>
 
-<div class="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-2 p-2" id="page">
+<div
+  class="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-2 p-2 mb-[28vh]"
+  id="page"
+>
   {#each data.years.items as year, i}
     <div
       on:click={() => {

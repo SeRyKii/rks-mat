@@ -148,7 +148,7 @@
   <meta property="og:site_name" content="RKS Mat" />
 </svelte:head>
 
-<div class="mt-8 flex items-center w-full justify-center">
+<div class="mt-8 flex items-center w-full justify-center mb-[28vh]">
   <div class="w-full sm:w-3/4">
     <div class="relative">
       <input

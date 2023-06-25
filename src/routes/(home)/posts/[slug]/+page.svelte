@@ -27,7 +27,7 @@
 </svelte:head>
 
 <div
-  class="mt-8 flex flex-col items-center w-full px-0 sm:px-12 lg:px-72 gap-2 mb-36"
+  class="mt-8 flex flex-col items-center w-full px-0 sm:px-12 lg:px-72 gap-2 min-h-[50vh] mb-36"
 >
   <div
     class="bg-surface-200-700-token p-4 w-full flex flex-col gap-2 shadow-lg rounded -md overflow-hidden"
