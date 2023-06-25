@@ -24,6 +24,25 @@
   }
 </script>
 
+<svelte:head>
+  <title>{data.year} - {data.photos[0].expand?.tournament.name}</title>
+  <meta
+    name="description"
+    content="Zdjęcia z {data.photos[0].expand?.tournament.name}"
+  />
+
+  <meta property="og:title" content="{data.year} - {data.photos[0].expand?.tournament.name}" />
+  <meta
+    property="og:description"
+    content="Zdjęcia z {data.photos[0].expand?.tournament.name}"
+  />
+  <meta property="og:image" content="https://rksmat.pl/logo-medium.webp" />
+  <meta property="og:url" content="https://rksmat.pl/gallery/{data.year}/{data.tournament}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:site_name" content="RKS Mat" />
+</svelte:head>
+
 <div class="w-full flex flex-col items-center">
   <div class="w-full py-0 sm:px-16 md:px-32 lg:px-64 flex flex-col">
     <div

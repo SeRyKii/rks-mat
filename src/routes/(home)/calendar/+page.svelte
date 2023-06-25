@@ -189,6 +189,25 @@
   });
 </script>
 
+<svelte:head>
+  <title>Kalendarz</title>
+  <meta
+    name="description"
+    content="Kalendarz z zajęć i turniejów RKS Mat. Sprawdź, kiedy są zajęcia i turnieje!"
+  />
+
+  <meta property="og:title" content="Kalendarz" />
+  <meta
+    property="og:description"
+    content="Kalendarz z zajęć i turniejów RKS Mat. Sprawdź, kiedy są zajęcia i turnieje!"
+  />
+  <meta property="og:image" content="https://rksmat.pl/logo-medium.webp" />
+  <meta property="og:url" content="https://rksmat.pl/calendar" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:site_name" content="RKS Mat" />
+</svelte:head>
+
 <div class="flex flex-col w-full md:px-8 items-center justify-center">
   <div class="w-full md:w-3/4 xl:w-1/2 p-8">
     <!-- display name of the month and year -->

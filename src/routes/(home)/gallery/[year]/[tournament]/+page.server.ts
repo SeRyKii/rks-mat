@@ -28,5 +28,7 @@ export const load = (async (event) => {
 
   return {
     photos: structuredClone(photos),
+    year,
+    tournament,
   };
 }) satisfies PageServerLoad;

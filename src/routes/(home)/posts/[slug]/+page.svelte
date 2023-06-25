@@ -13,6 +13,25 @@
   });
 </script>
 
+<svelte:head>
+  <title>{data.post.title}</title>
+  <meta
+    name="description"
+    content="Post RKS Mat"
+  />
+
+  <meta property="og:title" content={data.post.title} />
+  <meta
+    property="og:description"
+    content="Post RKS Mat"
+  />
+  <meta property="og:image" content="https://rksmat.pl/logo-medium.webp" />
+  <meta property="og:url" content="https://rksmat.pl/posts/{data.post.id}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:site_name" content="RKS Mat" />
+</svelte:head>
+
 <div
   class="mt-8 flex flex-col items-center w-full px-0 sm:px-12 lg:px-72 gap-2 mb-36"
 >

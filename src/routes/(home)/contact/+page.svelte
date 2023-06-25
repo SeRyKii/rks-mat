@@ -7,6 +7,25 @@
   });
 </script>
 
+<svelte:head>
+  <title>Kontakt</title>
+  <meta
+    name="description"
+    content="Kontakt z RKS Mat. Jeśli masz jakieś pytania, skontaktuj się z nami!"
+  />
+
+  <meta property="og:title" content="Kontakt" />
+  <meta
+    property="og:description"
+    content="Kontakt z RKS Mat. Jeśli masz jakieś pytania, skontaktuj się z nami!"
+  />
+  <meta property="og:image" content="https://rksmat.pl/logo-medium.webp" />
+  <meta property="og:url" content="https://rksmat.pl/contact" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:site_name" content="RKS Mat" />
+</svelte:head>
+
 <!-- TODO Add background -->
 
 <div
