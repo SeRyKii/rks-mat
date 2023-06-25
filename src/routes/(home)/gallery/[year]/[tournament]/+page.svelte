@@ -49,7 +49,7 @@
   <meta property="og:site_name" content="RKS Mat" />
 </svelte:head>
 
-<div class="w-full flex flex-col items-center">
+<div class="w-full flex flex-col items-center mb-[28vh]">
   <div class="w-full py-0 sm:px-16 md:px-32 lg:px-64 flex flex-col">
     <div
       class="h-8 sm:h-12 rounded-t-2xl bg-surface-200-800-token text-token font-bold text-md sm:text-2xl flex items-center justify-center shadow-lg dark:shadow-surface-500"
