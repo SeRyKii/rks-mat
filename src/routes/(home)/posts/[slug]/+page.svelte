@@ -15,16 +15,10 @@
 
 <svelte:head>
   <title>{data.post.title}</title>
-  <meta
-    name="description"
-    content="Post RKS Mat"
-  />
+  <meta name="description" content="Post RKS Mat" />
 
   <meta property="og:title" content={data.post.title} />
-  <meta
-    property="og:description"
-    content="Post RKS Mat"
-  />
+  <meta property="og:description" content="Post RKS Mat" />
   <meta property="og:image" content="https://rksmat.pl/logo-medium.webp" />
   <meta property="og:url" content="https://rksmat.pl/posts/{data.post.id}" />
   <meta property="og:type" content="website" />

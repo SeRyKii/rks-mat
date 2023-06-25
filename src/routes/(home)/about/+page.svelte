@@ -9,10 +9,7 @@
 
 <svelte:head>
   <title>O nas</title>
-  <meta
-    name="description"
-    content="O nas. Dowiedz się więcej o RKS Mat."
-  />
+  <meta name="description" content="O nas. Dowiedz się więcej o RKS Mat." />
 
   <meta property="og:title" content="O nas" />
   <meta

@@ -91,16 +91,10 @@
 
 <svelte:head>
   <title>Galeria</title>
-  <meta
-    name="description"
-    content="Galeria RKS Mat"
-  />
+  <meta name="description" content="Galeria RKS Mat" />
 
   <meta property="og:title" content="Galeria" />
-  <meta
-    property="og:description"
-    content="Galeria RKS Mat"
-  />
+  <meta property="og:description" content="Galeria RKS Mat" />
   <meta property="og:image" content="https://rksmat.pl/logo-medium.webp" />
   <meta property="og:url" content="https://rksmat.pl/gallery" />
   <meta property="og:type" content="website" />

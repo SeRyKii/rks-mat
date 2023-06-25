@@ -137,16 +137,10 @@
 
 <svelte:head>
   <title>Posty</title>
-  <meta
-    name="description"
-    content="Lista postów RKS Mat"
-  />
+  <meta name="description" content="Lista postów RKS Mat" />
 
   <meta property="og:title" content="Lista postów" />
-  <meta
-    property="og:description"
-    content="Lista postów RKS Mat"
-  />
+  <meta property="og:description" content="Lista postów RKS Mat" />
   <meta property="og:image" content="https://rksmat.pl/logo-medium.webp" />
   <meta property="og:url" content="https://rksmat.pl/posts" />
   <meta property="og:type" content="website" />
