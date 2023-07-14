@@ -8,7 +8,7 @@ COPY pnpm-lock.yaml ./
 RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store/v3 \
     pnpm fetch
 # Install packages offline using the fetched packages
-RUN pnpm install --offline --frozen-lockfile
+RUN pnpm install --prefer-offline --frozen-lockfile
 # Copy application files
 COPY . .
 # Build the application
