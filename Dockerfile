@@ -4,6 +4,7 @@ WORKDIR /app
 # Copy package files and lockfile separately
 COPY package*.json ./
 COPY pnpm-lock.yaml ./
+RUN pnpm install
 # Fetch packages and cache them using the shared cache
 RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store/v3 \
     pnpm fetch
@@ -24,7 +25,7 @@ COPY --from=builder /app/pnpm-lock.yaml ./
 RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store/v3 \
     pnpm fetch --prod
 # Install production packages offline using the fetched packages
-RUN pnpm install --offline --frozen-lockfile --prod
+RUN pnpm install --prefer-offline --frozen-lockfile --prod
 # Copy the build output from the builder stage
 COPY --from=builder /app/build ./
 # Expose port 8080 for the application
