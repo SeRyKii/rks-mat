@@ -1,5 +1,4 @@
 import type { LayoutServerLoad } from "./$types";
-import { posts } from "../../lib/stores";
 import { Collections, type PostsResponse } from "$lib/pb_types";
 
 export const load = (async ({ locals }) => {
