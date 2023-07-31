@@ -125,8 +125,8 @@ devDependencies:
     specifier: ^4.0.0
     version: 4.0.0(eslint@8.42.0)(svelte@3.59.1)
   pocketbase-typegen:
-    specifier: ^1.1.9
-    version: 1.1.9
+    specifier: ^1.1.11
+    version: 1.1.11
   postcss:
     specifier: ^8.4.24
     version: 8.4.24
@@ -1498,6 +1498,11 @@ packages:
       domhandler: 4.3.1
     dev: false
 
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+    engines: {node: '>=12'}
+    dev: true
+
   /editorjs-drag-drop@1.1.13:
     resolution: {integrity: sha512-/82RIXP8/zix6Y8/Mnonk1z7XljFvKmsIFbCrP6JTbdWztqoApyUCsnouHTZ4tF51/BTszYV3Z9ennQrXrHCzA==}
     dev: true
@@ -2713,12 +2718,13 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /pocketbase-typegen@1.1.9:
-    resolution: {integrity: sha512-eUf9O07zXRW3qMAWSLSonJFum0EKk5X5HlzPC0VyppBnehxc0EgthlX36dJzoTfRNE23gJEXCWrjScT0EfI84g==}
+  /pocketbase-typegen@1.1.11:
+    resolution: {integrity: sha512-86ZtQWW7zi3qATvFdtQ/oAiw2x41K1FxHUPTST4hkTChxM799sJGL85BqMR60gNw+Iw8t2L8u4oVsdYyPFi0qQ==}
     hasBin: true
     dependencies:
       commander: 9.5.0
       cross-fetch: 3.1.6
+      dotenv: 16.3.1
       form-data: 4.0.0
       sqlite: 4.2.1
       sqlite3: 5.1.6
