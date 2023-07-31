@@ -12,7 +12,7 @@
 	export let nth: number;
 	export let active: boolean;
 	export let email: string;
-	export let phone: string;
+	export let phone: string = '';
 	let styles = '';
 	let height = 0;
 
@@ -147,10 +147,12 @@
 				<span>{email}</span>
 			</a>
 			<!-- svelte-ignore a11y-missing-attribute -->
-			<a on:keydown={copyEmail} on:click={copyPhone} class="logo-item cursor-pointer">
-				<span><Icon src={Phone} size="20px" /></span>
-				<span>{phone}</span>
-			</a>
+			{#if phone}
+				<a on:keydown={copyPhone} on:click={copyPhone} class="logo-item cursor-pointer">
+					<span><Icon src={Phone} size="20px" /></span>
+					<span>{phone}</span>
+				</a>
+			{/if}
 			<p class="w-full text-center text-xs text-opacity-50">Kliknij aby skopiować</p>
 		</div>
 	{/if}
