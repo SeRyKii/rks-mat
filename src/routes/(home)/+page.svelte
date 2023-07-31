@@ -181,8 +181,7 @@
       name="Marian Twardoń"
       description="Mistrz Fide, trener klasy pierwszej. Wśród jego wychowanków nie brakuje medalistów Mistrzostw Śląska i Mistrzostw Polski Juniorów. W ponad 30-letniej pracy szkoleniowej prowadził wiele drużyn ze Śląska i Małopolski, osiągając z nimi sukcesy, m.in. brązowy medal Górnika Zabrze w DMP Juniorów w 1995 r."
       nth={1}
-      email="marian@email.com"
-      phone="+48 678 567 568"
+      email="mtwardon@interia.pl"
       bind:active={active1}
       on:clicked={() => {
         active2 = false;
@@ -194,8 +193,7 @@
       name="Anna Hampel"
       description="Instruktorka szachowa, wychowanka naszego Klubu. Wielokrotna medalistka Mistrzostw Śląska i uczestniczka finałów Mistrzostw Polski."
       nth={2}
-      email="marian@email.com"
-      phone="+48 678 567 568"
+      email="aniahampel8@gmail.com"
       bind:active={active2}
       on:clicked={() => {
         active1 = false;
@@ -207,8 +205,7 @@
       name="Dariusz Smagacz"
       description="Kandydat na mistrza krajowego, instruktor szachowy. W przeszłości jeden z trenerów utytułowanej drużyny juniorskiej KŚ AZS Politechniki Śląskiej Gliwice. Wciąż czynny zawodnik, kapitan naszej drużyny seniorskiej."
       nth={3}
-      email="marian@email.com"
-      phone="+48 678 567 568"
+      email="dariuszszachista@onet.pl"
       bind:active={active3}
       on:clicked={() => {
         active2 = false;

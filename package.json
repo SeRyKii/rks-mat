@@ -12,7 +12,7 @@
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"typegen": "pocketbase-typegen --db ./pb_data/data.db --out ./src/lib/pb_types.ts",
+		"typegen": "pocketbase-typegen --env --out ./src/lib/pb_types.ts",
 		"typegen:watch": "simple-file-watch --delay=1000 --extension='db' --path ./pb_data --command='pocketbase-typegen --db ./pb_data/data.db --out ./src/lib/pb_types.ts'"
 	},
 	"devDependencies": {
@@ -48,7 +48,7 @@
 		"eslint": "^8.42.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-svelte3": "^4.0.0",
-		"pocketbase-typegen": "^1.1.9",
+		"pocketbase-typegen": "^1.1.11",
 		"postcss": "^8.4.24",
 		"prettier": "^2.8.8",
 		"prettier-plugin-svelte": "^2.10.1",
