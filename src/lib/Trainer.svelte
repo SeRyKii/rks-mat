@@ -12,7 +12,7 @@
 	export let nth: number;
 	export let active: boolean;
 	export let email: string;
-	export let phone: string = '';
+	export let phone = '';
 	let styles = '';
 	let height = 0;
 
