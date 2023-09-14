@@ -2,6 +2,7 @@
 	import { Paginator } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 
@@ -31,6 +32,19 @@
 
 	function onAchievementPageChange(e: CustomEvent): void {
 		achievementLoad(e.detail, '');
+	}
+
+	function newPost() {
+		fetch('/admin/panel/achievements/new', {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				goto(`/admin/panel/achievements/${data.id}`);
+			});
 	}
 
 	let paginatedAchievements = [...data.achievements.items];

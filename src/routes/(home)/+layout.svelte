@@ -97,6 +97,7 @@
   >
     <AppBar background="">
       <svelte:fragment slot="lead">
+        <a href="/" class="flex flex-row items-center">
         <span
           ><img
             class="w-[64px] aspect-square rounded-md"
@@ -112,6 +113,7 @@
           class="ml-2 text-2xl md:text-2xl font-semibold sm:text-xl lg:block hidden"
           >Rudzki Klub Sportowy "Mat"</span
         >
+        </a>
       </svelte:fragment>
       <svelte:fragment slot="trail">
         <div
