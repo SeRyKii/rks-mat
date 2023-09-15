@@ -3,7 +3,6 @@
 	export let confirmText = 'Czy na pewno?';
 	export let text = 'Usuń';
 	export let btnColor = 'primary';
-	export let confirmColor = 'secondary-500';
 	export let classes = '';
 	let confirm = false;
 
@@ -18,7 +17,7 @@
 
 <button
 	style="--after-content: '{confirmText}';"
-	class="relative after:text-black after:h-full after:w-full after:top-0 btn variant-filled-{btnColor} after:absolute after:-left-full after:transition-all after:pt-2 overflow-hidden after:bg-{confirmColor} {confirm
+	class="relative after:text-black after:h-full after:w-full after:top-0 btn variant-filled-{btnColor} after:absolute after:-left-full after:transition-all after:pt-2 overflow-hidden after:bg-secondary-500 {confirm
 		? 'after:translate-x-full'
 		: ''} {classes}"
 	on:click={confirmAction}>{text}</button

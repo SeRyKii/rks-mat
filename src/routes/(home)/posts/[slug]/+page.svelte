@@ -36,7 +36,7 @@
       class="text-token text-6xl w-full text-left flex flex-row items-center"
     >
       <span>{data.post.title}</span>
-      <div class="ml-auto space-x-2 flex flex-row items-center">
+      <div class="ml-auto space-x-2 flex-row items-center sm:flex hidden">
         <!-- Each -->
         {#each data.tags as tag}
           <span class="chip variant-filled-primary">{tag.expand?.tag.name}</span
@@ -45,6 +45,15 @@
       </div>
     </header>
     <hr class="w-full border-t-2" />
+    <div class="space-y-2 block sm:hidden">
+      <div class="flex flex-row gap-2">
+        {#each data.tags as tag}
+          <span class="chip variant-filled-primary">{tag.expand?.tag.name}</span
+          >
+        {/each}
+      </div>
+      <hr />
+    </div>
     <section class="dark:prose-invert prose !max-w-full h-fit">
       <PostContentViewer blocks={data.post.content} />
     </section>
@@ -52,8 +61,8 @@
       class="w-auto text-token text-left p-4 bg-surface-200 dark:bg-surface-900 flex flex-row items-center gap-4 -mx-4 -mb-4"
     >
       <Avatar width="w-12" src={data.userAvatar} />
-      <span class="text-xl">{data.post?.expand?.users.username}</span>
-      <div class="flex flex-col items-center text-right ml-auto">
+      <span class="text-xl">{data.post?.expand?.users.name}</span>
+      <div class="flex flex-row gap-5 items-center text-right ml-auto">
         <span>{dayjs(data.post.created).format("DD/MM/YY HH:mm:ss")}</span>
         {#if !dayjs(data.post.created).isSame(dayjs(data.post.updated), "date")}
           <span class="text-[8px] text-token brightness-50"

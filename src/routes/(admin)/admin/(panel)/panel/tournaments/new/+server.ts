@@ -9,7 +9,7 @@ export const GET = async (event) => {
 	const tournaments = await event.locals.pb
 		.collection(Collections.Tournaments)
 		.create<TournamentsRecord>({
-			name: 'Nowy tag',
+			name: 'Nowy turniej',
 			startDate: new Date().toISOString(),
 			link: '',
 			// random pastel color in hex r = 127-255, g = 127-255, b = 128-255

@@ -97,21 +97,23 @@
   >
     <AppBar background="">
       <svelte:fragment slot="lead">
-        <span
-          ><img
-            class="w-[64px] aspect-square rounded-md"
-            src="/logo-medium.webp"
-            alt="logo"
-          /></span
-        >
-        <span
-          class="ml-2 text-2xl md:text-2xl font-semibold sm:text-xl lg:hidden"
-          >RKS "Mat"</span
-        >
-        <span
-          class="ml-2 text-2xl md:text-2xl font-semibold sm:text-xl lg:block hidden"
-          >Rudzki Klub Sportowy "Mat"</span
-        >
+        <a href="/" class="flex flex-row items-center">
+          <span
+            ><img
+              class="w-[64px] aspect-square rounded-md"
+              src="/logo-medium.webp"
+              alt="logo"
+            /></span
+          >
+          <span
+            class="ml-2 text-2xl md:text-2xl font-semibold sm:text-xl lg:hidden"
+            >RKS "Mat"</span
+          >
+          <span
+            class="ml-2 text-2xl md:text-2xl font-semibold sm:text-xl lg:block hidden"
+            >Rudzki Klub Sportowy "Mat"</span
+          >
+        </a>
       </svelte:fragment>
       <svelte:fragment slot="trail">
         <div

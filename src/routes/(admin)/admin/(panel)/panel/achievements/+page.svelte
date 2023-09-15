@@ -2,6 +2,7 @@
 	import { Paginator } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 
@@ -33,6 +34,19 @@
 		achievementLoad(e.detail, '');
 	}
 
+	function newAchievement() {
+		fetch('/admin/panel/achievements/new', {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				goto(`/admin/panel/achievements/${data.id}`);
+			});
+	}
+
 	let paginatedAchievements = [...data.achievements.items];
 </script>
 
@@ -58,10 +72,10 @@
 					{/each}
 					<div class="w-full bg-white/25 h-[1px] rounded-lg !my-4" />
 					<li class="list-item overflow-hidden relative">
-						<a href={`/admin/panel/achievements/new`}>
+						<button on:click={newAchievement}>
 							<span class="badge bg-primary-500">+</span>
-							<span class="flex-auto">Dodaj nowy typ</span>
-						</a>
+							<span class="flex-auto">Dodaj nowe osiągnięcie</span>
+						</button>
 					</li>
 				</ul>
 			</nav>

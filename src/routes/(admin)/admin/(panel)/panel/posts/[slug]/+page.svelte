@@ -63,10 +63,10 @@
 	let list = [...data.tags];
 
 	function onInputChipSelect(e: CustomEvent) {
-		if (list.includes(e.detail.value) === false) {
-			list = [...list, e.detail.value];
-			inputChip = '';
-		}
+		//if (list.includes(e.detail.value) === true) {
+		list = [...list, e.detail.value];
+		inputChip = '';
+		//}
 	}
 
 	let inputChip = '';
@@ -93,6 +93,7 @@
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label class="label">
 				<span>Tagi:</span>
+				{list}
 				<InputChip
 					bind:input={inputChip}
 					bind:value={list}
@@ -127,7 +128,6 @@
 			confirmText="Czy na pewno?"
 			text="Usuń"
 			btnColor="primary"
-			confirmColor="secondary-500"
 			classes="w-1/2"
 		/>
 	</div>

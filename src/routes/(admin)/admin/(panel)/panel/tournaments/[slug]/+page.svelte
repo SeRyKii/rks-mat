@@ -131,7 +131,7 @@
 					class="relative select-none overflow-hidden rounded-md after:absolute after:w-full after:h-full hover:after:opacity-100 after:transition-all after:top-0 after:left-0 after:flex after:items-center after:justify-center after:opacity-0 after:pointer-events-none {filesForDelete.includes(
 						photo.photo.split('/').pop() || ''
 					)
-						? "after:bg-success-500/80 after:content-['Przywróć_zdjęcie']"
+						? "after:bg-success-500/80 after:content-['Przywróć_zdjęcie'] brightness-25 blur-sm"
 						: "after:bg-error-500/80 after:content-['Usuń_zdjęcie']"}"
 				>
 					<img

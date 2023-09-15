@@ -29,15 +29,6 @@
 	<header
 		class="text-5xl card-header pb-4 text-left h-fit relative bg-surface-200 dark:bg-surface-900"
 	>
-		{#if post.content?.blocks?.filter((v) => v.type == 'image')[0]?.data.file.url != undefined}
-			<img
-				class="w-full aspect-[21/9] absolute top-0 left-0 brightness-75"
-				src={post.content?.blocks?.filter((v) => v.type == 'image')[0].data.file.url +
-					'?thumb=560x240'}
-				alt=""
-				loading="lazy"
-			/>
-		{/if}
 		<span class="relative z-10 flex items-center h-full text-token">
 			{post.title}
 		</span>
@@ -46,7 +37,7 @@
 	<div
 		class="overflow-hidden relative after:absolute after:w-full after:h-64 after:from-transparent after:to-surface-100 dark:after:to-surface-900 after:bg-gradient-to-b after:-bottom-48 after:left-0"
 	>
-		<div class="bg-inherit max-h-36 overflow-hidden p-4">
+		<div class="bg-inherit max-h-48 overflow-hidden p-4">
 			<PostContentViewer blocks={post.content} />
 		</div>
 	</div>
@@ -62,7 +53,7 @@
 			width="w-14"
 		/>
 		<div class="flex-auto flex justify-between items-center">
-			<span>{post.expand?.users.username}</span>
+			<span>{post.expand?.users.name}</span>
 			<span>{dayjs(post.created).fromNow(false)}</span>
 		</div>
 	</footer>
