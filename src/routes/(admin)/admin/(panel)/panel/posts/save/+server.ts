@@ -27,11 +27,16 @@ export const POST = (async (event) => {
 
 		for (let i = 0; i < tags.length; i++) {
 			setTimeout(async () => {
-				await event.locals.pb.collection(Collections.PostTags).create<PostTagsRecord>({
-					post: body.id,
-					tag: tags[i].id
-				});
-			}, 100 + i * 100);
+				await event.locals.pb.collection(Collections.PostTags).create<PostTagsRecord>(
+					{
+						post: body.id,
+						tag: tags[i].id
+					},
+					{
+						$autoCancel: false
+					}
+				);
+			}, 100 + i * 200);
 		}
 	}
 

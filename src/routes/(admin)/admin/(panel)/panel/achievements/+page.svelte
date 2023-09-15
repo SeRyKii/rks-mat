@@ -34,7 +34,7 @@
 		achievementLoad(e.detail, '');
 	}
 
-	function newPost() {
+	function newAchievement() {
 		fetch('/admin/panel/achievements/new', {
 			method: 'GET',
 			headers: {
@@ -72,10 +72,10 @@
 					{/each}
 					<div class="w-full bg-white/25 h-[1px] rounded-lg !my-4" />
 					<li class="list-item overflow-hidden relative">
-						<a href={`/admin/panel/achievements/new`}>
+						<button on:click={newAchievement}>
 							<span class="badge bg-primary-500">+</span>
-							<span class="flex-auto">Dodaj nowy typ</span>
-						</a>
+							<span class="flex-auto">Dodaj nowe osiągnięcie</span>
+						</button>
 					</li>
 				</ul>
 			</nav>

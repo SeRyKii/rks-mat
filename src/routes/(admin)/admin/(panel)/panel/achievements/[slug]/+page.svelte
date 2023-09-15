@@ -91,7 +91,6 @@
 			confirmText="Czy na pewno?"
 			text="Usuń"
 			btnColor="primary"
-			confirmColor="secondary-500"
 			classes="w-full"
 		/>
 	</div>

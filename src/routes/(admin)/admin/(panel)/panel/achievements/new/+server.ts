@@ -5,12 +5,14 @@ import { json, redirect } from '@sveltejs/kit';
 
 export const GET = async (event) => {
 	// create empty post and redirect to it
-	const post = await event.locals.pb.collection(Collections.Posts).create<AchievementsRecord>({
-		title: 'Nowe Osiągnięcie',
-		content: undefined,
-		users: undefined,
-		type: undefined
-	});
+	const post = await event.locals.pb
+		.collection(Collections.Achievements)
+		.create<AchievementsRecord>({
+			description: 'Nowe Osiągnięcie',
+			post: undefined,
+			color: '#000000',
+			emoji: '🏆'
+		});
 
 	return json(post);
 };
