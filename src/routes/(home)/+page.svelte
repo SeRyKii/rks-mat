@@ -179,7 +179,7 @@
     <Trainer
       image="mt.webp"
       name="Marian Twardoń"
-      description="Mistrz Fide, trener klasy pierwszej. Wśród jego wychowanków nie brakuje medalistów Mistrzostw Śląska i Mistrzostw Polski Juniorów. W ponad 30-letniej pracy szkoleniowej prowadził wiele drużyn ze Śląska i Małopolski, osiągając z nimi sukcesy, m.in. brązowy medal Górnika Zabrze w DMP Juniorów w 1995 r."
+      description="Mistrz Fide, trener klasy pierwszej. Przyczynił się do zdobycia medalów Mistrzostw Świata, Europy i Polski takich zawodniczek jak: Dalii Blimke, Moniki Bobrowskiej (obecnie Soćko);<br><br>Joanny Worek, Agnieszki Szczygieł i Marioli Woźniak. W latach 1993-2000 był trenerem Reprezentacji Polski Juniorów na Mistrzostwach Świata i Europy.<br><br>W 2020 roku wprowadził do I Ligi Juniorów drużynę KSz „Skoczek” Czerwionka-Leszczyny a w 2023 roku z UKS „Goniec” Staniątki wywalczył VI miejsce w DMPJ-I Liga<br><br>Szaf wyszkolenia Śląskiej Akademii Szachowej."
       nth={1}
       email="mtwardon@interia.pl"
       bind:active={active1}

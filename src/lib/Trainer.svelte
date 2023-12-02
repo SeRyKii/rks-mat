@@ -112,7 +112,7 @@
 <div
 	id={nth.toString()}
 	style={styles}
-	class="relative card overflow-hidden transition-all {classes} hover:scale-105 shadow-md shadow-surface-400 dark:shadow-surface-500"
+	class="relative card overflow-hidden transition-all {classes} hover:scale-105 hover:z-20 shadow-md shadow-surface-400 dark:shadow-surface-500"
 	on:click={() => {
 		active = true;
 	}}
@@ -132,7 +132,7 @@
 		<section in:fly={{ y: 2000, duration: 500 }} out:fade class="p-4 flex flex-col">
 			<span class="text-3xl font-bold whitespace-nowrap">{name}</span>
 			<span class="text-justify">
-				{description}
+				{@html description}
 			</span>
 		</section>
 	{:else}
